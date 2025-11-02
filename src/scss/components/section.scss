@@ -1,6 +1,5 @@
 .section {
   &__title {
-    //margin-bottom: 25px;
     text-align: center;
     line-height: normal;
 
@@ -15,7 +14,6 @@
     }
   }
 }
-
 
 .section--main {
   min-height: 861px;
@@ -39,29 +37,20 @@
 }
 
 .section--map {}
+
 .section--guides {
   padding-top: 150px;
-  //padding-bottom: 240px;
   padding-bottom: 340px;
 }
 .section--art {
-  //padding-top: 90px;
-  //padding-top: 0px;
   margin-top: -117px;
   padding-bottom: 62px;
 }
 
 .section--books {
   position: relative;
-  //background: url(../img/char.svg) no-repeat top left;
-  //background-position-x: -20vw;
-
   margin-top: 62px;
-  //padding-top: 138px;
-  //padding-top: 266px;
   padding-top: 242px;
-  //padding-top: calc(138px + 62px);
-  //padding-bottom: 100px;
   padding-bottom: 490px;
   z-index: 0;
 
@@ -71,26 +60,19 @@
     background: url(../img/char.svg) no-repeat top left;
     background-size: contain;
     width: 100%;
-    //height: 100%;
-    //height: 418px;
-    //height: 348px;
     height: 384px;
     position: absolute;
     left: 0;
-    //left: -12vw;
     top: 0;
     z-index: -1;
   }
 }
 
 .section--volunteers {
-  //padding-bottom: 150px;
-  //padding-bottom: 228px;
   padding-bottom: 350px;
 }
 
 .section--streets {
-  //padding-top: 78px;
   margin-top: -100px;
   padding-bottom: 189px;
   position: relative;
@@ -100,22 +82,19 @@
     z-index: -1;
     content: '';
     display: block;
-    display: none;
     background: url(../img/heart-cold.svg) no-repeat top left;
     background-size: contain;
     width: 100%;
-    //height: 100%;
-    //height: 418px;
-    //height: 348px;
     height: 712px;
     position: absolute;
     left: 0;
-    //left: -12vw;
-    bottom: 0;
+    top: 55%;
   }
 }
 
 .section--taste {
+  position: relative;
   padding-top: 78px;
-  //padding-top: 78px;
+  padding-bottom: 218px;
+  z-index: 1;
 }
