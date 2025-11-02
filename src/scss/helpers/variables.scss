@@ -1,0 +1,39 @@
+//$container-desktop-width: 1140;
+//$container-laptop-width: 800;
+
+@use 'constants' as *;
+@use 'functions' as *;
+
+:root {
+  --color-white-true: #FFFFFF;
+  --color-white: #F5F5F5;
+  --color-rose: #ECE3E8;
+  --color-black: #181C23;
+  --color-brown-light: #D1A995;
+  --color-brown-light-alt: #CD906F;
+  --color-brown: #A4755C;
+  --color-red: #8C2526;
+  --color-dark-red: #64282A;
+
+  --btn-border-radius: 7px;
+
+  --font-family-base: 'Inter', sans-serif;
+  --font-family-title: 'Manrope', sans-serif;
+  --font-family-logo: 'Riverstyle', sans-serif;
+  --font-family-quote: 'Ubuntu', sans-serif;
+
+  --container-width: #{fluid-to-laptop(
+    $container-desktop-width,
+    $container-laptop-width
+   )};
+
+  //--container-width: 1140px;
+
+  //--cotainer-padding-x: 16px;
+  --cotainer-padding-x: 32px;
+
+  --section-padding-y: #{fluid(80, 40)};
+
+  --transition-duration: .2s;
+  --transition-duration-longer: .5s;
+}

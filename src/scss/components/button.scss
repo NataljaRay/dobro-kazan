@@ -1,0 +1,200 @@
+@import "icon";
+
+.button {
+  @include flex-center(true);
+  padding: fluid-to-laptop(11,6) fluid-to-laptop(40,20);
+  font-weight: 600;
+  color: var(--color-white-true);
+  background-color: var(--color-red);
+  border: none;
+  border-radius: 7px;
+  user-select: none;
+  cursor: pointer;
+  text-align: center;
+
+  @include laptop{//????
+    border-radius: 4px;
+  }
+  @include hover {
+    color: var(--color-white-true);
+    background-color: var(--color-dark-red);
+  }
+
+  .button__icon + .button__label,
+  .button__label + .button__icon {
+    margin-left: 10px;
+  }
+
+  .button__label + .button__icon {
+    @include square(24px);
+
+    .button__icon {
+      --icon-size: 24px;
+    }
+  }
+
+  &:active {
+    scale: 1.05;
+  }
+
+  &:disabled {
+    opacity: .5;
+    pointer-events: none;
+  }
+
+  &:has(.button__icon:only-child) {
+    padding: 0;
+  }
+
+  &--brown {
+    background-color: var(--color-brown);
+  }
+
+  &--brown-light {
+    background-color: var(--color-brown-light-alt);
+  }
+
+  &--transparent {
+    background-color: transparent;
+    color: var(--color-red);
+
+    @include hover {
+      background-color: transparent;
+      color: var(--color-dark-red);
+    }
+
+    &:has(.button__icon:only-child) {
+      @include square(32px);
+
+      .button__icon {
+        --icon-size: 32px;
+      }
+    }
+  }
+
+  &--transparent-white {
+    color: var(--color-white-true);
+
+    @include hover {
+      color: var(--color-rose);
+    }
+  }
+
+}
+
+.button--social {
+  padding: 0;
+}
+
+.button-image-container {
+  margin-bottom: fluid(100, 50);
+  @include mobile-s {
+    flex-direction: column;
+  }
+}
+.button--image {
+  padding: 0;
+  background-color: transparent;
+  height: 33px;
+
+  &:not(:hover) {
+    filter: grayscale(1) contrast(0.5);
+  }
+
+  &:not(last-child) {
+    margin-right: fluid(32, 0);
+  }
+
+  img {
+    height: 100%;
+    width: auto;
+  }
+
+  @include hover {
+    background-color: transparent;
+  }
+}
+
+.button-tile-container {
+  @include flex-center;
+  gap: fluid(116, 40);
+  margin-bottom: fluid(50, 20);
+}
+.button--tile {
+  border-radius: 15px;
+  @include square(360px);
+  flex-direction: column;
+
+  @include tablet {
+    @include square(260px);
+  }
+
+  .icon {
+    --icon-size: 140px;
+    @include flex-center;
+
+    @include tablet {
+      --icon-size: 100px;
+    }
+  }
+
+  .button__icon + .button__label {
+    margin-left: 0;
+  }
+
+  .button__label {
+    margin-top: fluid(34, 24);
+    max-width: 90%;
+    font-family: var(--color-white-true);
+    @include fluid-text(32, 18);
+    line-height: fluid(35, 25);
+
+    @include tablet {
+      max-width: 100%;
+    }
+  }
+}
+
+
+.button--music {
+  background-color: transparent;
+  @include square(48px);
+
+  .button__icon {
+    --icon-size: 48px;
+  }
+}
+
+.button--no-filter {
+  &:not(:hover) {
+    filter: none;
+  }
+}
+.player--mode-music .button--music,
+.button--music-sm {
+  @include square(40px);
+
+  &:not(:last-child) {
+    margin-right: 0;
+  }
+
+  .button__icon {
+    --icon-size: 40px;
+  }
+}
+
+.button--link {
+  font-size: 16px;
+  line-height: 20px;
+  color: var(--color-red);
+  padding: 0;
+  background-color: transparent;
+  border-bottom: 1px solid var(--color-red);
+  border-radius: 0;
+  display: inline;
+
+  @include hover {
+    color: var(--color-dark-red);
+    background-color: transparent;
+  }
+}

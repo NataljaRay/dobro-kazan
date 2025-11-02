@@ -1,0 +1,10 @@
+.icon {
+  --icon-size: 32px;
+  //--icon-size: #{fluid-to-laptop(32,28)};
+
+  @include square(var(--icon-size));
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}

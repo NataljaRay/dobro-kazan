@@ -1,0 +1,161 @@
+.header {
+  position: sticky;
+  z-index: 100;
+  top: 0;
+  width: 100%;
+  padding-block: 16px; // от 24 к 16 (на мобиле)
+
+  background-color: var(--color-rose);
+  //background-image: linear-gradient(to right, rgb(233, 224, 230), rgb(241, 231, 239));
+
+
+  //animation-name: scrolling-header;
+  //animation-fill-mode: both;
+  //animation-timeline: scroll();
+  //animation-range: 0 100px;
+
+  border-bottom: 1px solid transparent;
+
+  height: 93px;
+  
+  //@keyframes scrolling-header {
+  //  to {
+  //    background-color: var(--color-rose);
+  //  }
+  //}
+
+  @include tablet {
+    padding-block: 10px;
+    height: 66px;
+    //background-image: linear-gradient(to right, rgb(235, 226, 231), rgb(241, 231, 239));
+  }
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 16px;
+  }
+
+  &__overlay-menu-dialog {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-rose);
+    border: none;
+    padding: 20px;
+
+
+    flex-direction: column;
+    row-gap: 20px;
+    transition-duration: var(--transition-duration-longer);
+    transition-behavior: allow-discrete;
+    display: flex;
+
+    @include menu-visible {
+      display: contents;
+    }
+
+    @include menu-visible-low {
+      justify-content: center;
+    }
+
+
+    &[open] {
+      opacity: 1;
+      transform: translateX(0);
+
+      @include menu-visible-low {
+        justify-content: center;
+      }
+    }
+    &:not([open]){
+      transform: translateX(100%);
+    }
+  }
+
+  &__logo {
+    font-family: var(--font-family-logo);
+    color: var(--color-red);
+    z-index: 1;
+    font-size: 40px;
+
+    @include tablet {
+      font-size: 30px;
+    }
+  }
+
+  &__menu {
+
+    @include menu-visible-low {
+      overflow-y: auto;
+    }
+
+    &-list {
+      display: flex;
+      align-items: center;
+      column-gap: 24px;
+
+      @include menu-visible-low {
+        margin-block: auto;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      @media (height > 450px) and (orientation: portrait) {
+        flex-direction: column;
+      }
+    }
+
+    &-link {
+      padding: 6px 0;
+      border-top: 4px solid transparent;
+      border-bottom: 4px solid transparent;
+      font-weight: 500;
+      font-size: 15px;//??
+
+      @include menu-visible-low {
+        font-size: 20px;
+      }
+
+      @include hover {
+        color: var(--color-red);
+      }
+
+      &.is-active {
+        border-bottom-color: var(--color-red);
+        pointer-events: none;
+
+        @include menu-visible-low {
+          border-bottom-color: transparent;
+          color: var(--color-red);
+        }
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    column-gap: 12px;
+
+    @include menu-visible-low {
+      justify-content: center;
+    }
+  }
+
+  &__button.button {
+    @include fluid-text(16, 14);
+    padding: fluid-to-laptop(8,4) fluid-to-laptop(24,10);
+
+    @include menu-visible-low {
+      font-size: 16px;
+      padding: 8px 24px;
+    }
+  }
+
+  &__burger-button {
+    position: relative;
+  }
+}
