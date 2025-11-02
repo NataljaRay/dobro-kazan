@@ -2,7 +2,7 @@
 //     console.log('hello world')
 // });
 window.onload = (event) => {
-    console.log("page is fully loaded");
+    // console.log("page is fully loaded");
 };
 
 const body = document.querySelector('body');

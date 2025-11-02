@@ -6,7 +6,11 @@
   <title>Empty</title>
   <meta name="description" content="Empty"/>
   <link rel="icon" href="img/favicon/favicon.ico" type="image/x-icon">
-  <link rel="icon" href="img/favicon/favicon.svg" type="image/svg+xml">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+
   <!--  <link-->
   <!--          rel="stylesheet"-->
   <!--          href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css"-->
@@ -19,70 +23,126 @@
   <div class="header__inner container">
     <a aria-current="page" href="/"
        class="router-link-active router-link-exact-active header__logo logo"
-       aria-label="Home">Natalja Ray</a>
-
-    <dialog class="header__overlay-menu-dialog" id="menu-dialog">
-      <nav class="header__menu" aria-label="Main navigation">
-        <ul id="primary-menu" class="header__menu-list"><!--[-->
-          <li class="header__menu-item"><a aria-current="page" href="/"
-                                           class="router-link-active is-active header__menu-link">Главная</a></li>
-          <li class="header__menu-item"><a href="/book" class="header__menu-link">О книге</a></li>
-          <li class="header__menu-item"><a href="/soundtracks" class="header__menu-link">Саундтреки</a></li>
-          <li class="header__menu-item"><a href="/music" class="header__menu-link">Музыка</a></li>
-          <li class="header__menu-item"><a href="#contacts" class="header__menu-link">Контакты</a></li><!--]--></ul>
-      </nav>
-      <div class="header__actions">
-        <a href="https://vk.com/natalja_ray" target="_blank"
-           rel="noopener noreferrer"
-           class="button button--transparent button--social"
-           aria-label="vk">
-          <span class="icon button__icon" aria-hidden="true" focusable="false">
-              <svg width="32" height="32"
-                   viewBox="0 0 32 32"
-                   fill="none"
-                   xmlns="http://www.w3.org/2000/svg">
-              <path d="M28.672 24.508H25.6293C24.4787 24.508 24.132 23.576 22.0693 21.512C20.2667 19.7747 19.5053 19.5587 19.0493 19.5587C18.4187 19.5587 18.2467 19.732 18.2467 20.6V23.336C18.2467 24.076 18.0067 24.5093 16.0733 24.5093C14.1977 24.3833 12.3789 23.8135 10.7666 22.8469C9.15437 21.8802 7.79483 20.5444 6.8 18.9493C4.43868 16.0088 2.79521 12.5585 2 8.872C2 8.416 2.17333 8.00267 3.04267 8.00267H6.08267C6.864 8.00267 7.14533 8.35067 7.452 9.15467C8.928 13.4987 11.4467 17.2773 12.4693 17.2773C12.8613 17.2773 13.032 17.104 13.032 16.1267V11.652C12.9027 9.61067 11.8187 9.43867 11.8187 8.7C11.8324 8.50512 11.9215 8.32326 12.0672 8.19306C12.2128 8.06285 12.4035 7.99455 12.5987 8.00267H17.3773C18.0307 8.00267 18.2467 8.328 18.2467 9.10933V15.1493C18.2467 15.8013 18.5267 16.0173 18.724 16.0173C19.116 16.0173 19.4173 15.8013 20.136 15.084C21.6759 13.2049 22.9343 11.1119 23.872 8.87067C23.9675 8.60128 24.1487 8.37065 24.3879 8.21412C24.627 8.05758 24.9109 7.98377 25.196 8.004H28.2373C29.1493 8.004 29.3427 8.46 29.1493 9.11067C28.0429 11.5884 26.6742 13.9405 25.0667 16.1267C24.7387 16.6267 24.608 16.8867 25.0667 17.4733C25.368 17.9293 26.4347 18.82 27.1507 19.6667C28.1933 20.7067 29.0587 21.9093 29.7133 23.2267C29.9747 24.0747 29.54 24.508 28.672 24.508Z"
-                    fill="currentColor"></path>
-              </svg>
-          </span>
-          <span class="sr-only">vk</span>
-        </a>
-
-        <a href="https://t.me/NataljaRay"
-                                                                           target="_blank" rel="noopener noreferrer"
-                                                                           class="button button--transparent button--social"
-                                                                           aria-label="tg"><span
-              class="icon button__icon" aria-hidden="true" focusable="false"><svg width="32" height="32"
-                                                                                  viewBox="0 0 32 32" fill="none"
-                                                                                  xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd"
-      d="M23.503 24.6888V24.6865L23.5238 24.6371L27 7.29085V7.23578C27 6.80327 26.8377 6.42583 26.4877 6.19983C26.1805 6.00135 25.827 5.98759 25.5789 6.00594C25.3481 6.02679 25.1202 6.07296 24.8997 6.14361C24.8055 6.17334 24.7127 6.20702 24.6215 6.24457L24.6064 6.2503L5.22605 13.7751L5.22025 13.7773C5.16087 13.796 5.10312 13.8194 5.04754 13.8473C4.90979 13.9088 4.77756 13.9817 4.65228 14.0653C4.40308 14.2351 3.929 14.6343 4.00898 15.2676C4.07505 15.793 4.44017 16.1257 4.68706 16.299C4.83246 16.4006 4.9892 16.4853 5.15418 16.5514L5.19127 16.5674L5.20286 16.5709L5.21098 16.5743L8.60254 17.7044C8.59018 17.9154 8.6122 18.1277 8.66861 18.3411L10.3667 24.7186C10.4595 25.0662 10.6599 25.3764 10.9399 25.6055C11.2199 25.8346 11.5654 25.9711 11.9278 25.9959C12.2902 26.0207 12.6514 25.9325 12.9605 25.7438C13.2697 25.555 13.5114 25.2751 13.6516 24.9434L16.3037 22.1373L20.8579 25.5928L20.9228 25.6203C21.3366 25.7993 21.7226 25.8555 22.0761 25.8085C22.4296 25.7603 22.7101 25.6134 22.9211 25.4471C23.1651 25.2513 23.3596 25.0019 23.489 24.7186L23.4983 24.6991L23.5018 24.6922L23.503 24.6888ZM10.3493 17.9028C10.3305 17.8321 10.335 17.7572 10.3621 17.6891C10.3892 17.621 10.4375 17.5633 10.5 17.5242L21.9996 10.2966C21.9996 10.2966 22.6765 9.88935 22.6522 10.2966C22.6522 10.2966 22.7727 10.3678 22.4099 10.7016C22.0668 11.0194 14.2138 18.5235 13.4187 19.283C13.3755 19.3262 13.3447 19.3801 13.3294 19.439L12.0474 24.2803L10.3493 17.9028Z"
-      fill="currentColor"></path>
-</svg>
-</span><!----><!--[--><!--]--><span class="sr-only">tg</span><!----></a><!--]--></div>
-      <div class="header__actions"><a href="/book#buy-book" class="button button--brown header__button"><!----><span
-              class="button__label">Купить книгу</span><!--[--><!--]--><!----><!----></a></div>
-    </dialog>
-    <button type="button" aria-label="Open menu" title="Open menu" id="burger-button"
-            class="header__burger-button visible-menu burger-button" aria-expanded="false"
-            aria-controls="primary-menu">
-      <svg class="burger-button__svg" width="30" height="30" viewBox="0 0 100 100">
-        <path class="burger-button__line burger-button__line--1"
-              d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058"></path>
-        <path class="burger-button__line burger-button__line--2" d="M 20,50 H 80"></path>
-        <path class="burger-button__line burger-button__line--3"
-              d="M 20,70.999954 H 80.000231 C 80.000231,70.999954 94.498839,71.182648 94.532987,33.288669 94.543142,22.019327 90.966081,18.329754 85.259173,18.331003 79.552261,18.332249 75.000211,25.000058 75.000211,25.000058 L 25.000021,74.999942"></path>
-      </svg>
-    </button>
+       aria-label="Home">
+      <img class="logo" src="img/img-logotype.png">
+    </a>
   </div>
 </header>
 
-<main id="main" class="container">
-  <h1>Hello World</h1>
-  <p>text</p>
-  <img class="test-img" src="img/logo.svg">
-  <h2>Блок с фоновой картинкой</h2>
-  <div class="test-back"></div>
+<main id="main">
+  <div class="background-linear--1">
+    <section class="section--main container">
+
+      <div class="hero">
+        <div class="hero__intro">
+          <div class="hero__block">
+            <img class="hero__img hero__img--tuesday" src="img/tuesday.png" width="297" height="100" alt="Щедрый вторник">
+            <div class="hero__char hero__char--plus">+</div>
+            <h1 class="hero__txt">Татарстан</h1>
+          </div>
+          <div>
+            <div class="hero__char hero__char--equals">=</div>
+          </div>
+          <div class="hero__pyramid">
+            <img class="hero__img hero__img--pyramid" src="img/pyramid.png" width="201" height="163" alt="Щак-щак">
+            <h2 class="hero__txt">Щедрый <br><span>щак-щак</span></h2>
+          </div>
+        </div>
+
+        <div class="hero__info">
+          Щедрый Вторник — ежегодный день <br>благотворительности.<br>
+          В этот день миллионы людей рассказывают,<br>
+          как и кому они помогают. Мы решили расширить в <br>Татарстане этот день и назвать его Щедрый Щак-Щак
+        </div>
+      </div>
+
+    </section>
+
+    <section class="section--map container">
+      <div class="map">
+        <div class="map__inner">
+
+        </div>
+      </div>
+    </section>
+
+    <section class="section--guides container">
+      <div class="guides">
+        <h3 class="section__title section__title--white">Щедрые <br>экскурсоводы</h3>
+        <div class="guides__inner">
+
+        </div>
+      </div>
+    </section>
+
+
+  </div>
+
+
+  <div class="background-white">
+    <section class="section--art container">
+      <h3 class="section__title">Щедрый арт</h3>
+      <div class="art">
+        <div class="art__inner">
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="background-linear--2">
+    <section class="section--books container">
+      <h3 class="section__title section__title--warm">Щедро-умный <br>Щак Щак</h3>
+      <div class="books">
+        <div class="books__inner">
+          <div class="books__block">
+
+            <div class="books__img-wrapper">
+              <img class="books__img " src="img/books.png" width="474" height="424" alt="Книжные магазины">
+            </div>
+            <div class="books__txt-wrapper">
+              <h4 class="books__title">Книжные магазины</h4>
+              <p class="books__txt">
+                Интересные книжные магазины Казани · Книжный магазин «Дом книги» · Книжный магазин «Читай-город» · Книжный магазин «Любимый книжный» · Магазин в Доме татарской Интересные книжные магазины Казани · Книжный магазин «Дом книги» · Книжный магазин «Читай-город» · Книжный магазин «Любимый книжный» · Магазин в Доме татарской 
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section--volunteers container">
+      <h3 class="section__title section__title--white">Щедрые <br>волонтеры</h3>
+      <div class="volunteers">
+        <div class="volunteers__inner"></div>
+      </div>
+    </section>
+  </div>
+
+  <div class="background-white">
+    <section class="section--streets container">
+      <h3 class="section__title section__title--cold">Щедрая улица</h3>
+      <div class="streets">
+        <div class="streets__inner">
+          <div class="street">
+            <div class="street__img-wrapper">
+              <img class="street__img " src="img/streets/street-1.png" alt="Улица Баумана">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section--taste container">
+      <h3 class="section__title section__title--warm">Щедро-вкусный <br>Щак Щак</h3>
+      <div class="taste">
+        <div class="taste__inner">
+
+
+        </div>
+      </div>
+    </section>
+
+  </div>
 </main>
 
 </body>

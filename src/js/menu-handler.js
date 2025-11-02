@@ -1,12 +1,12 @@
 export const menuHandler = () => {
-    console.log('перепиши на чистом JS!!!');
-    const burgerBtn = document.querySelector('#burger-button');
-    const menuDialog = document.querySelector('#menu-dialog');
-
-    burgerBtn.addEventListener('click', () => {
-        burgerBtn.classList.toggle('is-active');
-        menuDialog.toggleAttribute('open');
-    })
+    // console.log('перепиши на чистом JS!!!');
+    // const burgerBtn = document.querySelector('#burger-button');
+    // const menuDialog = document.querySelector('#menu-dialog');
+    //
+    // burgerBtn.addEventListener('click', () => {
+    //     burgerBtn.classList.toggle('is-active');
+    //     menuDialog.toggleAttribute('open');
+    // })
 }
 // export const menuHandler = () => {
 //

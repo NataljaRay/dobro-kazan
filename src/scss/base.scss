@@ -14,26 +14,14 @@ html {
 body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-text-size-adjust: 100%;
-  ////background-color: #2ACBA5;
-  //font-family: 'Inter', sans-serif;
-  //font-style: normal;
-  //scroll-behavior: smooth;
-  //margin: 0;
-  //padding: 0;
-  //font-size: 16px;
-  //line-height: 24px;
-  ////color: white;
-  //color: var(--txt-color);
-  ////background: $bg-color;
-  ////color: pink;
-  //background: var(--bg-color);
 
   @include fluid-text(20, 18);
   display: flex;
   flex-direction: column;
   font-family: var(--font-family-base);
-  color: var(--color-black);
-  background-color: var(--color-rose);
+  font-weight: 400;
+  color: var(--color-text);
+  background-color: var(--color-white);
 }
 
 * {
@@ -62,7 +50,7 @@ input[type="submit"]{
   width: 100px;
   height: 100px;
   border: 1px solid red;
-  background: url(../img/logo.svg) no-repeat center;
+  background: url(../img/img-logotype.png) no-repeat center;
 }
 
 .flex {
@@ -87,7 +75,7 @@ input[type="submit"]{
 .container {
   max-width: 1440px;
   padding: 0 30px;
-  margin: auto;
+  //margin: auto;
 
   @media(max-width: 360px ) {
     padding: 0 15px;
@@ -119,26 +107,30 @@ h3, .h3,
 h4, .h4,
 h5, .h5,
 h6, .h6 {
-  color: var(--color-red);
+  //color: var(--color-red);
+  color: var(--color-warm);
   font-family: var(--font-family-title);
-  font-weight: 800;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: 2px;
 }
 
 h1, .h1 {
-  @include fluid-text(48, 24);
+  //@include fluid-text(56, 36);
+  @include fluid-text(56, 24);
 }
 
 h2, .h2 {
-  @include fluid-text(36, 20);
+  @include fluid-text(44, 24);
 }
 
 h3, .h3 {
-  @include fluid-text(32, 18);
+  @include fluid-text(50, 30);
 }
 
 h4, .h4 {
   //@include fluid-text(24, 16);
-  @include fluid-text(24, 20);
+  @include fluid-text(32, 20);
 }
 
 h5, .h5 {

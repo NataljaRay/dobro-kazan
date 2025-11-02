@@ -1,0 +1,10 @@
+.streets {
+
+  &__inner {
+    margin-top: 56px;
+    //background-color: #8C2526;
+
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+  }
+}

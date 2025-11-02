@@ -5,8 +5,16 @@
 @use 'functions' as *;
 
 :root {
-  --color-white-true: #FFFFFF;
-  --color-white: #F5F5F5;
+  --color-main-bg: #00818e;
+  --color-accent: #E40514;
+  --color-warm: #EA36CD;
+  --color-cold: #5074D1;
+  --color-white: #FFFFFF;
+
+  --color-text: #474653;
+
+
+  //--color-white: #F5F5F5;
   --color-rose: #ECE3E8;
   --color-black: #181C23;
   --color-brown-light: #D1A995;
@@ -18,9 +26,9 @@
   --btn-border-radius: 7px;
 
   --font-family-base: 'Inter', sans-serif;
-  --font-family-title: 'Manrope', sans-serif;
-  --font-family-logo: 'Riverstyle', sans-serif;
-  --font-family-quote: 'Ubuntu', sans-serif;
+  --font-family-title: 'NauryzRedKeds', sans-serif;
+  //--font-family-logo: 'Riverstyle', sans-serif;
+  //--font-family-quote: 'Ubuntu', sans-serif;
 
   --container-width: #{fluid-to-laptop(
     $container-desktop-width,
@@ -31,6 +39,8 @@
 
   //--cotainer-padding-x: 16px;
   --cotainer-padding-x: 32px;
+  //--cotainer-padding-x-base: 72px;/
+  --cotainer-padding-x-base: #{fluid(72, 30)};
 
   --section-padding-y: #{fluid(80, 40)};
 

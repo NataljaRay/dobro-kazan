@@ -1,26 +1,22 @@
 /* base */
 @import "base";
 
-
-//body {
-//  display: flex;
-//  @media(max-width: 1024px)  {
-//    background: blue;
-//  }
-//  @include laptop-above {
-//    background: darkred;
-//  }
-//}
-
 @import "components/header";
-@import "components/burger-button";
-@import "components/button";
+@import "components/section";
+@import "components/hero";
+@import "components/map";
+@import "components/guides";
+@import "components/art";
+@import "components/books";
+@import "components/volunteers";
+@import "components/street";
 
 
-.sr-only {
-  position: absolute !important;
-  width: 1px; height: 1px;
-  padding: 0; margin: -1px;
-  overflow: hidden; clip: rect(0,0,0,0);
-  white-space: nowrap; border: 0;
+.background-linear--1 {
+  min-height: 2524px;
+  background: linear-gradient(0.2deg, #FFFFFF 0.15%, #FFF9F2 4.58%, #5AD1EB 12.63%, #5AD1EB 40.39%, #FFF9F2 92.24%);
+}
+.background-linear--2 {
+  min-height: 1841px;
+  background: linear-gradient(0.2deg, rgba(255, 255, 255, 0) 0.15%, #FFF9F2 4.58%, #88F7FF 14.39%, #5AD1EB 40.39%, #FFF9F2 92.24%, #FFFFFF 99.8%);
 }
