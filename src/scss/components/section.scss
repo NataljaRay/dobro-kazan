@@ -16,7 +16,7 @@
 }
 
 .section--main {
-  min-height: 861px;
+  //min-height: 861px;
   position: relative;
   background: url(../img/heart-main.svg) no-repeat right center;
 
@@ -36,11 +36,16 @@
   }
 }
 
-.section--map {}
+.section--map {
+  margin-top: -50px;
+  position: relative;
+  z-index: 1;
+}
 
 .section--guides {
   padding-top: 150px;
   padding-bottom: 340px;
+
 }
 .section--art {
   margin-top: -117px;
@@ -70,9 +75,11 @@
 
 .section--volunteers {
   padding-bottom: 350px;
+  //display: none;
 }
 
 .section--streets {
+  //display: none;
   margin-top: -100px;
   padding-bottom: 189px;
   position: relative;

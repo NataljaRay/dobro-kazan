@@ -1,9 +1,27 @@
 .map {
-  height: 726px;
+  //height: 726px;
   padding: 50px;
+
+  @include tablet {
+    height: 80vh;
+  }
+  @include mobile {
+    padding: 0;
+  }
 
   &__inner {
     height: 100%;
     background-color: lightgrey;
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0px 4px 68.2px 0px #110E3A33;
+  }
+  &__img { // заглушка
+    margin-top: -140px;
+    @include tablet {
+      margin-top: 0;
+      //height: 100%;
+      //width: auto;
+    }
   }
 }
