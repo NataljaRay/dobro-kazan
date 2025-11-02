@@ -1,8 +1,11 @@
 .volunteers {
   margin-top: 88px;
   height: 376px;
-  @include mobile-s {
+  @include tablet {
     margin-top: 62px;
+  }
+  @include mobile-s {
+    //margin-top: 62px;
   }
   &__inner {
     height: 100%;
