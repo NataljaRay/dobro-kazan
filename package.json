@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "homepage": "https://nataljaray.github.io/dobro-kazan/",
   "scripts": {
-    "start": "webpack"
+    "start": "cross-env NODE_ENV=development webpack --watch",
+    "build": "cross-env NODE_ENV=production webpack --mode production",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "author": "",
   "license": "ISC",
@@ -14,10 +18,12 @@
     "browser-sync": "^2.26.7",
     "browser-sync-webpack-plugin": "^2.2.2",
     "copy-webpack-plugin": "^10.2.4",
+    "cross-env": "^10.1.0",
     "css-loader": "^6.6.0",
     "css-mqpacker": "^7.0.0",
     "cssnano": "^5.0.17",
     "file-loader": "^6.0.0",
+    "gh-pages": "^6.3.0",
     "html-webpack-plugin": "^5.5.0",
     "jquery": "^3.6.0",
     "mini-css-extract-plugin": "^2.9.4",

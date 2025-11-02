@@ -6,18 +6,23 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const sortCSSmq = require('sort-css-media-queries');
 
 // const PAGES_DIR = `src/pug/pages/`;
+
+const isProd = process.env.NODE_ENV === 'production'; // определяем режим
 const PAGES_DIR = `src`;
 
 
 module.exports = {
+    mode: isProd ? 'production' : 'development',
     // mode: 'production',
-    mode: 'development',
+    // mode: 'development',
     entry: {
         app: ['./src/app.js'],
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
+        clean: true, // очищает dist перед сборкой
+        publicPath: isProd ? '/dobro-kazan/' : '/', // ✅ важно для gh-pages
         /* for background images*/
         assetModuleFilename: (pathData) => {
             const filepath = path
@@ -28,7 +33,8 @@ module.exports = {
             return `${filepath}/[name][ext][query]`;
         },
     },
-    watch: true,
+    // watch: true,
+    watch: !isProd,
     resolve: {
         alias: {
             jquery: "jquery/src/jquery"
@@ -62,13 +68,13 @@ module.exports = {
     },
     plugins: [
 
-        new BrowserSyncPlugin({
-            host: 'localhost',
-            port: 9000,
-            files: ['./dist/*.html'],
-            notify: false,
-            server: {baseDir: ['dist']}
-        }),
+        // new BrowserSyncPlugin({
+        //     host: 'localhost',
+        //     port: 9000,
+        //     files: ['./dist/*.html'],
+        //     notify: false,
+        //     server: {baseDir: ['dist']}
+        // }),
         new HtmlWebpackPlugin({
             template: `${PAGES_DIR}/index.html`,
             filename: './index.html',
@@ -85,6 +91,17 @@ module.exports = {
                 // {from: 'src/assets', to: 'assets'},
             ],
         }),
+        ...(!isProd
+            ? [
+                new BrowserSyncPlugin({
+                    host: 'localhost',
+                    port: 9000,
+                    files: ['./dist/*.html'],
+                    notify: false,
+                    server: { baseDir: ['dist'] },
+                }),
+            ]
+            : []),
     ],
 
 };
