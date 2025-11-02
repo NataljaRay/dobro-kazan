@@ -40,16 +40,25 @@
   margin-top: -50px;
   position: relative;
   z-index: 1;
+
+  @include mobile-s {
+    margin-top: 62px;
+  }
 }
 
 .section--guides {
   padding-top: 150px;
   padding-bottom: 340px;
-
+  @include mobile-s {
+    margin-top: 62px;
+  }
 }
 .section--art {
   margin-top: -117px;
   padding-bottom: 62px;
+  @include mobile-s {
+    margin-top: 62px;
+  }
 }
 
 .section--books {
@@ -76,6 +85,10 @@
 .section--volunteers {
   padding-bottom: 350px;
   //display: none;
+
+  @include mobile-s {
+    margin-top: 62px;
+  }
 }
 
 .section--streets {
@@ -97,6 +110,10 @@
     left: 0;
     top: 55%;
   }
+
+  @include mobile-s {
+    margin-top: 62px;
+  }
 }
 
 .section--taste {
@@ -104,4 +121,9 @@
   padding-top: 78px;
   padding-bottom: 218px;
   z-index: 1;
+  @include mobile-s {
+    //margin-top: 62px;
+    margin-top: 32px;
+    margin-bottom: 62px;
+  }
 }

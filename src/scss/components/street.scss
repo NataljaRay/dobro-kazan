@@ -7,16 +7,34 @@
     display: grid;
     grid-template-columns: repeat(3, 295px);
     gap: 76px;
+
+    @include laptop-sm {
+      gap: 3vw;
+    }
+    @include tablet {
+      gap: 1vw;
+      grid-template-columns: 1fr;
+      grid-template-rows: 3fr;
+    }
   }
 }
 
 .street {
+
+  @include tablet {
+    max-width: 300px;
+    text-align: center;
+    margin-bottom: 40px;
+  }
   &__img-wrapper {
     width: 200px;
     height: 120px;
     border-radius: 80px;
     overflow: hidden;
     margin-bottom: 23px;
+    @include tablet {
+      margin-inline: auto;
+    }
   }
   &__img {
     object-fit: cover;
@@ -26,7 +44,6 @@
     line-height: fluid(50, 20);
     margin-bottom: 8px;
   }
-
   &__txt {
     font-size: 16px;
     line-height: 24px;

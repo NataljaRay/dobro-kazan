@@ -6,75 +6,146 @@ $mobile-s:  480px;
 $mobile-xs:  374px;
 
 @mixin menu-visible {
-  @media (width > 1164px) {
+  @media (max-width: 1164px) {
     @content;
   }
 }
 @mixin menu-visible-low {
-  @media (width <= 1164px) {
+  @media (max-width: 1164px) {
     @content;
   }
 }
 
 @mixin laptop-above {
-  @media (width > $laptop) {
+  @media (max-width: $laptop) {
     @content;
   }
 }
 
 @mixin laptop {
-  @media (width <= $laptop) {
+  @media (max-width: $laptop) {
     @content;
   }
 }
 
 @mixin laptop-sm {
-  @media (width <= $laptop-sm) {
+  @media (max-width: $laptop-sm) {
     @content;
   }
 }
 
 @mixin tablet-above {
-  @media (width > $tablet) {
+  @media (max-width: $tablet) {
     @content;
   }
 }
 
 @mixin tablet {
-  @media (width <= $tablet) {
+  @media (max-width: $tablet) {
     @content;
   }
 }
 
 @mixin mobile-above {
-  @media (width > $mobile) {
+  @media (max-width: $mobile) {
     @content;
   }
 }
 
 @mixin mobile {
-  @media (width <= $mobile) {
+  @media (max-width: $mobile) {
     @content;
   }
 }
 
 @mixin mobile-s-above {
-  @media (width > $mobile-s) {
+  @media (max-width: $mobile-s) {
     @content;
   }
 }
 
 @mixin mobile-s {
-  @media (width <= $mobile-s) {
+  @media (max-width: $mobile-s) {
     @content;
   }
 }
 
 @mixin mobile-xs {
-  @media (width <= $mobile-xs) {
+  @media (max-width: $mobile-xs) {
     @content;
   }
 }
+
+//@mixin menu-visible {
+//  @media (width > 1164px) {
+//    @content;
+//  }
+//}
+//@mixin menu-visible-low {
+//  @media (width <= 1164px) {
+//    @content;
+//  }
+//}
+//
+//@mixin laptop-above {
+//  @media (width > $laptop) {
+//    @content;
+//  }
+//}
+//
+//@mixin laptop {
+//  @media (width <= $laptop) {
+//    @content;
+//  }
+//}
+//
+//@mixin laptop-sm {
+//  @media (width <= $laptop-sm) {
+//    @content;
+//  }
+//}
+//
+//@mixin tablet-above {
+//  @media (width > $tablet) {
+//    @content;
+//  }
+//}
+//
+//@mixin tablet {
+//  @media (width <= $tablet) {
+//    @content;
+//  }
+//}
+//
+//@mixin mobile-above {
+//  @media (width > $mobile) {
+//    @content;
+//  }
+//}
+//
+//@mixin mobile {
+//  @media (width <= $mobile) {
+//    @content;
+//  }
+//}
+//
+//@mixin mobile-s-above {
+//  @media (width > $mobile-s) {
+//    @content;
+//  }
+//}
+//
+//@mixin mobile-s {
+//  @media (width <= $mobile-s) {
+//    @content;
+//  }
+//}
+//
+//@mixin mobile-xs {
+//  @media (width <= $mobile-xs) {
+//    @content;
+//  }
+//}
 
 @mixin hover($hasActiveEffectOnMobile: true) {
   @media (any-hover: hover) {
