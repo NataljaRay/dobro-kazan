@@ -1,8 +1,47 @@
 .guides {
 
   &__inner {
-    margin-top: 25px;
-    height: 414px;
-    background-color: lightgrey;
+    margin-top: 32px;
+    min-height: 414px;
+    //background-color: lightgrey;
   }
+}
+
+.guides-carousel {
+  //max-width: 1284px;
+  .slick-arrow {
+    height: 100%;
+  }
+  &__slide {
+    margin-inline: auto;
+    display: inline-flex!important;
+    justify-content: center;
+    width: 100%;
+
+    &-inner {
+      //margin-inline: 8px;
+      background-color: var(--color-white);
+      border-radius: 25px;
+      padding: 10px 10px 20px 10px;
+      width: 316px;
+    }
+    &-img-wrap {
+      //width: 295px;
+      @include square(295px);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    &-img {
+      //transition: all var(--transition-duration-longer) ease;
+      //@include hover {
+      //  transform: scale(1.05);
+      //}
+    }
+    &-info {
+      padding-inline: 16px;
+    }
+    &-title {}
+    &-text {}
+  }
+
 }

@@ -3,6 +3,7 @@
 /* base */
 @import "base";
 
+@import "components/slick-custom";
 @import "components/header";
 @import "components/section";
 @import "components/hero";
@@ -20,7 +21,9 @@
 .background-linear--1 {
   //min-height: 2524px;
   overflow-x: hidden;
-  background: linear-gradient(0.2deg, #FFFFFF 0.15%, #FFF9F2 4.58%, #5AD1EB 12.63%, #5AD1EB 40.39%, #FFF9F2 92.24%);
+  //background: linear-gradient(0.2deg, #FFFFFF 0.15%, #FFF9F2 4.58%, #5AD1EB 12.63%, #5AD1EB 40.39%, #FFF9F2 92.24%);
+  background: linear-gradient(0.2deg, #FFFFFF 0.15%, #5AD1EB 12.63%, #5AD1EB 40.39%, #FFFFFF 99.8%);
+
 }
 .background-linear--2 {
   //min-height: 1841px;

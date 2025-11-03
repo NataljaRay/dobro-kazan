@@ -1,6 +1,6 @@
 .volunteers {
   margin-top: 88px;
-  height: 376px;
+  min-height: 376px;
   @include tablet {
     margin-top: 62px;
   }
@@ -9,6 +9,10 @@
   }
   &__inner {
     height: 100%;
-    background-color: lightgrey;
+    //background-color: lightgrey;
+  }
+
+  .guides-carousel__slide-img-wrap {
+    border-radius: 100%;
   }
 }

@@ -17,9 +17,10 @@
 
 .section--main {
   //min-height: 861px;
+  z-index: 0;
   position: relative;
   //background: url(../img/heart-main.svg) no-repeat right center;
-  background: url(../img/bg-full/heart-white.svg) no-repeat right center;
+  //background: url(../img/bg-full/heart-white.svg) no-repeat right center;
 
   padding-top: 138px;
   padding-bottom: 100px;
@@ -39,6 +40,26 @@
   @include mobile-s {
     background-position-y: 20%;
     padding-bottom: 32px;
+  }
+
+  &:before {
+    content: '';
+    display: block;
+    background: url(../img/bg-full/heart-white.svg) no-repeat right center;
+    //background-position-x: 120%;
+    background-size: contain;
+    width: 100%;
+    height: 871px;
+    position: absolute;
+    //left: 0;
+    //left: -30px;
+    right: -12vw;
+    top: 20px;
+    z-index: -1;
+
+    @include tablet {
+
+    }
   }
 }
 
