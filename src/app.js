@@ -1,10 +1,10 @@
 // import $ from 'jquery/src/jquery';
-// import 'slick-carousel'
+import 'slick-carousel'
 import './js/script';
 
 // import "../node_modules/@fancyapps/ui/src/Fancybox/Fancybox.scss"
-// import '../node_modules/slick-carousel/slick/slick.scss';
-// import '../node_modules/slick-carousel/slick/slick-theme.scss';
+import '../node_modules/slick-carousel/slick/slick.scss';
+import '../node_modules/slick-carousel/slick/slick-theme.scss';
 import './scss/main.scss';
 
 

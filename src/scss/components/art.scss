@@ -3,6 +3,44 @@
   &__inner {
     margin-top: 62px;
     height: 232px;
-    background-color: lightgrey;
+    //background-color: lightgrey;
   }
+}
+
+.art-carousel {
+  .slick-prev:before, .slick-next:before{
+    color: var(--color-warm);
+  }
+  //gap: 40px;
+  //display: flex;
+  &__slide {
+    //margin-inline: 20px;
+   padding-inline: 20px;
+    text-align: center;
+    //display: flex;
+    //justify-content: center;
+
+    &-img-wrap {
+      display: flex;
+      justify-content: center;
+    }
+    &-img {
+      max-width: 100%;
+    }
+    &-info {
+      margin-top: 10px;
+    }
+    &-title {
+      font-weight: 700;
+      font-size: 16px;
+      color: #000;
+    }
+    &-txt {
+      font-weight: 400;
+      font-size: 12px;
+      color: #555555;
+      margin-top: 5px;
+    }
+  }
+
 }
