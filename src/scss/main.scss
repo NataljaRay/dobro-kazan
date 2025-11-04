@@ -6,7 +6,6 @@
 @import "components/slick-custom";
 @import "components/header";
 @import "components/section";
-//@import "components/hero";
 @import "components/hero-2";
 @import "components/date";
 @import "components/map";
@@ -18,112 +17,15 @@
 @import "components/taste";
 @import "components/media";
 @import "components/footer";
-
-.animate__animated {
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
-  -webkit-animation-duration: var(--animate-duration);
-  animation-duration: var(--animate-duration);
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-  opacity: 0;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    -webkit-transform: translate3d(0, 100%, 0);
-    transform: translate3d(0, 100%, 0);
-  }
-
-  to {
-    opacity: 1;
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-}
-.animate__fadeInUp {
-  -webkit-animation-name: fadeInUp;
-  animation-name: fadeInUp;
-}
+@import "animations";
 
 .background-linear--1 {
-  //min-height: 2524px;
   overflow-x: hidden;
-  //background: linear-gradient(0.2deg, #FFFFFF 0.15%, #FFF9F2 4.58%, #5AD1EB 12.63%, #5AD1EB 40.39%, #FFF9F2 92.24%);
   background: linear-gradient(0.2deg, #FFFFFF 0.15%, #5AD1EB 12.63%, #5AD1EB 40.39%, #FFFFFF 99.8%);
-
 }
 .background-linear--2 {
-  //min-height: 1841px;
   overflow-x: hidden;
   background: linear-gradient(0.2deg, rgba(255, 255, 255, 0) 0.15%, #FFF9F2 4.58%, #88F7FF 14.39%, #5AD1EB 40.39%, #FFF9F2 92.24%, #FFFFFF 99.8%);
 }
-
-//.clipped-image {
-//  clip-path: url(#pattern_heart);
-//
-//}
-//.clipped-wrap {
-//  //background-color: pink;
-//  width: 474px;
-//  height: 424px;
-//  @include flex-center;
-//
-//  position: absolute;
-//  top: -16px;
-//  right: 0;
-//  left: -180px;
-//  min-width: 474px;
-//
-//  @include laptop-sm {
-//    zoom: 0.75;
-//    position: relative;
-//  }
-//
-//  @include tablet {
-//
-//  }
-//
-//  @include mobile {
-//    //min-width: 100%!important;
-//    min-width: unset!important;
-//    width: 80%;
-//  }
-//
-//  @include mobile-s {
-//    //width: 80%;
-//  }
-//}
-//
-//.media--main {
-//  .clipped-wrap {
-//    @include laptop-sm {
-//      margin-left: -40px;
-//      left: auto;
-//      right: auto;
-//      transform: scaleX(-1);
-//    }
-//    @include mobile {
-//      //margin-left: 20px!important;
-//      margin-inline: auto;
-//      transform: scaleX(1);
-//    }
-//
-//    @include mobile-s {
-//      top: 0;
-//    }
-//  }
-//}
-//
-//.svg-clip {
-//  width: 474px;
-//  height: 424px;
-//  @include laptop-sm {
-//    //width: 20vw;
-//  }
-//}
-
-
 
 //}

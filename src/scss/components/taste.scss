@@ -3,8 +3,6 @@
   &__inner {
     margin-top: 32px;
 
-    //display: flex;
-    //justify-content: center;
     @include mobile-s {
       margin-top: 56px;
     }

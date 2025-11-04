@@ -16,17 +16,11 @@
 }
 
 .section--main {
-  //min-height: 861px;
   z-index: 0;
   position: relative;
-  //background: url(../img/heart-main.svg) no-repeat right center;
-  //background: url(../img/bg-full/heart-white.svg) no-repeat right center;
-
-  //padding-top: 138px;
   padding-top: 210px;
   padding-bottom: 100px;
   padding-inline: var(--cotainer-padding-x-base);
-
   display: flex;
   justify-content: center;
 
@@ -35,7 +29,6 @@
   }
 
   @include tablet {
-    //padding-top: 10vh;
     background-size: contain;
   }
   @include mobile {
@@ -50,26 +43,14 @@
     content: '';
     display: block;
     background: url(../img/bg-full/heart-white.svg) no-repeat right center;
-    //background-position-x: 120%;
     background-size: contain;
     width: 100%;
     height: 871px;
     position: absolute;
-    //left: 0;
-    //left: -30px;
     right: -12vw;
     top: 20px;
     z-index: -1;
-
-    @include tablet {
-
-    }
   }
-}
-
-.section--date {
-  z-index: 1;
-  position: relative;
 }
 
 .section--map {
@@ -91,24 +72,21 @@
 .section--guides {
   padding-top: 150px;
   padding-bottom: 340px;
+
   @include tablet {
     padding-top: 32px;
     padding-bottom: 200px;
   }
-  //@include mobile-s {
+
   @include mobile {
     margin-top: 62px;
   }
 }
 .section--art {
   margin-top: -117px;
-  //padding-bottom: 62px;
   padding-bottom: 32px;
-  @include tablet {
-    //margin-top: 32px;
-  }
+
   @include mobile-s {
-    //margin-top: 62px;
     margin-top: -92px;
   }
 }
@@ -121,11 +99,10 @@
   z-index: 0;
 
   @include tablet {
-    //padding-bottom: 260px;
-    //padding-bottom: 280px;
     padding-bottom: 140px;
     padding-top: 0;
   }
+
   @include mobile-s {
     padding-bottom: 80px;
   }
@@ -133,14 +110,11 @@
   &:before {
     content: '';
     display: block;
-    //background: url(../img/char.svg) no-repeat top left;
     background: url(../img/bg-full/sh.svg) no-repeat top left;
-    //background-position-x: -20px;
     background-size: contain;
     width: 100%;
     height: 384px;
     position: absolute;
-    //left: 0;
     left: -30px;
     top: 0;
     z-index: -1;
@@ -154,31 +128,23 @@
     content: '';
     display: block;
     background: url(../img/bg-full/heart-pink.svg) no-repeat top right;
-    //background-position-x: 105%;
     background-size: contain;
     width: 100%;
-    //height: 384px;
     height: 712px;
     position: absolute;
-    //right: 0;
     right: -116px;
     bottom: 0;
     z-index: -1;
 
     @media (max-width: 1690px) {
       right: -6.8vw;
-      //right:0;
     }
-    @include laptop {
-      //background-position-x: 120%;
-    }
+
     @include tablet {
-      //display: none;
       height: 600px;
       right: -90px;
-      //background-position-x: 126%;
-      //background-position-x: 160px;
     }
+
     @include mobile-s {
       background-position-y: bottom;
       bottom: -80vw;
@@ -192,17 +158,14 @@
   margin-top: -180px;
   z-index: 1;
   position: relative;
+
   @include tablet {
     margin-top: 62px;
     padding-bottom: 220px;
   }
-  @include mobile-s {
-    //margin-top: 62px;
-  }
 }
 
 .section--streets {
-  //display: none;
   margin-top: -100px;
   padding-bottom: 189px;
   position: relative;
@@ -212,32 +175,22 @@
     z-index: -1;
     content: '';
     display: block;
-    //background: url(../img/heart-cold.svg) no-repeat top left;
     background: url(../img/bg-full/heart-grey.svg) no-repeat top left;
     background-size: contain;
     width: 100%;
     height: 712px;
     position: absolute;
-    //left: 0;
     left: -50px;
     top: 55%;
 
-    @include tablet {
-      //top: 0;
-      //height: 100%;
-      //background-position-y: center;
-    }
     @include mobile-s {
       top: 67%;
       left: -30px;
     }
+  }
 
-  }
   @include tablet {
-    padding-bottom: 0px;
-  }
-  @include mobile-s {
-    //margin-top: 62px;
+    padding-bottom: 0;
   }
 }
 
@@ -251,7 +204,6 @@
     padding-bottom: 82px;
   }
   @include mobile-s {
-    //margin-top: 62px;
     padding-top: 82px;
     padding-bottom: 0;
     margin-top: 32px;

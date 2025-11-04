@@ -34,7 +34,6 @@
     @include fluid-text(24, 20);
     line-height: fluid(40, 28);
 
-    //@include tablet {
     @include laptop-sm {
       margin-left: 48px;
       br {
@@ -88,7 +87,6 @@
       }
     }
     &-part-2 {
-      //margin-left: 3vw;
       margin-left: 46px;
       flex-basis: 30%;
       @include laptop-sm {
@@ -127,12 +125,10 @@
   &__char {
     font-family: var(--font-family-title);
     color: var(--color-cold);
-    //@include fluid-text(84, 44);
     @include fluid-text(72, 32);
     line-height: normal;
 
     @include mobile-s {
-      //margin-block: 12px;
       font-size: 52px;
     }
 

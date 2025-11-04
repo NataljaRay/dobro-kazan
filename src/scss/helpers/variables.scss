@@ -1,6 +1,3 @@
-//$container-desktop-width: 1140;
-//$container-laptop-width: 800;
-
 @use 'constants' as *;
 @use 'functions' as *;
 
@@ -19,33 +16,16 @@
 
   --color-text: #474653;
 
-
-  //--color-white: #F5F5F5;
-  --color-rose: #ECE3E8;
-  --color-black: #181C23;
-  --color-brown-light: #D1A995;
-  --color-brown-light-alt: #CD906F;
-  --color-brown: #A4755C;
-  --color-red: #8C2526;
-  --color-dark-red: #64282A;
-
-  --btn-border-radius: 7px;
-
   --font-family-base: 'Inter', sans-serif;
   --font-family-title: 'NauryzRedKeds', sans-serif;
-  //--font-family-logo: 'Riverstyle', sans-serif;
-  //--font-family-quote: 'Ubuntu', sans-serif;
 
   --container-width: #{fluid-to-laptop(
     $container-desktop-width,
     $container-laptop-width
    )};
 
-  //--container-width: 1140px;
-
-  //--cotainer-padding-x: 16px;
   --cotainer-padding-x: 32px;
-  //--cotainer-padding-x-base: 72px;/
+
   --cotainer-padding-x-base: #{fluid(72, 30)};
 
   --section-padding-y: #{fluid(80, 40)};

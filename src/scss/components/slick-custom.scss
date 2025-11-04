@@ -25,35 +25,11 @@
 
 
 .slide {
-  //padding-inline: 35px;
-  //text-align: center;
-  //display: flex!important;
-  //flex-direction: column;
-  //align-items: center;
+  &-img-wrap {}
 
-  @include laptop-sm {
-    //padding-inline: 15px;
-  }
-
-  &-img-wrap {
-    //display: flex;
-    //align-items: center;
-    //justify-content: center;
-    //width: 300px;
-    //height: 204px;
-    //border-radius: 360px;
-    //overflow: hidden;
-    //flex-shrink: 0;
-
-    @include laptop-sm {
-      //width: 250px;
-      //height: 170px;
-    }
-  }
   &-img {
     width: 100%;
     object-fit: cover;
-
     transition: all var(--transition-duration-longer) ease;
     @include hover {
       transform: scale(1.05);
@@ -61,7 +37,6 @@
   }
   &-info {
     margin-top: 10px;
-    //padding-inline: 30px;
   }
   &-title {
     font-weight: 700;

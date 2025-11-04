@@ -6,27 +6,19 @@
   &__block {
     background-color: var(--color-white);
     border-radius: 22px;
-
-    //max-width: 834px;
     width: 834px;
-
-    //padding-right: 43px;
     display: flex;
     justify-content: end;
 
     @include tablet {
-      //width: 80%;
       width: 84%;
     }
     @include mobile {
-      //width: 100%;
       width: 90%;
       flex-direction: column!important;
     }
     @include mobile-s {
-      //flex-direction: column;
       justify-content: start;
-      //width: 94%;
     }
   }
 
@@ -53,7 +45,6 @@
     }
 
     @include mobile {
-      //margin-inline: 20px!important;
       margin-inline: 20px;
     }
   }
@@ -64,15 +55,11 @@
     @include laptop-sm {
       display: flex;
       align-items: center;
-
-      ///
       width: 30%;
     }
     @include tablet {
       flex-basis: 30%;
       flex-shrink: 0;
-
-      //
       width: unset;
     }
     @include mobile {
@@ -95,22 +82,14 @@
       position: relative;
     }
 
-    @include tablet {
-
-    }
-
     @include mobile {
-      //min-width: 100%!important;
       min-width: unset!important;
       width: 80%;
-
-      //
       margin-inline: auto;
       transform: scaleX(1);
     }
 
     @include mobile-s {
-      //width: 80%;
       top: 0;
     }
   }
@@ -118,11 +97,9 @@
 
 .media--main {
   padding-left: 120px;
+
   @include laptop-sm {
     padding-left: 0;
-  }
-  @include tablet {
-
   }
 
   .media {
@@ -134,24 +111,15 @@
         transform: scaleX(-1);
       }
       @include mobile {
-        //margin-left: 20px!important;
         margin-inline: auto;
         transform: scaleX(1);
       }
-
-      //@include mobile-s {
-      //  top: 0;
-      //}
     }
 
     &__txt-wrapper {
       @include tablet {
-        //margin-left: 22px;
         margin-inline: 22px;
       }
-      //@include mobile {
-      //  margin-inline: 20px!important;
-      //}
       @include mobile-s {
         margin-inline: 0;
       }
@@ -159,7 +127,6 @@
   }
 }
 .media--secondary {
-  //width: 100%;
   display: flex;
   justify-content: center;
   padding-right: 80px;
@@ -182,24 +149,11 @@
       right: -180px;
       @include mobile {
         right: 0!important;
-        //margin-left: -20px;
-      }
-      @include mobile {
-        //margin-left: 20px!important;
-      }
-      @include mobile-s {
-        //margin-left: 40px!important;
       }
     }
     &__txt-wrapper {
-
       @media (min-width: 768px) {
         margin-right: 14px;
-      }
-      //margin-right: 14px;
-
-      @include mobile {
-
       }
     }
   }

@@ -10,18 +10,12 @@
   padding: 18px 0 12px;
 
 
-  @include tablet {}
-
   &__inner {
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 100%;
-    //padding: 0 72px;
     padding-inline: var(--cotainer-padding-x-base);
-    //column-gap: 16px;
-    //width: 90%;
-    //margin: 0 auto;
   }
 
   .logo {

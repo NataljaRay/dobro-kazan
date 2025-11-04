@@ -1,6 +1,5 @@
 // import $ from 'jquery/src/jquery';
 import 'slick-carousel'
-// import 'animate.css'
 import './js/script';
 
 // import "../node_modules/@fancyapps/ui/src/Fancybox/Fancybox.scss"

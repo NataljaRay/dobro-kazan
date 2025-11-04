@@ -4,12 +4,9 @@
   @include tablet {
     margin-top: 62px;
   }
-  @include mobile-s {
-    //margin-top: 62px;
-  }
+
   &__inner {
     height: 100%;
-    //background-color: lightgrey;
   }
 
   .guides-carousel__slide-img-wrap {
