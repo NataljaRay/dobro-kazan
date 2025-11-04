@@ -1,0 +1,25 @@
+.date {
+  padding: 40px 60px;
+
+  @include tablet {
+    padding: 40px 0;
+  }
+
+  @include mobile {
+    padding-bottom: 80px;
+  }
+
+  &__title {
+    text-align: center;
+    //color: var(--color-text);
+    color: var(--color-accent-2);
+    font-family: var(--font-family-base);
+    text-transform: uppercase;
+    letter-spacing: normal;
+    font-weight: 500;
+
+    > span {
+      font-weight: 700;
+    }
+  }
+}

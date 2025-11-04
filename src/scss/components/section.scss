@@ -67,6 +67,11 @@
   }
 }
 
+.section--date {
+  z-index: 1;
+  position: relative;
+}
+
 .section--map {
   margin-top: -50px;
   position: relative;
