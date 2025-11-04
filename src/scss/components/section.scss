@@ -160,10 +160,19 @@
     bottom: 0;
     z-index: -1;
 
+    @media (max-width: 1690px) {
+      right: -6.8vw;
+      //right:0;
+    }
+    @include laptop {
+      //background-position-x: 120%;
+    }
     @include tablet {
       //display: none;
       height: 600px;
       right: -90px;
+      //background-position-x: 126%;
+      //background-position-x: 160px;
     }
     @include mobile-s {
       background-position-y: bottom;

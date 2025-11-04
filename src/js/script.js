@@ -35,7 +35,7 @@ $('#art-carousel').slick({
             }
         },
         {
-            breakpoint: 767,
+            breakpoint: 768,
             settings: {
                 slidesToShow: 1,
                 // slidesToScroll: 2
@@ -98,6 +98,8 @@ $('#book-carousel').slick({
     slidesToScroll: 1,
     // autoplay: true,
     autoplaySpeed: 2000,
+    fade: true,
+    cssEase: 'linear'
 });
 // taste-carousel
 $('#taste-carousel').slick({
@@ -109,6 +111,8 @@ $('#taste-carousel').slick({
     slidesToScroll: 1,
     // autoplay: true,
     autoplaySpeed: 2000,
+    fade: true,
+    cssEase: 'linear'
 });
 
 // volunteers-carousel

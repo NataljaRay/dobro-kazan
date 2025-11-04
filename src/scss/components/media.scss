@@ -21,11 +21,12 @@
     @include mobile {
       //width: 100%;
       width: 90%;
-      flex-direction: column;
+      flex-direction: column!important;
     }
     @include mobile-s {
       //flex-direction: column;
       justify-content: start;
+      //width: 94%;
     }
   }
 
@@ -63,10 +64,19 @@
     @include laptop-sm {
       display: flex;
       align-items: center;
+
+      ///
+      width: 30%;
     }
     @include tablet {
       flex-basis: 30%;
       flex-shrink: 0;
+
+      //
+      width: unset;
+    }
+    @include mobile {
+      flex-basis: unset;
     }
     @include mobile-s {
       padding-top: 22px;
@@ -93,10 +103,15 @@
       //min-width: 100%!important;
       min-width: unset!important;
       width: 80%;
+
+      //
+      margin-inline: auto;
+      transform: scaleX(1);
     }
 
     @include mobile-s {
       //width: 80%;
+      top: 0;
     }
   }
 }
@@ -124,9 +139,9 @@
         transform: scaleX(1);
       }
 
-      @include mobile-s {
-        top: 0;
-      }
+      //@include mobile-s {
+      //  top: 0;
+      //}
     }
 
     &__txt-wrapper {
@@ -144,7 +159,7 @@
   }
 }
 .media--secondary {
-  width: 100%;
+  //width: 100%;
   display: flex;
   justify-content: center;
   padding-right: 80px;
@@ -167,17 +182,25 @@
       right: -180px;
       @include mobile {
         right: 0!important;
-        margin-left: -20px;
+        //margin-left: -20px;
       }
       @include mobile {
         //margin-left: 20px!important;
       }
       @include mobile-s {
-        margin-left: 40px!important;
+        //margin-left: 40px!important;
       }
     }
     &__txt-wrapper {
-      margin-right: 14px;
+
+      @media (min-width: 768px) {
+        margin-right: 14px;
+      }
+      //margin-right: 14px;
+
+      @include mobile {
+
+      }
     }
   }
 }

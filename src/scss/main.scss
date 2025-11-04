@@ -18,7 +18,6 @@
 @import "components/media";
 @import "components/footer";
 
-
 .background-linear--1 {
   //min-height: 2524px;
   overflow-x: hidden;
@@ -31,4 +30,71 @@
   overflow-x: hidden;
   background: linear-gradient(0.2deg, rgba(255, 255, 255, 0) 0.15%, #FFF9F2 4.58%, #88F7FF 14.39%, #5AD1EB 40.39%, #FFF9F2 92.24%, #FFFFFF 99.8%);
 }
+
+//.clipped-image {
+//  clip-path: url(#pattern_heart);
+//
+//}
+//.clipped-wrap {
+//  //background-color: pink;
+//  width: 474px;
+//  height: 424px;
+//  @include flex-center;
+//
+//  position: absolute;
+//  top: -16px;
+//  right: 0;
+//  left: -180px;
+//  min-width: 474px;
+//
+//  @include laptop-sm {
+//    zoom: 0.75;
+//    position: relative;
+//  }
+//
+//  @include tablet {
+//
+//  }
+//
+//  @include mobile {
+//    //min-width: 100%!important;
+//    min-width: unset!important;
+//    width: 80%;
+//  }
+//
+//  @include mobile-s {
+//    //width: 80%;
+//  }
+//}
+//
+//.media--main {
+//  .clipped-wrap {
+//    @include laptop-sm {
+//      margin-left: -40px;
+//      left: auto;
+//      right: auto;
+//      transform: scaleX(-1);
+//    }
+//    @include mobile {
+//      //margin-left: 20px!important;
+//      margin-inline: auto;
+//      transform: scaleX(1);
+//    }
+//
+//    @include mobile-s {
+//      top: 0;
+//    }
+//  }
+//}
+//
+//.svg-clip {
+//  width: 474px;
+//  height: 424px;
+//  @include laptop-sm {
+//    //width: 20vw;
+//  }
+//}
+
+
+
 //}

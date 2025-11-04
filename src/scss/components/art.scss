@@ -18,6 +18,13 @@
       padding-inline: 15px;
     }
 
+    @include mobile {
+      text-align: center;
+      display: flex!important;
+      flex-direction: column;
+      align-items: center;
+    }
+
     &-img-wrap {
       display: flex;
       align-items: center;
