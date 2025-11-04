@@ -2,8 +2,8 @@
 
   &__inner {
     margin-top: 56px;
-    display: flex;
-    justify-content: center;
+    //display: flex;
+    //justify-content: center;
   }
 
   //&__block {
@@ -55,4 +55,19 @@
   //  min-width: 474px;
   //  //height: auto;
   //}
+}
+
+.book-carousel .slick-arrow {
+  height: 100%;
+}
+
+.book-carousel__slide-inner {
+  display: flex;
+  justify-content: center;
+  padding-top: 18px;
+  padding-bottom: 18px;
+  @include mobile-s {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
 }

@@ -99,6 +99,17 @@ $('#book-carousel').slick({
     // autoplay: true,
     autoplaySpeed: 2000,
 });
+// taste-carousel
+$('#taste-carousel').slick({
+    dots: false,
+    arrows: true,
+    infinite: true,
+    speed: 300,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    // autoplay: true,
+    autoplaySpeed: 2000,
+});
 
 // volunteers-carousel
 $('#volunteers-carousel').slick({
