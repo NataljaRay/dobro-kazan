@@ -482,7 +482,23 @@ $APPLICATION->SetAdditionalCSS("/culture-of-charity/shchedryy-shchak-shchak/css/
     </div>
 
   </div>
-<style>#horizontal-multilevel-menu li a.root-item-selected{font-size: 12px;padding: 5px 5px;border-radius: unset;}</style>
+<style>
+  body > .container {max-width: 100%;}
+  /*#panel + .container {position: fixed;top: 0;z-index: 99999;}*/
+  /*.header.fixed {width: 100%;position: relative;}*/
+  .header.fixed {width: 100%;}
+  .head_flex {max-width: 1440px;}
+  @media screen and (min-width: 1455px) {
+    .head_flex {
+      max-width: 1296px;
+    }
+  }
+  #chak-chak {overflow-x: hidden;}
+</style>
+<script type="text/javascript">
+    document.querySelector('.root-item-selected').classList.add('root-item');
+    document.querySelector('.root-item-selected').classList.remove('root-item-selected');
+</script>
 <script src="/culture-of-charity/shchedryy-shchak-shchak/assets/slick/slick.min.js"></script>
 <script src="/culture-of-charity/shchedryy-shchak-shchak/bundle.js"></script>
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
