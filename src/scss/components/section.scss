@@ -54,15 +54,18 @@
 }
 
 .section--map {
-  margin-top: -50px;
+  //margin-top: -50px;
   position: relative;
   z-index: 1;
 
   @include tablet {
-    margin-top: -70px;
+    //margin-top: -70px;
   }
   @include mobile {
-    margin-top: -30px;
+    //margin-top: -30px;
+    .section__title {
+      margin-bottom: 32px;
+    }
   }
   @include mobile-s {
     margin-top: 62px;
