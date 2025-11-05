@@ -33,6 +33,12 @@ module.exports = {
             return `${filepath}/[name][ext][query]`;
         },
     },
+    experiments: {
+        topLevelAwait: true,
+    },
+    // externals: {
+    //     ymaps3: 'ymaps3'
+    // },
     // watch: true,
     watch: !isProd,
     resolve: {

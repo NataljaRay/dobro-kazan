@@ -42,6 +42,9 @@
     "last 3 version"
   ],
   "dependencies": {
-    "sort-css-media-queries": "^2.0.4"
+    "@yandex/ymaps3-clusterer": "^0.0.11",
+    "@yandex/ymaps3-default-ui-theme": "^0.0.19",
+    "sort-css-media-queries": "^2.0.4",
+    "ymaps": "^0.2.1"
   }
 }
