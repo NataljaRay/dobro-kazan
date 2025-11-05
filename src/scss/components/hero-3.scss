@@ -25,6 +25,11 @@
       line-height: 1;
       letter-spacing: 6px;
       text-align: center;
+
+      > span {
+        white-space: nowrap;
+        font-family: inherit;
+      }
     }
   }
   &__info {
@@ -73,7 +78,8 @@
     @include fluid-text(64, 32);
     letter-spacing: 6px;
 
-    sup {
+    > sup {
+      font-family: inherit;
       margin-left: 8px;
       vertical-align: text-top;
       @include fluid-text(28, 14);
@@ -137,9 +143,10 @@
     .hero-3__pyramid-txt {
       @include fluid-text(32, 22);
       color: var(--color-accent-2);
-      > span {
-        white-space: nowrap;
-      }
+      //> span {
+      //  white-space: nowrap;
+      //  font-family: inherit;
+      //}
 
       @include tablet {
         font-size: 32px;
