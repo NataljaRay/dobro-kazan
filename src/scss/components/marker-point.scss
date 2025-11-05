@@ -1,0 +1,7 @@
+.point {
+  background-color: var(--color-warm);
+  //width: 22px;
+  //height: 22px;
+  @include square(22px);
+  border-radius: 100%;
+}

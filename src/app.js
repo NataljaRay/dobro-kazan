@@ -11,7 +11,9 @@ import './scss/main.scss';
 /* modules */
 import {menuHandler} from "./js/menu-handler";
 import {textAnimate} from "./js/animate";
+import {yandexMap} from "./js/map";
 
 /* init */
 menuHandler();
 textAnimate();
+yandexMap();

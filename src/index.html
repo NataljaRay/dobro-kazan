@@ -19,6 +19,8 @@
   <script type="text/javascript" src="assets/js/jquery-migrate-1.2.1.min.js"></script>
   <script type="text/javascript" src="assets/slick/slick.min.js"></script>
 
+  <script src="https://api-maps.yandex.ru/v3/?apikey=94f29d4c-f1d8-4dd2-b4f5-cc460a200825&lang=ru_RU"></script>
+  <script type="module" src="map/map2.js"></script>
 </head>
 <body>
 <header class="header" style="display: none">
@@ -73,8 +75,8 @@
     <section class="section--map container">
       <h3 class="section__title section__title--cold animate__animated">Карта мероприятий</h3>
       <div class="map">
-        <div class="map__inner">
-          <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Ab168df40f2d98ea0bf2201a3d09eb74766fc49e4b5f3b5a9ed0aa69e9182c6da&amp;source=constructor" width="100%" height="720" frameborder="0"></iframe>
+        <div class="map__inner" id="map">
+<!--          <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Ab168df40f2d98ea0bf2201a3d09eb74766fc49e4b5f3b5a9ed0aa69e9182c6da&amp;source=constructor" width="100%" height="720" frameborder="0"></iframe>-->
         </div>
       </div>
     </section>
@@ -517,5 +519,53 @@
   </div>
 </footer>
 <style>body{margin: 0}</style>
+
+<script>
+    // const {YMap} = ymaps3;
+    //
+    // // Инициализируйте карту
+    // const map = new YMap(
+    //
+    //     // Передайте ссылку на HTMLElement контейнера
+    //     document.getElementById('root'),
+    //
+    //     // Передайте параметры инициализации карты
+    //     {
+    //         location: {
+    //             zoom: 10,
+    //             center: [37.588144, 55.733842]
+    //         }
+    //     }
+    // );
+    // initMap();
+    //
+    // async function initMap() {
+    //     // Промис `ymaps3.ready` будет зарезолвлен, когда загрузятся все компоненты основного модуля API
+    //     await ymaps3.ready;
+    //
+    //     const {YMap, YMapDefaultSchemeLayer} = ymaps3;
+    //
+    //     // Иницилиазируем карту
+    //     const map = new YMap(
+    //         // Передаём ссылку на HTMLElement контейнера
+    //         document.getElementById('map'),
+    //
+    //         // Передаём параметры инициализации карты
+    //         {
+    //             location: {
+    //                 // Координаты центра карты
+    //                 center: [37.588144, 55.733842],
+    //
+    //                 // Уровень масштабирования
+    //                 zoom: 10
+    //             }
+    //         }
+    //     );
+    //
+    //     // Добавляем слой для отображения схематической карты
+    //     map.addChild(new YMapDefaultSchemeLayer());
+    // }
+
+</script>
 </body>
 </html>
