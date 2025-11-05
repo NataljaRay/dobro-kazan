@@ -1,31 +1,62 @@
-//#chak-chak {
 
-/* base */
-@import "base";
+/* global */
+@import "helpers/index";
 
-@import "components/slick-custom";
+@import "normalize";
+@import "fonts";
+@import "utils";
+
+/* global */
+html {
+  scroll-behavior: smooth!important;
+  &.is-lock {
+    overflow: hidden;
+  }
+}
+body {}
+
 @import "components/header";
-@import "components/section";
-@import "components/hero-3";
-@import "components/date";
-@import "components/map";
-@import "components/guides";
-@import "components/art";
-@import "components/books";
-@import "components/volunteers";
-@import "components/street";
-@import "components/taste";
-@import "components/media";
 @import "components/footer";
-@import "animations";
 
-.background-linear--1 {
-  overflow-x: hidden;
-  background: linear-gradient(0.2deg, #FFFFFF 0.15%, #5AD1EB 12.63%, #5AD1EB 40.39%, #FFFFFF 99.8%);
-}
-.background-linear--2 {
-  overflow-x: hidden;
-  background: linear-gradient(0.2deg, rgba(255, 255, 255, 0) 0.15%, #FFF9F2 4.58%, #88F7FF 14.39%, #5AD1EB 40.39%, #FFF9F2 92.24%, #FFFFFF 99.8%);
-}
+#chak-chak {
+  //@import "helpers/index";
+  //
+  //@import "normalize";
+  //@import "fonts";
+  //@import "utils";
 
-//}
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-text-size-adjust: 100%;
+
+  @include fluid-text(20, 18);
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-family-base);
+  font-weight: 400;
+  color: var(--color-text);
+  background-color: var(--color-white);
+
+  @import "base";
+  @import "components/slick-custom";
+  @import "components/section";
+  @import "components/hero-3";
+  @import "components/date";
+  @import "components/map";
+  @import "components/guides";
+  @import "components/art";
+  @import "components/books";
+  @import "components/volunteers";
+  @import "components/street";
+  @import "components/taste";
+  @import "components/media";
+  @import "animations";
+
+  .background-linear--1 {
+    overflow-x: hidden;
+    background: linear-gradient(0.2deg, #FFFFFF 0.15%, #5AD1EB 12.63%, #5AD1EB 40.39%, #FFFFFF 99.8%);
+  }
+  .background-linear--2 {
+    overflow-x: hidden;
+    background: linear-gradient(0.2deg, rgba(255, 255, 255, 0) 0.15%, #FFF9F2 4.58%, #88F7FF 14.39%, #5AD1EB 40.39%, #FFF9F2 92.24%, #FFFFFF 99.8%);
+  }
+}
