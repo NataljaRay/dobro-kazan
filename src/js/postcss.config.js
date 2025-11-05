@@ -7,6 +7,7 @@ module.exports = {
                 'default', {
                     discardComments: {
                         removeAll: true,
+                        calc: false, // 🚫 не трогать calc() и математические выражения
                     }
                 }
             ]
