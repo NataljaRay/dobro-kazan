@@ -53,8 +53,8 @@ $APPLICATION->SetAdditionalCSS("/culture-of-charity/shchedryy-shchak-shchak/css/
       <section class="section--map container">
         <h3 class="section__title section__title--cold animate__animated">Карта мероприятий</h3>
         <div class="map">
-          <div class="map__inner">
-            <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Ab168df40f2d98ea0bf2201a3d09eb74766fc49e4b5f3b5a9ed0aa69e9182c6da&amp;source=constructor" width="100%" height="720" frameborder="0"></iframe>
+          <div class="map__inner" id="map">
+<!--            <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Ab168df40f2d98ea0bf2201a3d09eb74766fc49e4b5f3b5a9ed0aa69e9182c6da&amp;source=constructor" width="100%" height="720" frameborder="0"></iframe>-->
           </div>
         </div>
       </section>
@@ -489,7 +489,7 @@ $APPLICATION->SetAdditionalCSS("/culture-of-charity/shchedryy-shchak-shchak/css/
       </section>
     </div>
 
-    <div class="test-map" id="test-map" style="width: 100px;height: 100px; position: fixed; bottom: 0;right: 0;background: #ddd"></div>
+<!--    <div class="test-map" id="test-map" style="width: 100px;height: 100px; position: fixed; bottom: 0;right: 0;background: #ddd"></div>-->
   </div>
 <style>
   body > .container {max-width: 100%;}
@@ -512,27 +512,6 @@ $APPLICATION->SetAdditionalCSS("/culture-of-charity/shchedryy-shchak-shchak/css/
 <script src="/culture-of-charity/shchedryy-shchak-shchak/bundle.js"></script>
 
 
-
-<!--  <script type="text/javascript">-->
-<!--      function loadYandexMaps(callback) {-->
-<!--          const script1 = document.createElement('script');-->
-<!--          script1.src = 'https://cdn.jsdelivr.net/npm/@babel/standalone@7/babel.min.js';-->
-<!--          script1.onload = callback;-->
-<!--          document.head.appendChild(script1);-->
-<!---->
-<!--          const script = document.createElement('script');-->
-<!--          script.src = 'https://api-maps.yandex.ru/v3/?apikey=064117ee-ba1d-472f-b644-9623befb7ad6&lang=ru_RU';-->
-<!--          script.onload = callback;-->
-<!--          document.head.appendChild(script);-->
-<!--      }-->
-<!---->
-<!--      loadYandexMaps(() => {-->
-<!--          console.log('Yandex Maps loaded');-->
-<!--          // Здесь уже безопасно выполнять твой код инициализации карты-->
-<!--      });-->
-<!--  </script>-->
-
-
   <script
           data-plugins="transform-modules-umd"
           data-presets="react, typescript"
@@ -549,195 +528,6 @@ $APPLICATION->SetAdditionalCSS("/culture-of-charity/shchedryy-shchak-shchak/css/
           data-plugins="transform-modules-umd"
           data-presets="react, typescript"
           type="text/babel"
-          src="map/map-test.js"
+          src="map/map.js"
   ></script>
-  <script data-plugins="transform-modules-umd" data-presets="typescript" type="text/babel">
-      // import {FIRST_MARKER_PROPS, LOCATION, SECOND_MARKER_PROPS} from 'map/variables';
-      // import {InfoMessage} from 'map/common';
-      //
-      // window.map = null;
-      //
-      // main();
-      // async function main() {
-      //     // Waiting for all api elements to be loaded
-      //     await ymaps3.ready;
-      //     const {YMap, YMapDefaultSchemeLayer, YMapDefaultFeaturesLayer, YMapControls} = ymaps3;
-      //
-      //     // Import the package to add a default marker
-      //     const {YMapDefaultMarker} = await ymaps3.import('@yandex/ymaps3-default-ui-theme');
-      //
-      //
-      //     let popupWithImage = null;
-      //     // let popupWithButtons = null;
-      //
-      //     // // Create a custom popup
-      //     const PopupWithImage = () => {
-      //         const popupElement = document.createElement('div');
-      //         popupElement.classList.add('popup');
-      //
-      //         const imageElement = document.createElement('img');
-      //         imageElement.src = 'img/streets/full/street-11.png';
-      //         imageElement.alt = 'waves';
-      //         imageElement.classList.add('popup-image');
-      //
-      //         const popupContentElement = document.createElement('div');
-      //         popupContentElement.classList.add('popup__content');
-      //
-      //         const popupElementText = document.createElement('div');
-      //         popupElementText.classList.add('popup__text');
-      //
-      //         const popupElementTextTitle = document.createElement('div');
-      //         popupElementTextTitle.classList.add('popup__text_title');
-      //         popupElementTextTitle.textContent = 'Title of that pop up';
-      //         popupElementText.appendChild(popupElementTextTitle);
-      //
-      //         const popupElementTextContent = document.createElement('div');
-      //         popupElementTextContent.classList.add('popup__text_content');
-      //         popupElementTextContent.textContent =
-      //             'Some useful information about a place. You can add whatever you want: pictures, buttons, different headings.';
-      //         popupElementText.appendChild(popupElementTextContent);
-      //
-      //         const buttonElement = document.createElement('button');
-      //         buttonElement.onclick = () => {
-      //             popupWithImage.update({
-      //                 popup: {
-      //                     show: false
-      //                 }
-      //             });
-      //         };
-      //         buttonElement.classList.add('button');
-      //         buttonElement.textContent = 'Close';
-      //
-      //         popupContentElement.appendChild(imageElement);
-      //         popupContentElement.appendChild(popupElementText);
-      //
-      //         popupElement.appendChild(popupContentElement);
-      //         popupElement.appendChild(buttonElement);
-      //
-      //         return popupElement;
-      //     };
-      //
-      //     // const PopupWithImageHtml = PopupWithImage();
-      //
-      //
-      //     // // Create a custom popup
-      //     // const PopupWithButtons = () => {
-      //     //     const popupElement = document.createElement('div');
-      //     //     popupElement.classList.add('popup', 'second_variant');
-      //     //
-      //     //     const popupElementText = document.createElement('div');
-      //     //     popupElementText.classList.add('popup__text');
-      //     //
-      //     //     const popupElementTextTitle = document.createElement('div');
-      //     //     popupElementTextTitle.classList.add('popup__text_title');
-      //     //     popupElementTextTitle.textContent = 'Title of that pop up';
-      //     //     popupElementText.appendChild(popupElementTextTitle);
-      //     //
-      //     //     const popupElementTextContent = document.createElement('div');
-      //     //     popupElementTextContent.classList.add('popup__text_content');
-      //     //     popupElementTextContent.textContent =
-      //     //         'Some useful information about a place. You can add whatever you want: pictures, buttons, different headings.';
-      //     //     popupElementText.appendChild(popupElementTextContent);
-      //     //
-      //     //     const popupButtonsElement = document.createElement('div');
-      //     //     popupButtonsElement.classList.add('popup__buttons');
-      //     //
-      //     //     const popupButtonsBlockElement = document.createElement('div');
-      //     //     popupButtonsBlockElement.classList.add('popup__buttons__block');
-      //     //
-      //     //     const buttonElementFirst = document.createElement('button');
-      //     //     buttonElementFirst.classList.add('button');
-      //     //     buttonElementFirst.textContent = 'Button 1';
-      //     //     buttonElementFirst.onclick = () => {
-      //     //         alert('Clicked!');
-      //     //     };
-      //     //
-      //     //     const buttonElementSecond = document.createElement('button');
-      //     //     buttonElementSecond.classList.add('button');
-      //     //     buttonElementSecond.textContent = 'Button 2';
-      //     //     buttonElementSecond.onclick = () => {
-      //     //         alert('Clicked!');
-      //     //     };
-      //     //
-      //     //     popupButtonsBlockElement.appendChild(buttonElementFirst);
-      //     //     popupButtonsBlockElement.appendChild(buttonElementSecond);
-      //     //
-      //     //     const buttonElement = document.createElement('button');
-      //     //     buttonElement.classList.add('button_close');
-      //     //     buttonElement.textContent = 'Primary Button';
-      //     //     buttonElement.onclick = () => {
-      //     //         alert('Clicked!');
-      //     //     };
-      //     //
-      //     //     const closeIconElement = document.createElement('button');
-      //     //     closeIconElement.classList.add('close_icon');
-      //     //     closeIconElement.onclick = () => {
-      //     //         popupWithButtons.update({
-      //     //             popup: {
-      //     //                 show: false
-      //     //             }
-      //     //         });
-      //     //     };
-      //     //
-      //     //     popupButtonsElement.appendChild(popupButtonsBlockElement);
-      //     //     popupButtonsElement.appendChild(buttonElement);
-      //     //
-      //     //     popupElement.appendChild(popupElementText);
-      //     //     popupElement.appendChild(popupButtonsElement);
-      //     //     popupElement.appendChild(closeIconElement);
-      //     //
-      //     //     return popupElement;
-      //     // };
-      //
-      //     // Initialize the map
-      //     map = new YMap(
-      //         // Pass the link to the HTMLElement of the container
-      //         document.getElementById('test-map'),
-      //         // Pass the map initialization parameters
-      //         {location: LOCATION, showScaleInCopyrights: true},
-      //         [
-      //             // Add a map scheme layer
-      //             new YMapDefaultSchemeLayer({}),
-      //             // Add a layer of geo objects to display the markers
-      //             new YMapDefaultFeaturesLayer({})
-      //         ]
-      //     );
-      //
-      //
-      //     popupWithImage = new YMapDefaultMarker({
-      //         ...FIRST_MARKER_PROPS,
-      //         onClick() {
-      //             popupWithImage.update({popup: {show: true}});
-      //         },
-      //         popup: {content: PopupWithImage, position: 'right'}
-      //     });
-      //
-      //     // popupWithButtons = new YMapDefaultMarker({
-      //     //     ...SECOND_MARKER_PROPS,
-      //     //     onClick() {
-      //     //         popupWithButtons.update({popup: {show: true}});
-      //     //     },
-      //     //     popup: {content: PopupWithButtons, position: 'right'}
-      //     // });
-      //
-      //     map
-      //         // Add a default marker with a popup window from the package to the map
-      //         .addChild(popupWithImage)
-      //     // .addChild(popupWithButtons);
-      //
-      //     // console.log(PopupWithImageHtml)
-      //     // map.addChild(
-      //     //     // Using YMapControls you can change the position of the control
-      //     //     new YMapControls({position: 'top right'})
-      //     //         // Add the geolocation control to the map
-      //     //         .addChild(
-      //     //             new InfoMessage({
-      //     //                 text: 'Click on markers'
-      //     //                 // text: '<h1>dsds</h1>'
-      //     //                 // text: PopupWithImageHtml
-      //     //             })
-      //     //         )
-      //     // );
-      // }
-  </script>
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
