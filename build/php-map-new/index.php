@@ -7,6 +7,8 @@ $APPLICATION->SetTitle("Щедрый Щак Щак");
 $APPLICATION->AddHeadString('<script src="https://api-maps.yandex.ru/v3/?apikey=9396485d-1500-4279-8445-c5db0367ddf1&lang=ru_RU"></script>');
 
 $APPLICATION->SetAdditionalCSS("/culture-of-charity/shchedryy-shchak-shchak/css/style.css");
+$APPLICATION->SetAdditionalCSS('<link rel="preload" href="culture-of-charity/shchedryy-shchak-shchak/img/map/dk-1.png" as="image">');
+$APPLICATION->SetAdditionalCSS('<link rel="preload" href="culture-of-charity/shchedryy-shchak-shchak/img/map/dk-2.png" as="image">');
 ?>
 <!--  <script crossorigin src="https://cdn.jsdelivr.net/npm/@babel/standalone@7/babel.min.js"></script>-->
 <!--  <script src="https://api-maps.yandex.ru/v3/?apikey=064117ee-ba1d-472f-b644-9623befb7ad6&lang=ru_RU" type="text/javascript"></script>-->
@@ -488,8 +490,6 @@ $APPLICATION->SetAdditionalCSS("/culture-of-charity/shchedryy-shchak-shchak/css/
         </div>
       </section>
     </div>
-
-<!--    <div class="test-map" id="test-map" style="width: 100px;height: 100px; position: fixed; bottom: 0;right: 0;background: #ddd"></div>-->
   </div>
 <style>
   body > .container {max-width: 100%;}
