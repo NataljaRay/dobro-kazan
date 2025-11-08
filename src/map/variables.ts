@@ -3,7 +3,7 @@ import type {YMapDefaultMarkerProps} from '@yandex/ymaps3-default-ui-theme';
 
 export const LOCATION: YMapLocationRequest = {
     center: [49.145081, 55.806951],
-    zoom: 13
+    zoom: 12
 };
 
 export const FIRST_MARKER_PROPS: {iconName: YMapDefaultMarkerProps['iconName']; coordinates: LngLat} = {
