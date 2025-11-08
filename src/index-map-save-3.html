@@ -756,95 +756,97 @@
             ]
         );
 
+        window.map = map; // если где-то ещё используешь
+
         // --- создаем InfoMessage (в правом верхнем углу) ---
         const infoMessage = new InfoMessage({
             // text: '<div class="info_window__text">Кликните на маркер</div>'
             text: ''
         });
 
+        // Добавляем контрол в правом верхнем углу
         map.addChild(
             new YMapControls({ position: 'top right' }).addChild(infoMessage)
         );
 
+        // Небольшой хак: убедимся, что контейнер контролов принимает клики (pointer-events)
+        // класс .ymaps3x0--controls может отличаться по версии API, поэтому ищем контейнер по DOM:
+        setTimeout(() => {
+            // ищем ближайший элемент, который содержит наш infoWindow
+            const possible = document.querySelectorAll('.info_window');
+            if (possible.length) {
+                const infoEl = possible[0];
+                // поднимаем родителя вверх и включаем pointer-events
+                let p = infoEl.parentElement;
+                while (p) {
+                    p.style.pointerEvents = 'auto';
+                    p.style.zIndex = '9999';
+                    p = p.parentElement;
+                }
+            }
+        }, 100);
+
+        // DOM-контейнер карты — будем слушать клики по нему (map.addEventListener нет)
         const mapContainer = document.getElementById('map');
 
-        // --- создаём попап один раз ---
-        const popupElement = document.createElement('div');
-        popupElement.classList.add('map-popup', 'map-popup--hidden');
-
-        popupElement.innerHTML = `
-        <div class="map-popup__content">
-            <div class="map-popup__title"></div>
-            <div class="map-popup__info">
-                <div class="map-popup__info-img-wrap">
-                    <img class="map-popup__info-img" src="" alt="">
-                </div>
-                <div class="map-popup__info-text"></div>
-            </div>
-            <div class="map-popup__text">
-                <div class="map-popup__text-content"></div>
-            </div>
-            <button class="map-popup__close">Закрыть</button>
-        </div>
-    `;
-
-        // --- вставляем попап в InfoMessage (один раз) ---
-        infoMessage.updateContent(popupElement);
-
-        // --- находим элементы внутри ---
-        const titleEl = popupElement.querySelector('.map-popup__title');
-        const imgEl = popupElement.querySelector('.map-popup__info-img');
-        const infoEl = popupElement.querySelector('.map-popup__info-text');
-        const textEl = popupElement.querySelector('.map-popup__text-content');
-        const closeButton = popupElement.querySelector('.map-popup__close');
-
-        // --- функция для возврата к начальному состоянию ---
+        // функция закрытия popup (возвращает текст по умолчанию)
         function closeInfo() {
-            // infoMessage.update({ text: '' });
-            titleEl.textContent = '';
-            imgEl.src = '';
-            imgEl.alt = '';
-            infoEl.innerHTML = '';
-            textEl.textContent = '';
-
-            // crhsnm попап
-            popupElement.classList.add('map-popup--hidden');
+            // infoMessage.update({ text: '<div class="info_window__text">Кликните на маркер</div>' });
+            infoMessage.update({ text: '' });
         }
 
-        // --- обновление содержимого попапа ---
-        function updatePopup(data) {
-            titleEl.textContent = data.title;
-            imgEl.src = data.image;
-            imgEl.alt = data.imageAlt;
-            infoEl.innerHTML = data.info;
-            textEl.textContent = data.text;
-
-            // показать попап
-            popupElement.classList.remove('map-popup--hidden');
-        }
-
-        // --- закрытие попапа ---
-        closeButton.addEventListener('click', (e) => {
-            e.stopPropagation();
-            popupElement.classList.add('map-popup--hidden');
-            setTimeout(closeInfo, 300);
-        });
-
-        // --- предотвращаем всплытие кликов из попапа в контейнер карты ---
-        popupElement.addEventListener('click', (e) => e.stopPropagation());
-
-        // --- клик по карте — закрывает попап ---
+        // клик по контейнеру карты — закрыть popup
+        // NOTE: обязательно стопаем всплытие в маркерах/попапе, иначе клик по ним тоже попадёт сюда
         mapContainer.addEventListener('click', () => {
-            popupElement.classList.add('map-popup--hidden');
-            setTimeout(closeInfo, 300);
+            closeInfo();
         });
+
+        // --- функция создания DOM-попапа ---
+        const createPopup = (data, onClose) => {
+            const popupElement = document.createElement('div');
+            popupElement.classList.add('map-popup', 'map-popup--hidden');
+
+            popupElement.innerHTML = `
+            <div class="map-popup__content">
+                <div class="map-popup__title">${data.title}</div>
+                <div class="map-popup__info">
+                    <div class="map-popup__info-img-wrap">
+                        <img class="map-popup__info-img" src="${data.image}" alt="${data.imageAlt}">
+                    </div>
+                    <div class="map-popup__info-text">${data.info}</div>
+                </div>
+                <div class="map-popup__text">
+                    <div class="map-popup__text-content">${data.text}</div>
+                </div>
+                <button class="map-popup__close">Закрыть</button>
+            </div>
+        `;
+
+            // предотвращаем всплытие кликов из попапа в контейнер карты:
+            popupElement.addEventListener('click', (e) => {
+                e.stopPropagation();
+            });
+
+            const closeButton = popupElement.querySelector('.map-popup__close');
+            closeButton.addEventListener('click', (e) => {
+                e.stopPropagation(); // чтобы не попало на mapContainer
+                popupElement.classList.add('map-popup--hidden');
+                onClose();
+                // setTimeout(() => onClose(), 300);
+            });
+
+            // Триггер появления (чтобы работала CSS-анимация)
+            requestAnimationFrame(() => popupElement.classList.remove('map-popup--hidden'));
+
+            return popupElement;
+        };
 
         // --- данные для попапов ---
         const popupData1 = {
             title: 'Новый год в каждый дом',
             image: 'img/map/dk-1.png',
             imageAlt: 'Изображение',
-            info: '<div>Когда: <span>03.12.2025</span></div><div>Во сколько: <span>14:00 - 18:00</span></div><div>Где: <span>ул. Баумана, 18</span></div>',
+            info: '<div>Когда: <span>03.12.2025</span></div><div>Где: <span>ул. Баумана, 18</span></div>',
             text: 'Щедрый Вторник — ежегодный день благотворительности. В этот день миллионы людей рассказывают, как и кому они помогают.'
         };
 
@@ -852,11 +854,11 @@
             title: 'Праздник в парке',
             image: 'img/map/dk-2.png',
             imageAlt: 'Изображение',
-            info: '<div>Когда: <span>05.12.2025</span></div><div>Во сколько: <span>14:00 - 18:00</span></div><div>Где: <span>ул. Кремлёвская, 3</span></div>',
+            info: '<div>Когда: <span>05.12.2025</span></div><div>Где: <span>ул. Кремлёвская, 3</span></div>',
             text: 'Праздничная программа с музыкой и угощениями для всей семьи!'
         };
 
-        // --- функция создания кастомного маркера ---
+        // --- функция для создания кастомного маркера ---
         function createCustomMarker(coords, popupData) {
             const markerEl = document.createElement('div');
             markerEl.className = 'map-point';
@@ -864,9 +866,15 @@
 
             const marker = new YMapMarker({ coordinates: coords }, markerEl);
 
+            // остановим всплытие клика — чтобы не срабатывал mapContainer click
             markerEl.addEventListener('click', (e) => {
-                e.stopPropagation();
-                updatePopup(popupData);
+                e.stopPropagation(); // важно — чтобы контейнер карты не закрыл popup
+                // создаём popup DOM и вставляем в InfoMessage
+                const popupEl = createPopup(popupData, () => {
+                    closeInfo();
+                });
+
+                infoMessage.updateContent(popupEl);
             });
 
             return marker;
@@ -876,11 +884,13 @@
         const marker1 = createCustomMarker(FIRST_MARKER_PROPS.coordinates, popupData1);
         const marker2 = createCustomMarker(SECOND_MARKER_PROPS.coordinates, popupData2);
 
+        // Добавляем маркеры на карту
         map.addChild(marker1);
         map.addChild(marker2);
+
+        // НИ ОДНОГО map.addEventListener — убрано (вместо этого mapContainer DOM-события)
     }
 </script>
-
 
 
 </body>
