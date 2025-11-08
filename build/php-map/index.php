@@ -505,8 +505,8 @@ $APPLICATION->SetAdditionalCSS("/culture-of-charity/shchedryy-shchak-shchak/css/
   #chak-chak {overflow-x: hidden;}
 </style>
 <script type="text/javascript">
-    document.querySelector('.root-item-selected').classList.add('root-item');
-    document.querySelector('.root-item-selected').classList.remove('root-item-selected');
+    // document.querySelector('.root-item-selected').classList.add('root-item');
+    // document.querySelector('.root-item-selected').classList.remove('root-item-selected');
 </script>
 <script src="/culture-of-charity/shchedryy-shchak-shchak/assets/slick/slick.min.js"></script>
 <script src="/culture-of-charity/shchedryy-shchak-shchak/bundle.js"></script>
