@@ -46,7 +46,9 @@ $APPLICATION->SetAdditionalCSS("/culture-of-charity/shchedryy-shchak-shchak/css/
       <section class="section--map container">
         <h3 class="section__title section__title--cold animate__animated">Карта мероприятий</h3>
         <div class="map">
-          <div class="map__inner" id="map"></div>
+          <div class="map__inner">
+            <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Ab168df40f2d98ea0bf2201a3d09eb74766fc49e4b5f3b5a9ed0aa69e9182c6da&amp;source=constructor" width="100%" height="720" frameborder="0"></iframe>
+          </div>
         </div>
       </section>
 
@@ -500,26 +502,4 @@ $APPLICATION->SetAdditionalCSS("/culture-of-charity/shchedryy-shchak-shchak/css/
 </script>
 <script src="/culture-of-charity/shchedryy-shchak-shchak/assets/slick/slick.min.js"></script>
 <script src="/culture-of-charity/shchedryy-shchak-shchak/bundle.js"></script>
-
-  <script crossorigin src="https://cdn.jsdelivr.net/npm/@babel/standalone@7/babel.min.js"></script>
-  <script src="https://api-maps.yandex.ru/v3/?apikey=9396485d-1500-4279-8445-c5db0367ddf1&lang=ru_RU" type="text/javascript"></script>
-
-  <script
-          data-plugins="transform-modules-umd"
-          data-presets="react, typescript"
-          type="text/babel"
-          src="map/common.ts"
-  ></script>
-  <script
-          data-plugins="transform-modules-umd"
-          data-presets="react, typescript"
-          type="text/babel"
-          src="map/variables.ts"
-  ></script>
-  <script
-          data-plugins="transform-modules-umd"
-          data-presets="react, typescript"
-          type="text/babel"
-          src="map/map.js"
-  ></script>
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
