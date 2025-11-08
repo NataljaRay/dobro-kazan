@@ -2,6 +2,7 @@
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Щедрый Щак Щак");
 
+$APPLICATION->AddHeadString('<script crossorigin src="https://cdn.jsdelivr.net/npm/@babel/standalone@7/babel.min.js"></script>');
 $APPLICATION->SetAdditionalCSS("/culture-of-charity/shchedryy-shchak-shchak/css/style.css");
 ?>
   <div id="chak-chak">
@@ -500,9 +501,6 @@ $APPLICATION->SetAdditionalCSS("/culture-of-charity/shchedryy-shchak-shchak/css/
 </script>
 <script src="/culture-of-charity/shchedryy-shchak-shchak/assets/slick/slick.min.js"></script>
 <script src="/culture-of-charity/shchedryy-shchak-shchak/bundle.js"></script>
-
-  <script crossorigin src="https://cdn.jsdelivr.net/npm/@babel/standalone@7/babel.min.js"></script>
-  <script src="https://api-maps.yandex.ru/v3/?apikey=9396485d-1500-4279-8445-c5db0367ddf1&lang=ru_RU" type="text/javascript"></script>
 
   <script
           data-plugins="transform-modules-umd"
