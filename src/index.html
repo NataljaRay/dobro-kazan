@@ -517,5 +517,30 @@
   </div>
 </footer>
 <style>body{margin: 0}</style>
+
+
+<script crossorigin src="https://cdn.jsdelivr.net/npm/@babel/standalone@7/babel.min.js"></script>
+<script src="https://api-maps.yandex.ru/v3/?apikey=94f29d4c-f1d8-4dd2-b4f5-cc460a200825&lang=ru_RU" type="text/javascript"></script>
+<!--<script src="https://api-maps.yandex.ru/v3/?apikey=064117ee-ba1d-472f-b644-9623befb7ad6&lang=ru_RU" type="text/javascript"></script>-->
+
+<script
+        data-plugins="transform-modules-umd"
+        data-presets="react, typescript"
+        type="text/babel"
+        src="map/common.ts"
+></script>
+<script
+        data-plugins="transform-modules-umd"
+        data-presets="react, typescript"
+        type="text/babel"
+        src="map/variables.ts"
+></script>
+<script
+        data-plugins="transform-modules-umd"
+        data-presets="react, typescript"
+        type="text/babel"
+        src="map/map.js"
+></script>
+
 </body>
 </html>
