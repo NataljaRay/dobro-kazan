@@ -76,13 +76,13 @@ $('#book-carousel').slick({
     dots: false,
     arrows: true,
     infinite: true,
-    speed: 300,
+    speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
     // autoplay: true,
     autoplaySpeed: 2000,
-    fade: true,
-    cssEase: 'linear'
+    // fade: true,
+    // cssEase: 'linear'
 });
 
 // taste-carousel
@@ -90,13 +90,13 @@ $('#taste-carousel').slick({
     dots: false,
     arrows: true,
     infinite: true,
-    speed: 300,
+    speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
     // autoplay: true,
     autoplaySpeed: 2000,
-    fade: true,
-    cssEase: 'linear'
+    // fade: true,
+    // cssEase: 'linear'
 });
 
 // volunteers-carousel

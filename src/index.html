@@ -23,7 +23,7 @@
     <a aria-current="page" href="/"
        class="router-link-active router-link-exact-active header__logo logo"
        aria-label="Home">
-      <img class="logo" src="img/img-logotype.png">
+      <img class="logo" src="img/img-logotype.png" alt="logo">
     </a>
   </div>
 </header>
@@ -68,14 +68,10 @@
     </section>
 
     <section class="section--map container">
-<!--      <div class="date">-->
-<!--        <p class="h4 section__title1 date__title animate__animated">-->
-<!--          Щедрый Щак-Щак будет проходить <span>Целую неделю:</span> <br>c 25 ноября по 2 декабря 2025 года-->
-<!--        </p>-->
-<!--      </div>-->
+      <h3 class="section__title section__title--cold animate__animated">Карта мероприятий</h3>
       <div class="map">
-        <div class="map__inner">
-          <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Ab168df40f2d98ea0bf2201a3d09eb74766fc49e4b5f3b5a9ed0aa69e9182c6da&amp;width=100%25&amp;height=720&amp;lang=ru_RU&amp;scroll=true"></script>
+        <div class="map__inner" id="map">
+<!--          <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Ab168df40f2d98ea0bf2201a3d09eb74766fc49e4b5f3b5a9ed0aa69e9182c6da&amp;width=100%25&amp;height=720&amp;lang=ru_RU&amp;scroll=true"></script>-->
         </div>
       </div>
     </section>
@@ -517,5 +513,28 @@
     </div>
   </footer>
 </main>
+
+<script crossorigin src="https://cdn.jsdelivr.net/npm/@babel/standalone@7/babel.min.js"></script>
+<script src="https://api-maps.yandex.ru/v3/?apikey=94f29d4c-f1d8-4dd2-b4f5-cc460a200825&lang=ru_RU" type="text/javascript"></script>
+<!--<script src="https://api-maps.yandex.ru/v3/?apikey=064117ee-ba1d-472f-b644-9623befb7ad6&lang=ru_RU" type="text/javascript"></script>-->
+
+<script
+        data-plugins="transform-modules-umd"
+        data-presets="react, typescript"
+        type="text/babel"
+        src="map/common.ts"
+></script>
+<script
+        data-plugins="transform-modules-umd"
+        data-presets="react, typescript"
+        type="text/babel"
+        src="map/variables.ts"
+></script>
+<script
+        data-plugins="transform-modules-umd"
+        data-presets="react, typescript"
+        type="text/babel"
+        src="map/map.js"
+></script>
 </body>
 </html>
