@@ -2,13 +2,15 @@
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Щедрый Щак Щак");
 
+$APPLICATION->AddHeadString('<script crossorigin src="https://cdn.jsdelivr.net/npm/@babel/standalone@7/babel.min.js"></script>');
 $APPLICATION->AddHeadString('<script src="https://api-maps.yandex.ru/v3/?apikey=9396485d-1500-4279-8445-c5db0367ddf1&lang=ru_RU"></script>');
 
 $APPLICATION->SetAdditionalCSS("/culture-of-charity/shchedryy-shchak-shchak/css/style.css");
-
 $APPLICATION->SetAdditionalCSS('<link rel="preload" href="culture-of-charity/shchedryy-shchak-shchak/img/map/dk-1.png" as="image">');
 $APPLICATION->SetAdditionalCSS('<link rel="preload" href="culture-of-charity/shchedryy-shchak-shchak/img/map/dk-2.png" as="image">');
 ?>
+
+
   <div id="chak-chak">
     <div class="background-linear--1">
       <section class="section--main container">
@@ -502,22 +504,23 @@ $APPLICATION->SetAdditionalCSS('<link rel="preload" href="culture-of-charity/shc
 <script src="/culture-of-charity/shchedryy-shchak-shchak/assets/slick/slick.min.js"></script>
 <script src="/culture-of-charity/shchedryy-shchak-shchak/bundle.js"></script>
 
+
   <script
-      data-plugins="transform-modules-umd"
-      data-presets="react, typescript"
-      type="text/babel"
-      src="map/common.ts"
+          data-plugins="transform-modules-umd"
+          data-presets="react, typescript"
+          type="text/babel"
+          src="map/common.ts"
   ></script>
   <script
-      data-plugins="transform-modules-umd"
-      data-presets="react, typescript"
-      type="text/babel"
-      src="map/variables.ts"
+          data-plugins="transform-modules-umd"
+          data-presets="react, typescript"
+          type="text/babel"
+          src="map/variables.ts"
   ></script>
   <script
-      data-plugins="transform-modules-umd"
-      data-presets="react, typescript"
-      type="text/babel"
-      src="map/map.js"
+          data-plugins="transform-modules-umd"
+          data-presets="react, typescript"
+          type="text/babel"
+          src="map/map.js"
   ></script>
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
