@@ -734,164 +734,287 @@
         src="map/variables.ts"
 ></script>
 <script data-plugins="transform-modules-umd" data-presets="typescript" type="text/babel">
-    import { FIRST_MARKER_PROPS, SECOND_MARKER_PROPS, LOCATION } from 'map/variables';
-    import { InfoMessage } from 'map/common';
+    import {FIRST_MARKER_PROPS, LOCATION, SECOND_MARKER_PROPS} from 'map/variables';
+    import {InfoMessage} from 'map/common';
 
     window.map = null;
 
     main();
-
     async function main() {
+        // Waiting for all api elements to be loaded
         await ymaps3.ready;
+        const {YMap, YMapDefaultSchemeLayer, YMapDefaultFeaturesLayer, YMapControls, YMapMarker} = ymaps3;
 
-        const { YMap, YMapDefaultSchemeLayer, YMapDefaultFeaturesLayer, YMapControls, YMapMarker } = ymaps3;
+        // Import the package to add a default marker
+        const {YMapDefaultMarker} = await ymaps3.import('@yandex/ymaps3-default-ui-theme');
 
-        // --- создаем карту ---
-        const map = new YMap(
-            document.getElementById('map'),
-            { location: LOCATION },
-            [
-                new YMapDefaultSchemeLayer(),
-                new YMapDefaultFeaturesLayer()
-            ]
-        );
 
-        window.map = map; // если где-то ещё используешь
+        let popupWithImage = null;
+        let popupWithImage2 = null;
 
-        // --- создаем InfoMessage (в правом верхнем углу) ---
-        const infoMessage = new InfoMessage({
-            // text: '<div class="info_window__text">Кликните на маркер</div>'
-            text: ''
-        });
+        // // Create a custom popup
+        const PopupWithImage = () => {
 
-        // Добавляем контрол в правом верхнем углу
-        map.addChild(
-            new YMapControls({ position: 'top right' }).addChild(infoMessage)
-        );
+            const popupData = {
+                title: 'Новый год в каждый дом',
+                image: 'img/map/dk-1.png',
+                imageAlt: 'Изображение',
+                info: '<div>Когда: <span>03.12.2025</span></div>' +
+                    '<div>Во сколько: <span>14:00 - 18:00</span></div>' +
+                    '<div>Где: <span>ул. Баумана, 18</span></div>',
+                text: 'Щедрый Вторник — ежегодный день благотворительности. \n' +
+                    'В этот день миллионы людей рассказывают, \n' +
+                    'как и кому они помогают. Мы решили расширить в Татарстане этот день и назвать его Щедрый Щак-Щак'
+            };
 
-        // Небольшой хак: убедимся, что контейнер контролов принимает клики (pointer-events)
-        // класс .ymaps3x0--controls может отличаться по версии API, поэтому ищем контейнер по DOM:
-        setTimeout(() => {
-            // ищем ближайший элемент, который содержит наш infoWindow
-            const possible = document.querySelectorAll('.info_window');
-            if (possible.length) {
-                const infoEl = possible[0];
-                // поднимаем родителя вверх и включаем pointer-events
-                let p = infoEl.parentElement;
-                while (p) {
-                    p.style.pointerEvents = 'auto';
-                    p.style.zIndex = '9999';
-                    p = p.parentElement;
-                }
-            }
-        }, 100);
-
-        // DOM-контейнер карты — будем слушать клики по нему (map.addEventListener нет)
-        const mapContainer = document.getElementById('map');
-
-        // функция закрытия popup (возвращает текст по умолчанию)
-        function closeInfo() {
-            // infoMessage.update({ text: '<div class="info_window__text">Кликните на маркер</div>' });
-            infoMessage.update({ text: '' });
-        }
-
-        // клик по контейнеру карты — закрыть popup
-        // NOTE: обязательно стопаем всплытие в маркерах/попапе, иначе клик по ним тоже попадёт сюда
-        mapContainer.addEventListener('click', () => {
-            closeInfo();
-        });
-
-        // --- функция создания DOM-попапа ---
-        const createPopup = (data, onClose) => {
             const popupElement = document.createElement('div');
-            popupElement.classList.add('map-popup', 'map-popup--hidden');
+            popupElement.classList.add('map-popup');
 
-            popupElement.innerHTML = `
-            <div class="map-popup__content">
-                <div class="map-popup__title">${data.title}</div>
-                <div class="map-popup__info">
-                    <div class="map-popup__info-img-wrap">
-                        <img class="map-popup__info-img" src="${data.image}" alt="${data.imageAlt}">
-                    </div>
-                    <div class="map-popup__info-text">${data.info}</div>
-                </div>
-                <div class="map-popup__text">
-                    <div class="map-popup__text-content">${data.text}</div>
-                </div>
-                <button class="map-popup__close">Закрыть</button>
-            </div>
-        `;
+            const imageElement = document.createElement('img');
+            imageElement.classList.add('map-popup__info-img');
+            imageElement.src = popupData.image;
+            imageElement.alt = popupData.imageAlt;
 
-            // предотвращаем всплытие кликов из попапа в контейнер карты:
-            popupElement.addEventListener('click', (e) => {
-                e.stopPropagation();
-            });
 
-            const closeButton = popupElement.querySelector('.map-popup__close');
-            closeButton.addEventListener('click', (e) => {
-                e.stopPropagation(); // чтобы не попало на mapContainer
-                popupElement.classList.add('map-popup--hidden');
-                onClose();
-                // setTimeout(() => onClose(), 300);
-            });
+            const popupContentElement = document.createElement('div');
+            popupContentElement.classList.add('map-popup__content');
 
-            // Триггер появления (чтобы работала CSS-анимация)
-            requestAnimationFrame(() => popupElement.classList.remove('map-popup--hidden'));
+            const popupElementTextTitle = document.createElement('div');
+            popupElementTextTitle.classList.add('map-popup__title');
+            popupElementTextTitle.textContent = popupData.title;
+
+            const popupElementInfo = document.createElement('div');
+            popupElementInfo.classList.add('map-popup__info');
+
+            const popupElementImageWrap = document.createElement('div');
+            popupElementImageWrap.classList.add('map-popup__info-img-wrap');
+            popupElementImageWrap.appendChild(imageElement);
+            popupElementInfo.appendChild(popupElementImageWrap);
+
+            const popupElementInfoText = document.createElement('div');
+            popupElementInfoText.classList.add('map-popup__info-text');
+            popupElementInfoText.innerHTML = popupData.info;
+            popupElementInfo.appendChild(popupElementInfoText);
+
+            const popupElementText = document.createElement('div');
+            popupElementText.classList.add('map-popup__text');
+
+            const popupElementTextContent = document.createElement('div');
+            popupElementTextContent.classList.add('map-popup__text-content');
+            popupElementTextContent.textContent = popupData.text;
+            popupElementText.appendChild(popupElementTextContent);
+
+            const buttonElement = document.createElement('button');
+            buttonElement.onclick = () => {
+                popupWithImage.update({
+                    popup: {
+                        show: false
+                    }
+                });
+            };
+            buttonElement.classList.add('map-popup__close');
+            buttonElement.textContent = 'Close';
+
+            popupContentElement.appendChild(popupElementTextTitle);
+            popupContentElement.appendChild(popupElementInfo);
+            popupContentElement.appendChild(popupElementText);
+            popupElement.appendChild(popupContentElement);
+            popupElement.appendChild(buttonElement);
+
+            return popupElement;
+        };
+        const PopupWithImage2 = () => {
+
+            const popupData = {
+                title: 'Новый год в каждый дом',
+                image: 'img/map/dk-2.png',
+                imageAlt: 'Изображение',
+                info: '<div>Когда: <span>03.12.2025</span></div>' +
+                    '<div>Во сколько: <span>14:00 - 18:00</span></div>' +
+                    '<div>Где: <span>ул. Баумана, 18</span></div>',
+                text: 'Щедрый Вторник — ежегодный день благотворительности. \n' +
+                    'В этот день миллионы людей рассказывают, \n' +
+                    'как и кому они помогают. Мы решили расширить в Татарстане этот день и назвать его Щедрый Щак-Щак'
+            };
+
+            const popupElement = document.createElement('div');
+            popupElement.classList.add('map-popup');
+
+            const imageElement = document.createElement('img');
+            imageElement.classList.add('map-popup__info-img');
+            imageElement.src = popupData.image;
+            imageElement.alt = popupData.imageAlt;
+
+
+            const popupContentElement = document.createElement('div');
+            popupContentElement.classList.add('map-popup__content');
+
+            const popupElementTextTitle = document.createElement('div');
+            popupElementTextTitle.classList.add('map-popup__title');
+            popupElementTextTitle.textContent = popupData.title;
+
+            const popupElementInfo = document.createElement('div');
+            popupElementInfo.classList.add('map-popup__info');
+
+            const popupElementImageWrap = document.createElement('div');
+            popupElementImageWrap.classList.add('map-popup__info-img-wrap');
+            popupElementImageWrap.appendChild(imageElement);
+            popupElementInfo.appendChild(popupElementImageWrap);
+
+            const popupElementInfoText = document.createElement('div');
+            popupElementInfoText.classList.add('map-popup__info-text');
+            popupElementInfoText.innerHTML = popupData.info;
+            popupElementInfo.appendChild(popupElementInfoText);
+
+            const popupElementText = document.createElement('div');
+            popupElementText.classList.add('map-popup__text');
+
+            const popupElementTextContent = document.createElement('div');
+            popupElementTextContent.classList.add('map-popup__text-content');
+            popupElementTextContent.textContent = popupData.text;
+            popupElementText.appendChild(popupElementTextContent);
+
+            const buttonElement = document.createElement('button');
+            buttonElement.onclick = () => {
+                popupWithImage2.update({
+                    popup: {
+                        show: false
+                    }
+                });
+            };
+            buttonElement.classList.add('map-popup__close');
+            buttonElement.textContent = 'Close';
+
+            popupContentElement.appendChild(popupElementTextTitle);
+            popupContentElement.appendChild(popupElementInfo);
+            popupContentElement.appendChild(popupElementText);
+            popupElement.appendChild(popupContentElement);
+            popupElement.appendChild(buttonElement);
 
             return popupElement;
         };
 
-        // --- данные для попапов ---
-        const popupData1 = {
-            title: 'Новый год в каждый дом',
-            image: 'img/map/dk-1.png',
-            imageAlt: 'Изображение',
-            info: '<div>Когда: <span>03.12.2025</span></div><div>Где: <span>ул. Баумана, 18</span></div>',
-            text: 'Щедрый Вторник — ежегодный день благотворительности. В этот день миллионы людей рассказывают, как и кому они помогают.'
-        };
+        // Initialize the map
+        map = new YMap(
+            // Pass the link to the HTMLElement of the container
+            document.getElementById('map'),
+            // Pass the map initialization parameters
+            {location: LOCATION, showScaleInCopyrights: true},
+            [
+                // Add a map scheme layer
+                new YMapDefaultSchemeLayer({}),
+                // Add a layer of geo objects to display the markers
+                new YMapDefaultFeaturesLayer({})
+            ]
+        );
 
-        const popupData2 = {
-            title: 'Праздник в парке',
-            image: 'img/map/dk-2.png',
-            imageAlt: 'Изображение',
-            info: '<div>Когда: <span>05.12.2025</span></div><div>Где: <span>ул. Кремлёвская, 3</span></div>',
-            text: 'Праздничная программа с музыкой и угощениями для всей семьи!'
-        };
+        // кастомный маркер
+        const markerElement = document.createElement('div');
+        markerElement.className = 'map-point';
+        markerElement.innerHTML = '<div class="map-point__inner"></div>';
 
-        // --- функция для создания кастомного маркера ---
-        function createCustomMarker(coords, popupData) {
-            const markerEl = document.createElement('div');
-            markerEl.className = 'map-point';
-            markerEl.innerHTML = '<div class="map-point__inner"></div>';
+        const customMarker = new YMapMarker(
+            {
+                coordinates: FIRST_MARKER_PROPS.coordinates,
+                // Можно добавить обработчик onClick прямо в описании:
+                onClick() {
+                    // Если popupWithImage уже создан — открыть его
+                    if (popupWithImage) popupWithImage.update({ popup: { show: true } });
+                }
+            },
+            markerElement
+        );
 
-            const marker = new YMapMarker({ coordinates: coords }, markerEl);
+        map.addChild(customMarker);
 
-            // остановим всплытие клика — чтобы не срабатывал mapContainer click
-            markerEl.addEventListener('click', (e) => {
-                e.stopPropagation(); // важно — чтобы контейнер карты не закрыл popup
-                // создаём popup DOM и вставляем в InfoMessage
-                const popupEl = createPopup(popupData, () => {
-                    closeInfo();
-                });
+        // // --- создаём YMapDefaultMarker только как "дескриптор" popup'а (иконку можно скрыть) ---
+        // popupWithImage = new YMapDefaultMarker({
+        //     ...FIRST_MARKER_PROPS,
+        //     // Уберём стандартную иконку, если не нужна: назначаем невидимую иконку через CSS-класс iconName / options
+        //     // вариант: iconName: 'none' — если такая преднастройка есть, либо скроем через CSS по селектору
+        //     onClick() {
+        //         popupWithImage.update({ popup: { show: true } });
+        //     },
+        //     popup: { content: PopupWithImage, position: 'right', show: false }
+        // });
 
-                infoMessage.updateContent(popupEl);
-            });
+        // markerElement.addEventListener('click', () => {
+        //     // создаём popup HTML
+        //     const popupEl = PopupWithImage(); // твоя функция, возвращающая DOM-элемент
+        //
+        //     // обновляем InfoMessage
+        //     infoMessage.update({
+        //         text: popupEl.outerHTML
+        //     });
+        // });
 
-            return marker;
-        }
+        markerElement.addEventListener('click', () => {
+            const popupEl = PopupWithImage();
+            infoMessage.updateContent(popupEl);
+        });
 
-        // --- создаем и добавляем оба маркера ---
-        const marker1 = createCustomMarker(FIRST_MARKER_PROPS.coordinates, popupData1);
-        const marker2 = createCustomMarker(SECOND_MARKER_PROPS.coordinates, popupData2);
 
-        // Добавляем маркеры на карту
-        map.addChild(marker1);
-        map.addChild(marker2);
+        // const marker = new YMapMarker(
+        //     {
+        //         coordinates: [49.120607, 55.822028],
+        //     },
+        //     markerElement
+        // );
+        //
+        // map.addChild(marker);
 
-        // НИ ОДНОГО map.addEventListener — убрано (вместо этого mapContainer DOM-события)
+        // popupWithImage = new YMapDefaultMarker({
+        //     ...FIRST_MARKER_PROPS,
+        //     onClick() {
+        //         popupWithImage.update({popup: {show: true}});
+        //     },
+        //     popup: {content: PopupWithImage, position: 'right'}
+        // });
+
+        // popupWithImage = new YMapDefaultMarker({
+        //     ...FIRST_MARKER_PROPS,
+        //     onClick() {
+        //         popupWithImage.update({popup: {show: true}});
+        //     },
+        //     popup: {content: PopupWithImage, position: 'right'}
+        // });
+        popupWithImage2 = new YMapDefaultMarker({
+            ...SECOND_MARKER_PROPS,
+            onClick() {
+                popupWithImage2.update({popup: {show: true}});
+            },
+            popup: {content: PopupWithImage2, position: 'right'}
+        });
+
+        map
+            // Add a default marker with a popup window from the package to the map
+            .addChild(popupWithImage)
+            .addChild(popupWithImage2)
+
+        // создаем infoMessage
+        const infoMessage = new InfoMessage({
+            text: 'Нажмите на маркер, чтобы открыть информацию'
+        });
+
+        // добавляем его в контрол в правом верхнем углу
+        map.addChild(
+            new YMapControls({ position: 'top right' }).addChild(infoMessage)
+        );
+
+        // map.addChild(
+        //     // Using YMapControls you can change the position of the control
+        //     new YMapControls({position: 'top right'})
+        //         // Add the geolocation control to the map
+        //         .addChild(
+        //             new InfoMessage({
+        //                 text: 'Click on markers'
+        //                 // text: '<h1>dsds</h1>'
+        //                 // text: PopupWithImageHtml
+        //             })
+        //         )
+        // );
     }
 </script>
-
 
 </body>
 </html>

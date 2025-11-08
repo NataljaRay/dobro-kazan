@@ -1,0 +1,20 @@
+.map-point {
+    background-color: var(--color-warm);
+    @include square(22px);
+    border-radius: 100%;
+    transition: background-color var(--transition-duration) ease;
+
+    @include hover {
+        background-color: var(--color-cold);
+        cursor: pointer;
+        //display: none;
+    }
+}
+
+.ymaps3--default-marker-point.ymaps3--small-poi {
+    display: none!important;
+}
+
+.ymaps3--popup-marker_container {
+
+}
