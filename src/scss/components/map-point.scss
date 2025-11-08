@@ -1,20 +1,39 @@
 .map-point {
-    background-color: var(--color-warm);
-    @include square(22px);
-    border-radius: 100%;
-    transition: background-color var(--transition-duration) ease;
-
-    @include hover {
-        background-color: var(--color-cold);
+    @include square(38px);
+    &:hover {
         cursor: pointer;
-        //display: none;
+        .map-point__inner {
+            &:before {
+                @include square(34px);
+            }
+        }
+    }
+
+    &--current {
+        .map-point__inner,
+        .map-point__inner:before {
+            background-color: var(--color-marker-active);
+
+        }
     }
 }
+.map-point__inner {
+    position: absolute;
+    background-color: var(--color-marker);
+    @include square(22px);
+    border-radius: 100%;
+    transition: all var(--transition-duration) ease;
+    @include abs-center;
 
-.ymaps3--default-marker-point.ymaps3--small-poi {
-    display: none!important;
-}
-
-.ymaps3--popup-marker_container {
-
+    &:before {
+        content: '';
+        display: block;
+        background-color: var(--color-marker);
+        opacity: .3;
+        @include square(38px);
+        border-radius: 100%;
+        position: absolute;
+        @include abs-center;
+        transition: all var(--transition-duration) ease;
+    }
 }

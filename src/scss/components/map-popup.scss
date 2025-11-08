@@ -1,34 +1,22 @@
-///* Контейнер для InfoMessage (элемент управления) */
-////.ymaps3x0--controls {
-////  z-index: 9999 !important; /* поверх карты и маркеров */
-////}
-/////* Важно: отключаем pointer-events у карты под контролами */
-////.ymaps3x0--map {
-////  pointer-events: auto;
-////}
 
 /* Если API рисует родитель с pointer-events:none — принудительно даём pointer-events контейнеру info_window */
 .ymaps3x0--controls, /* возможный селектор, зависит от версии API */
 .ymaps3__controls {
-  pointer-events: auto !important;
-  z-index: 9999 !important;
+  //pointer-events: auto !important;
+  //z-index: 9999 !important;
 }
 
 .info_window {
   position: relative;
-  z-index: 10000; /* на всякий случай еще выше */
-  pointer-events: auto; /* теперь клики проходят */
-  //padding: 20px;
-  //background-color: red;
-  //transition: all var(--transition-duration-longer) ease;
+  //z-index: 10000;
+  pointer-events: auto;
+  visibility: hidden;
 }
-
-
 
 .map-popup {
     display: flex;
     flex-direction: column;
-    //max-width: 500px;
+
     width: 500px;
     background: var(--color-white);
     padding: 30px;
@@ -38,16 +26,11 @@
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
-  //transition: opacity 0.3s ease, transform 0.3s ease;
 }
 .map-popup--hidden {
-  //padding: 0;
   visibility: hidden;
   opacity: 0;
   transform: translateY(-10px);
-  .map-popup__close {
-    //display: none;
-  }
 }
 
 .map-popup__content {
@@ -57,30 +40,22 @@
   font-family: var(--font-family-base);
   font-weight: 400;
   font-size: 16px;
-  //gap: 16px;
-  //padding: 8px;
 }
 .map-popup__title {
-  //color: #38383B;
-  //font-family: var(--font-family-base);
   font-size: 24px;
   line-height: 1;
   font-weight: 700;
-  //margin-top: 18px;
   margin-bottom: 20px;
-  //min-height: 24px;
 }
 .map-popup__info {
   display: flex;
   align-items: center;
   gap: 20px;
   margin-bottom: 20px;
-  //margin: 20px 18px;
 }
 .map-popup__info-img-wrap {
   border-radius: 10px;
   overflow: hidden;
-  //max-width: 210px;
   width: 210px;
   height: 138px;
   flex-shrink: 0;
@@ -95,8 +70,6 @@
   display: flex;
   flex-direction: column;
   margin-bottom: 18px;
-  //margin: 20px 18px 18px;
-  //gap: 20px;
   line-height: 40px;
   span {
     font-weight: 600;
@@ -105,26 +78,15 @@
 
 .map-popup__text {}
 .map-popup__text-content {
-  //font-weight: 400;
-  //font-size: 16px;
   line-height: 30px;
 }
 
 .map-popup__close {
   border: none;
-  //background-color: transparent;
   position: absolute;
-  //background-image: url('./close-icon.svg');
-  //background-repeat: no-repeat;
-  //background-position: 50% 50%;
-
   background: url(../img/icons/close-icon.svg) no-repeat center;
   background-size: contain;
-
-  //width: 30px;
-  //height: 30px;
   @include square(30px);
-  //background-color: #D5D5D5;
   cursor: pointer;
   top: 15px;
   right: 10px;
