@@ -1,0 +1,42 @@
+[
+  {
+    markerId: 1,
+    title: "Новый год в каждый дом",
+    image: "img/map/dk-1.png",
+    imageAlt: "Изображение",
+    info: "<div>Когда: <span>03.12.2025</span></div><div>Во сколько: <span>14:00 - 18:00</span></div><div>Где: <span>ул. Баумана, 18</span></div>",
+    text: "Щедрый Вторник — ежегодный день благотворительности. В этот день миллионы людей рассказывают, как и кому они помогают. Мы решили расширить в Татарстане этот день и назвать его Щедрый Щак-Щак."
+  },
+  {
+    markerId: 1,
+    title: "Вторая программа рядом",
+    image: "img/streets/full/street-33.png",
+    imageAlt: "Изображение",
+    info: "<div>Когда: <span>04.12.2025</span></div><div>Во сколько: <span>12:00 - 16:00</span></div><div>Где: <span>ул. Баумана, 18</span></div>",
+    text: "Ещё одно мероприятие по этому же адресу."
+  },
+  {
+    markerId: 2,
+    title: "Праздник в парке",
+    image: "img/map/dk-2.png",
+    imageAlt: "Изображение",
+    info: "<div>Когда: <span>05.12.2025</span></div><div>Во сколько: <span>10:00 - 12:00</span></div><div>Где: <span>ул. Кремлёвская, 3</span></div>",
+    text: "Праздничная программа для всей семьи!"
+  },
+  {
+    markerId: 2,
+    title: "Волшебное шоу",
+    image: "img/streets/full/street-11.png",
+    imageAlt: "Изображение",
+    info: "<div>Когда: <span>06.12.2025</span></div><div>Во сколько: <span>14:00 - 16:00</span></div><div>Где: <span>ул. Кремлёвская, 3</span></div>",
+    text: "Фокусы, выступления артистов, конкурсы."
+  },
+  {
+    markerId: 2,
+    title: "Новогодняя ярмарка",
+    image: "img/streets/full/street-22.png",
+    imageAlt: "Ярмарка",
+    info: "<div>Когда: <span>06.12.2025</span></div><div>Во сколько: <span>18:00 - 20:00</span></div><div>Где: <span>ул. Кремлёвская, 3</span></div>",
+    text: "Большая праздничная ярмарка."
+  }
+]

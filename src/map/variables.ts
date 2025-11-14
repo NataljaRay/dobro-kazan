@@ -6,11 +6,11 @@ export const LOCATION: YMapLocationRequest = {
     zoom: 12
 };
 
-export const FIRST_MARKER_PROPS: {iconName: YMapDefaultMarkerProps['iconName']; coordinates: LngLat} = {
-    // iconName: 'star',
-    coordinates: [49.120607, 55.822028]
-};
-export const SECOND_MARKER_PROPS: {iconName: YMapDefaultMarkerProps['iconName']; coordinates: LngLat} = {
-    // iconName: 'star',
-    coordinates: [49.173725, 55.797217]
-};
+// export const FIRST_MARKER_PROPS: {iconName: YMapDefaultMarkerProps['iconName']; coordinates: LngLat} = {
+//     // iconName: 'star',
+//     coordinates: [49.120607, 55.822028]
+// };
+// export const SECOND_MARKER_PROPS: {iconName: YMapDefaultMarkerProps['iconName']; coordinates: LngLat} = {
+//     // iconName: 'star',
+//     coordinates: [49.173725, 55.797217]
+// };

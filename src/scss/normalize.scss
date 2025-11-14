@@ -73,13 +73,13 @@ button, label {
   cursor: pointer
 }
 
-:where([fill]:not([fill=none],[fill^=url])) {
-  fill: currentColor
-}
-
-:where([stroke]:not([stroke=none],[stroke^=url])) {
-  stroke: currentColor
-}
+//:where([fill]:not([fill=none],[fill^=url])) {
+//  fill: currentColor
+//}
+//
+//:where([stroke]:not([stroke=none],[stroke^=url])) {
+//  stroke: currentColor
+//}
 
 svg * {
   transition-property: fill, stroke

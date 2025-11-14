@@ -25,6 +25,8 @@
     transition: all var(--transition-duration) ease;
     @include abs-center;
 
+    @include flex-center;
+
     &:before {
         content: '';
         display: block;
@@ -36,4 +38,10 @@
         @include abs-center;
         transition: all var(--transition-duration) ease;
     }
+}
+.map-point__counter {
+    font-family: var(--font-family-base);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--color-white);
 }
