@@ -125,6 +125,12 @@
       }
     }
   }
+
+  &#event-12 {
+    .map-popup__info-img-wrap {
+      height: unset;
+    }
+  }
 }
 
 .map-popup__title {
