@@ -72,7 +72,7 @@ async function main() {
 
     function updatePopup(eventsArray) {
         popupList.innerHTML = eventsArray.map(event => `
-            <div class="map-popup__event">
+            <div class="map-popup__event" id="event-${event.eventId}">
                 <div class="map-popup__title">${event.title}</div>
 
                 <div class="map-popup__info">
