@@ -1,6 +1,10 @@
 .nko {
 
-  .guides-carousel {}
+  .guides-carousel__slide-inner {
+    &:hover {
+      cursor: pointer;
+    }
+  }
 
   .guides-carousel__slide-img-wrap {
     height: 296px;

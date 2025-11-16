@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -121,16 +121,23 @@
       </div>
     </section>
 
+    <div class="slide-popup-wrapper slide-popup-wrapper--hidden">
+      <div id="slide-popup" class="map-popup map-popup--hidden">
+        <div class="map-popup__content">
+          <div class="map-popup__list"></div>
+          <button class="map-popup__close">Закрыть</button>
+        </div>
+      </div>
+    </div>
 
-
-    <section class="section--guides1 section--nko container">
+    <section class="section--nko container">
       <div class="guides nko">
         <h3 class="section__title section__title--white animate__animated">Щедрые НКО</h3>
         <div class="guides__inner">
           <div class="guides-carousel" id="nko-carousel">
 
-            <div class="guides-carousel__slide slide" id="slide-event-1">
-              <div class="guides-carousel__slide-inner">
+            <div class="guides-carousel__slide slide">
+              <div class="guides-carousel__slide-inner" data-event-id="1">
                 <div class="guides-carousel__slide-img-wrap slide-img-wrap">
                   <img class="guides-carousel__slide-img slide-img" src="img/nko/nko-1.jpeg" alt="АНО Без бергэ Возвращение вкуса жизни">
                 </div>
@@ -150,8 +157,8 @@
                 </div>
               </div>
             </div>
-            <div class="guides-carousel__slide slide" id="slide-event-2">
-              <div class="guides-carousel__slide-inner">
+            <div class="guides-carousel__slide slide">
+              <div class="guides-carousel__slide-inner" data-event-id="2">
                 <div class="guides-carousel__slide-img-wrap slide-img-wrap">
                   <img class="guides-carousel__slide-img slide-img" src="img/nko/nko-2.jpeg" alt="АНО Донорсерч">
                 </div>
@@ -173,7 +180,7 @@
               </div>
             </div>
             <div class="guides-carousel__slide slide">
-              <div class="guides-carousel__slide-inner">
+              <div class="guides-carousel__slide-inner" data-event-id="3">
                 <div class="guides-carousel__slide-img-wrap slide-img-wrap">
                   <img class="guides-carousel__slide-img slide-img" src="img/nko/nko-3.jpeg" alt="АНО Особые дети Татарстан">
                 </div>
@@ -194,7 +201,7 @@
               </div>
             </div>
             <div class="guides-carousel__slide slide">
-              <div class="guides-carousel__slide-inner">
+              <div class="guides-carousel__slide-inner" data-event-id="4">
                 <div class="guides-carousel__slide-img-wrap slide-img-wrap">
                   <img class="guides-carousel__slide-img slide-img" src="img/nko/nko-4.jpeg" alt="БФ Ассоциация кадрового менеджмента">
                 </div>
@@ -215,7 +222,7 @@
               </div>
             </div>
             <div class="guides-carousel__slide slide">
-              <div class="guides-carousel__slide-inner">
+              <div class="guides-carousel__slide-inner" data-event-id="5">
                 <div class="guides-carousel__slide-img-wrap slide-img-wrap">
                   <img class="guides-carousel__slide-img slide-img" src="img/nko/nko-5.1.jpeg" alt="БФ Во Благо Вместе">
                 </div>
@@ -236,7 +243,7 @@
               </div>
             </div>
             <div class="guides-carousel__slide slide">
-              <div class="guides-carousel__slide-inner">
+              <div class="guides-carousel__slide-inner" data-event-id="6">
                 <div class="guides-carousel__slide-img-wrap slide-img-wrap">
                   <img class="guides-carousel__slide-img slide-img" src="img/nko/nko-6.jpeg" alt="БФ Решение жить">
                 </div>
@@ -258,7 +265,7 @@
             </div>
 
             <div class="guides-carousel__slide slide">
-              <div class="guides-carousel__slide-inner">
+              <div class="guides-carousel__slide-inner" data-event-id="7">
                 <div class="guides-carousel__slide-img-wrap slide-img-wrap">
                   <img class="guides-carousel__slide-img slide-img" src="img/nko/nko-7.jpeg" alt="БФ «Сможем вместе»">
                 </div>
@@ -279,7 +286,7 @@
               </div>
             </div>
             <div class="guides-carousel__slide slide">
-              <div class="guides-carousel__slide-inner">
+              <div class="guides-carousel__slide-inner" data-event-id="8">
                 <div class="guides-carousel__slide-img-wrap slide-img-wrap slide-img-wrap-bottom">
                   <img class="guides-carousel__slide-img slide-img" src="img/nko/nko-8.jpeg" alt="БФ Трамплин 1">
                 </div>
@@ -300,7 +307,7 @@
               </div>
             </div>
             <div class="guides-carousel__slide slide">
-              <div class="guides-carousel__slide-inner">
+              <div class="guides-carousel__slide-inner" data-event-id="9">
                 <div class="guides-carousel__slide-img-wrap slide-img-wrap slide-img-wrap-bottom">
                   <img class="guides-carousel__slide-img slide-img" src="img/nko/nko-9.jpeg" alt="БФ Трамплин 2">
                 </div>
@@ -321,7 +328,7 @@
               </div>
             </div>
             <div class="guides-carousel__slide slide">
-              <div class="guides-carousel__slide-inner">
+              <div class="guides-carousel__slide-inner" data-event-id="10">
                 <div class="guides-carousel__slide-img-wrap slide-img-wrap">
                   <img class="guides-carousel__slide-img slide-img" src="img/nko/nko-10.jpeg" alt="Фонд борьбы с диабетом">
                 </div>
@@ -343,7 +350,7 @@
             </div>
 
             <div class="guides-carousel__slide slide">
-              <div class="guides-carousel__slide-inner">
+              <div class="guides-carousel__slide-inner" data-event-id="11">
                 <div class="guides-carousel__slide-img-wrap slide-img-wrap">
                   <img class="guides-carousel__slide-img slide-img" src="img/nko/nko-11.jpg" alt="НКО Альпари">
                 </div>
@@ -364,7 +371,7 @@
               </div>
             </div>
             <div class="guides-carousel__slide slide">
-              <div class="guides-carousel__slide-inner">
+              <div class="guides-carousel__slide-inner" data-event-id="12">
                 <div class="guides-carousel__slide-img-wrap slide-img-wrap slide-img-wrap-right">
                   <img class="guides-carousel__slide-img slide-img" src="img/nko/nko-12.1.jpeg" alt="Центр иппотерапии">
                 </div>
