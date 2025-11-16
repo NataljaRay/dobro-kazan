@@ -24,7 +24,8 @@ async function main() {
         document.getElementById('map'),
         {
             location: {
-                center: [49.145081, 55.806951],
+                // center: [49.145081, 55.806951],
+                center: [49.145081, 55.790951],
                 zoom: 12
             }
         },
