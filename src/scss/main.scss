@@ -9,6 +9,7 @@
 /* global */
 html {
   scroll-behavior: smooth!important;
+  scrollbar-gutter: stable;
   &.is-lock {
     overflow: hidden;
   }
