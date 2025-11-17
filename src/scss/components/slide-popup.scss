@@ -34,16 +34,25 @@
     &#event-9,
     &#event-8 {
       .map-popup__info-img-wrap {
-        @media (max-width: 578px) {
+        height: 230px;
+        //@media (max-width: 578px) {
+        @include mobile {
           height: unset;
         }
       }
     }
 
-    &#event-10,
+    &#event-10 {
+      .map-popup__info-img-wrap {
+        @include mobile {
+          height: unset;
+        }
+      }
+    }
+
     &#event-2 {
       .map-popup__info-img-wrap {
-
+        height: 280px;
         @include mobile {
           height: unset;
         }
@@ -52,6 +61,9 @@
   }
 
   .map-popup__info-img-wrap {
+    width: 360px;
+    height: 238px;
+
     @include mobile {
       width: 210px;
       height: 138px;
@@ -77,6 +89,12 @@
   }
 
   .map-popup__info-text {
+    > div {
+      line-height: 40px;
+      @include mobile {
+        line-height: 30px;
+      }
+    }
     span br {
       display: none;
     }

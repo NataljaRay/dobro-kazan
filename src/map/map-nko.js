@@ -20,14 +20,21 @@ async function main() {
     // 2. Создаём карту
     // ------------------------
 
+    const isMobile = window.matchMedia('(max-width: 480px)').matches;
+
+    const mapCenter = isMobile ? [49.175081, 55.796951] : [49.145081, 55.790951];
+    const mapZoom   = isMobile ? 11 : 12;
+
+
     const map = new YMap(
         document.getElementById('map'),
         {
-            location: {
-                // center: [49.145081, 55.806951],
-                center: [49.145081, 55.790951],
-                zoom: 12
-            }
+            location: { center: mapCenter, zoom: mapZoom }
+            // location: {
+            //     // center: [49.145081, 55.806951],
+            //     center: [49.145081, 55.790951],
+            //     zoom: 12
+            // }
         },
         [
             new YMapDefaultSchemeLayer(),
