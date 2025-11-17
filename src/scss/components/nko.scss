@@ -9,6 +9,9 @@
   .guides-carousel__slide-img-wrap {
     height: 296px;
     display: flex;
+    @include mobile-s {
+      height: 70vw;
+    }
   }
   .slide-img-wrap-bottom {
     align-items: end;
