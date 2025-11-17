@@ -1,5 +1,5 @@
 // import $ from 'jquery/src/jquery';
-// import 'slick-carousel'
+import 'slick-carousel'
 import './js/script';
 
 // import "../node_modules/@fancyapps/ui/src/Fancybox/Fancybox.scss"
@@ -11,7 +11,9 @@ import './scss/main.scss';
 /* modules */
 import {menuHandler} from "./js/menu-handler";
 import {textAnimate} from "./js/animate";
+import {slidePopupHandler} from './js/slide-popup-nko';
 
 /* init */
 menuHandler();
 textAnimate();
+slidePopupHandler();

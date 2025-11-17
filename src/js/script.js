@@ -70,6 +70,37 @@ $('#guides-carousel').slick({
         }
     ]
 });
+// nko-carousel
+$('#nko-carousel').slick({
+    dots: false,
+    arrows: true,
+    infinite: true,
+    speed: 300,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    // autoplay: true,
+    autoplaySpeed: 2000,
+    responsive: [
+        {
+            breakpoint: 1386,
+            settings: {
+                slidesToShow: 3,
+            }
+        },
+        {
+            breakpoint: 1060,
+            settings: {
+                slidesToShow: 2,
+            }
+        },
+        {
+            breakpoint: 767,
+            settings: {
+                slidesToShow: 1,
+            }
+        }
+    ]
+});
 
 // book-carousel
 $('#book-carousel').slick({

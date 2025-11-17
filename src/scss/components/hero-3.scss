@@ -146,9 +146,9 @@
     }
     .hero-3__pyramid-txt {
       @include fluid-text(32, 22);
+      //color: var(--color-warm);
       //> span {
       //  white-space: nowrap;
-      //  font-family: inherit;
       //}
 
       @include tablet {

@@ -1,0 +1,42 @@
+.nko {
+
+  .guides-carousel__slide-inner {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .guides-carousel__slide-img-wrap {
+    height: 296px;
+    display: flex;
+    @include mobile-s {
+      height: 70vw;
+    }
+  }
+  .slide-img-wrap-bottom {
+    align-items: end;
+
+    .slide-img {
+      margin-bottom: -25px;
+    }
+  }
+  .slide-img-wrap-right {
+    .slide-img {
+      object-fit: unset;
+      max-width: unset;
+      height: 100%;
+      width: auto;
+    }
+  }
+
+  .guides-carousel__slide-img {}
+
+  .slide-info {
+    min-height: 168px;
+  }
+  .slide-txt-container {
+    .slide-txt:first-child {
+      font-weight: 600;
+    }
+  }
+}
