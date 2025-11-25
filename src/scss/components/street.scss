@@ -52,8 +52,10 @@
     }
   }
   &__title {
-    @include fluid-text(40, 24);
-    line-height: fluid(50, 20);
+    //@include fluid-text(40, 24);
+    //line-height: fluid(50, 20);
+    @include fluid-text(20, 14);
+    line-height: 1.5;
     margin-bottom: 8px;
   }
   &__txt {

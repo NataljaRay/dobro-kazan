@@ -61,8 +61,11 @@
   }
 
   .map-popup__info-img-wrap {
-    width: 360px;
-    height: 238px;
+    //width: 360px;
+    //height: 238px;
+
+    width: 277px;
+    height: 100%;
 
     @include mobile {
       width: 210px;

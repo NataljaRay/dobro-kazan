@@ -11,5 +11,9 @@
 
   .guides-carousel__slide-img-wrap {
     border-radius: 100%;
+    height: 296px;
+  }
+  .guides-carousel__slide-img {
+    height: inherit;
   }
 }

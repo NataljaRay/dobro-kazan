@@ -1,7 +1,8 @@
 .books {
 
   &__inner {
-    margin-top: 56px;
+    //margin-top: 56px;
+    margin-top: 44px;
   }
 
 }
@@ -13,11 +14,12 @@
 .book-carousel__slide-inner {
   display: flex;
   justify-content: center;
-  padding-top: 18px;
-  padding-bottom: 18px;
+  //padding-top: 18px;
+  padding-top: 30px;
+  //padding-bottom: 18px;
 
   @include mobile-s {
     padding-top: 0;
-    padding-bottom: 0;
+    //padding-bottom: 0;
   }
 }

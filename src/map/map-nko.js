@@ -21,9 +21,13 @@ async function main() {
     // ------------------------
 
     const isMobile = window.matchMedia('(max-width: 480px)').matches;
+    const isIpad = window.matchMedia('(max-width: 1023px)').matches;
 
-    const mapCenter = isMobile ? [49.175081, 55.796951] : [49.145081, 55.790951];
-    const mapZoom   = isMobile ? 11 : 12;
+    // const mapCenter = isMobile ? [49.175081, 55.796951] : [49.145081, 55.790951];
+    // const mapZoom   = isMobile ? 11 : 12;
+    const mapCenter = isMobile ? [49.075081, 55.796951] : (isIpad ? [49.045081, 55.796951] : [49.005081, 55.799951]);
+    const mapZoom   = isMobile ? 9 : (isIpad ? 10 : 11);
+    // const mapZoom   = isMobile ? 10 : 11;
 
 
     const map = new YMap(

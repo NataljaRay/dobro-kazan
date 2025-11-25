@@ -116,6 +116,21 @@ $('#book-carousel').slick({
     // cssEase: 'linear'
 });
 
+const bookCarousel = document.querySelector('#book-carousel');
+const bookCarouselSlide = bookCarousel.querySelectorAll('.slick-slide');
+
+// On before slide change - прокрутить текст наверх
+$('#book-carousel').on('beforeChange', function(event, slick, currentSlide, nextSlide){
+
+    bookCarouselSlide.forEach(item => {
+        const slideId = Number(item.dataset.slickIndex);
+
+        if (slideId === currentSlide) {
+            item.querySelector('.media__txt-wrapper').scrollTop = 0;
+        }
+    })
+
+});
 // taste-carousel
 $('#taste-carousel').slick({
     dots: false,

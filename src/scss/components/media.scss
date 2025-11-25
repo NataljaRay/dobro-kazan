@@ -98,30 +98,135 @@
 .media--main {
   padding-left: 120px;
 
+  @include laptop {
+    padding-left: 12vw;
+  }
   @include laptop-sm {
     padding-left: 0;
   }
 
   .media {
-    &__img {
+    &__block {
+      width: 952px;
+      @include laptop {
+        //width: 834px;
+      }
       @include laptop-sm {
+        width: 834px;
+      }
+      @include tablet {
+        width: 98%;
+      }
+      @include mobile-s {
+        width: 94%;
+      }
+    }
+    &__img {
+      min-width: 523px;
+      top: -8px;
+
+      @include laptop {
+        min-width: 474px;
+        left: -130px;
+        top: -20px;
+      }
+      @include laptop-sm {
+        min-width: 120%;
         margin-left: -40px;
         left: auto;
         right: auto;
         transform: scaleX(-1);
       }
+      @include tablet {
+        max-width: 93%;
+        min-width: unset;
+      }
       @include mobile {
         margin-inline: auto;
         transform: scaleX(1);
       }
+      @include mobile-s {
+        top: 0;
+      }
     }
 
+    &__img-wrapper {
+      @include tablet {
+        justify-content: end;
+        margin-left: 0;
+      }
+    }
     &__txt-wrapper {
+      // custom-scroll
+      scrollbar-gutter: stable;
+
+      &::-webkit-scrollbar {
+        width: 5px!important;
+        height: 5px!important;
+        border-radius: 5px!important;
+        background: #DFDFDF!important;
+      }
+      &::-webkit-scrollbar-track {
+        width: 5px!important;
+        background: #DFDFDF!important;
+        border-radius: 5px!important;
+      }
+      &::-webkit-scrollbar-thumb {
+        width: 5px!important;
+        background: #B7B7B7!important;
+        border-radius: 5px!important;
+      }
+
+      @-moz-document url-prefix() {
+        scrollbar-color: #B7B7B7 #DFDFDF!important;
+        scrollbar-width: thin!important;
+      }
+
+
+      padding: 42px 6px;
+      max-width: 530px;
+      //max-height: 448px;
+      max-height: 460px;
+      //max-height: 480px;
+
+      @include laptop-sm {
+        max-width: 452px;
+        max-height: 510px;
+      }
       @include tablet {
         margin-inline: 22px;
+        //max-height: 993px;
+      }
+      @include mobile {
+        padding-top: 0;
+        padding-bottom: 0;
+        padding-right: 20px;
+        margin-right: 0;
+        margin-top: 20px;
+        margin-bottom: 24px;
+        overflow-y: auto;
+        //max-height: 51vh;
+        max-height: 340px;
       }
       @include mobile-s {
-        margin-inline: 0;
+        margin-top: 38px;
+      }
+
+      ul {
+        @include mobile-s {
+          padding-left: 18px;
+        }
+      }
+    }
+
+    &__title {
+      @include mobile-s {
+        margin-bottom: 20px;
+      }
+    }
+    &__txt {
+      @include mobile-s {
+        font-size: 14px;
       }
     }
   }
