@@ -163,20 +163,67 @@
 }
 
 .section--volunteers {
-  padding-bottom: 350px;
+  //padding-bottom: 350px;
+  padding-bottom: 400px;
   //margin-top: -180px;
-  margin-top: 180px;
-  z-index: 1;
+  //margin-top: 180px;
+  padding-top: 242px;
+  //z-index: 1;
   position: relative;
+  z-index: 0;
 
   @include tablet {
-    margin-top: 62px;
-    padding-bottom: 220px;
+    //margin-top: 62px;
+    //padding-bottom: 220px;
+    padding-bottom: 300px;
+  }
+
+  &:before {
+    content: '';
+    display: block;
+    background: url(../img/bg-full/sh.svg) no-repeat top left;
+    background-size: contain;
+    width: 100%;
+    height: 384px;
+    position: absolute;
+    left: -30px;
+    top: 0;
+    z-index: -1;
+
+    @include mobile {
+      left: -10px;
+      //display: none;
+    }
+  }
+
+  &:after {
+    content: '';
+    display: block;
+    background: url(../img/bg-full/shak2.svg) no-repeat top right;
+    background-size: contain;
+    width: 100%;
+    height: 330px;
+    position: absolute;
+    right: -116px;
+    bottom: 0;
+    z-index: -1;
+
+    @media (max-width: 1690px) {
+      right: -3.8vw;
+    }
+
+    @include tablet {
+    }
+
+    @include mobile-s {
+      height: 315px;
+    }
   }
 }
 
 .section--streets {
-  margin-top: -100px;
+  //margin-top: -100px;
+  margin-top: -150px;
   padding-bottom: 189px;
   position: relative;
   z-index: 0;

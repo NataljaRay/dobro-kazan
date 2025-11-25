@@ -27,18 +27,12 @@ async function main() {
     // const mapZoom   = isMobile ? 11 : 12;
     const mapCenter = isMobile ? [49.075081, 55.796951] : (isIpad ? [49.045081, 55.796951] : [49.005081, 55.799951]);
     const mapZoom   = isMobile ? 9 : (isIpad ? 10 : 11);
-    // const mapZoom   = isMobile ? 10 : 11;
 
 
     const map = new YMap(
         document.getElementById('map'),
         {
             location: { center: mapCenter, zoom: mapZoom }
-            // location: {
-            //     // center: [49.145081, 55.806951],
-            //     center: [49.145081, 55.790951],
-            //     zoom: 12
-            // }
         },
         [
             new YMapDefaultSchemeLayer(),

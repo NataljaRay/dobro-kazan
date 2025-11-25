@@ -47,7 +47,7 @@ $('#guides-carousel').slick({
     speed: 300,
     slidesToShow: 4,
     slidesToScroll: 1,
-    // autoplay: true,
+    autoplay: true,
     autoplaySpeed: 2000,
     responsive: [
         {
@@ -78,7 +78,7 @@ $('#nko-carousel').slick({
     speed: 300,
     slidesToShow: 4,
     slidesToScroll: 1,
-    // autoplay: true,
+    autoplay: true,
     autoplaySpeed: 2000,
     responsive: [
         {
@@ -110,8 +110,8 @@ $('#book-carousel').slick({
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    // autoplay: true,
-    autoplaySpeed: 2000,
+    autoplay: true,
+    autoplaySpeed: 2500,
     // fade: true,
     // cssEase: 'linear'
 });

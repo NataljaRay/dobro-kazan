@@ -3,7 +3,8 @@
   justify-content: center;
 
   &__inner {
-    margin-top: 56px;
+    //margin-top: 56px;
+    margin-top: 70px;
     display: grid;
     grid-template-columns: repeat(3, 300px);
     gap: 76px;
@@ -12,6 +13,11 @@
       gap: 3vw;
     }
     @include tablet {
+      gap: 8vw;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 3fr;
+    }
+    @include mobile {
       gap: 1vw;
       grid-template-columns: 1fr;
       grid-template-rows: 3fr;
@@ -24,31 +30,43 @@
   @include tablet {
     max-width: 300px;
     text-align: center;
+    //margin-bottom: 40px;
+  }
+  @include mobile {
     margin-bottom: 40px;
   }
+
   &__img-wrapper {
     width: 300px;
-    height: 204px;
-    border-radius: 360px;
+    //height: 204px;
+    height: 306px;
+    //border-radius: 360px;
+    border-radius: 25px;
     overflow: hidden;
     margin-bottom: 20px;
 
     @include laptop-sm {
       width: 250px;
-      height: 170px;
+      //height: 170px;
+      height: 254px;
     }
 
     @include tablet {
       margin-inline: auto;
+      width: 300px;
+      height: 306px;
     }
   }
   &__img {
     object-fit: cover;
-    transform: scale(1.17);
+    //transform: scale(1.17);
+    transform: scale(1.05);
 
     transition: all var(--transition-duration-longer) ease;
     @include hover {
-      transform: scale(1.23);
+      //transform: scale(1.23);
+      //transform: scale(1.05);
+      transform: scale(1.07);
     }
   }
   &__title {
@@ -57,6 +75,7 @@
     @include fluid-text(20, 14);
     line-height: 1.5;
     margin-bottom: 8px;
+    //text-align: center;
   }
   &__txt {
     font-size: 16px;

@@ -75,12 +75,16 @@ export const slidePopupHandler = () => {
             slidePopupWrapper.classList.add('slide-popup-wrapper--hidden');
             slidePopup.classList.add('map-popup--hidden');
             html.classList.remove('is-lock');
+            $('#nko-carousel').slick('slickPlay');
+            // $('#guides-carousel').slick('slickPlay');
         });
         slidePopup.addEventListener('click', e => e.stopPropagation());
         document.body.addEventListener('click', () => {
             slidePopupWrapper.classList.add('slide-popup-wrapper--hidden');
             slidePopup.classList.add('map-popup--hidden');
             html.classList.remove('is-lock');
+            $('#nko-carousel').slick('slickPlay');
+            // $('#guides-carousel').slick('slickPlay');
         });
 
 
@@ -88,6 +92,8 @@ export const slidePopupHandler = () => {
         document.querySelectorAll('.guides-carousel__slide-inner').forEach(slide => {
             slide.addEventListener('click', e => {
                 e.stopPropagation();
+                $('#nko-carousel').slick('slickPause');
+                // $('#guides-carousel').slick('slickPause');
 
                 const eventId = Number(slide.dataset.eventId);
 
