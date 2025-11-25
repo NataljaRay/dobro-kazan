@@ -1,4 +1,4 @@
-console.log('Added Custom.js')
+// console.log('Added Custom.js')
 
 // Активация попапов для экскурсоводов (секция "Щедрые экскурсоводы")
 document.addEventListener('DOMContentLoaded', function () {
