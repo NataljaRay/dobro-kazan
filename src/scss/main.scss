@@ -84,6 +84,7 @@ body {}
       justify-content: center;
     }
   }
+  #participation span,
   #participation a {
     text-decoration: none;
     display: inline-block;
@@ -101,7 +102,9 @@ body {}
     box-shadow: 0 4px 8px rgba(234, 54, 205, 0.3);
   }
 
+  #participation span:hover,
   #participation a:hover {
+    cursor:pointer;
     background: #c42ba9;
     transform: translateY(-3px);
     box-shadow: 0 6px 15px rgba(196, 43, 169, 0.5);

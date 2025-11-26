@@ -14,6 +14,10 @@
     //flex-direction: column;
     //align-items: center;
 
+    &:hover {
+      cursor: pointer;
+    }
+
     @include laptop-sm {
       padding-inline: 15px;
     }

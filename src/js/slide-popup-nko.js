@@ -60,31 +60,30 @@ export const slidePopupHandler = () => {
             setTimeout(function () {
                 html.classList.add('is-lock');
                 slidePopupWrapper.classList.remove('slide-popup-wrapper--hidden');
-            }, 200)
+            }, 200);
             setTimeout(function () {
                 slidePopup.classList.remove('map-popup--hidden');
-            }, 300)
-            // slidePopupWrapper.classList.remove('slide-popup-wrapper--hidden');
-            // slidePopup.classList.remove('map-popup--hidden');
+            }, 300);
             slidePopupContent.scrollTop = 0;
         }
 
 
 // 4) Закрытие попапа
-        slidePopupClose.addEventListener('click', () => {
+        function closeSlidePopup() {
             slidePopupWrapper.classList.add('slide-popup-wrapper--hidden');
             slidePopup.classList.add('map-popup--hidden');
             html.classList.remove('is-lock');
             $('#nko-carousel').slick('slickPlay');
-            // $('#guides-carousel').slick('slickPlay');
+            $('#guides-carousel').slick('slickPlay');
+            $('#art-carousel').slick('slickPlay');
+            $('#volunteers-carousel').slick('slickPlay');
+        }
+        slidePopupClose.addEventListener('click', () => {
+            closeSlidePopup();
         });
         slidePopup.addEventListener('click', e => e.stopPropagation());
         document.body.addEventListener('click', () => {
-            slidePopupWrapper.classList.add('slide-popup-wrapper--hidden');
-            slidePopup.classList.add('map-popup--hidden');
-            html.classList.remove('is-lock');
-            $('#nko-carousel').slick('slickPlay');
-            // $('#guides-carousel').slick('slickPlay');
+            closeSlidePopup();
         });
 
 
@@ -93,7 +92,9 @@ export const slidePopupHandler = () => {
             slide.addEventListener('click', e => {
                 e.stopPropagation();
                 $('#nko-carousel').slick('slickPause');
-                // $('#guides-carousel').slick('slickPause');
+                $('#guides-carousel').slick('slickPause');
+                $('#art-carousel').slick('slickPause');
+                $('#volunteers-carousel').slick('slickPause');
 
                 const eventId = Number(slide.dataset.eventId);
 

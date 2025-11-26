@@ -34,11 +34,17 @@
     &-img-wrap {
       //@include square(295px);
       width: 100%;
-      height: auto;
+      //height: auto;
       border-radius: 20px;
       overflow: hidden;
+      height: 296px;
+      @media (max-width: 412px) {
+        width: 64vw;
+        height: 64vw;
+      }
     }
     &-img {
+      height: inherit;
       //transition: all var(--transition-duration-longer) ease;
       //@include hover {
       //  transform: scale(1.05);
@@ -46,6 +52,7 @@
     }
     &-info {
       padding-inline: 16px;
+      min-height:158px;
     }
     &-title {}
     &-text {}
