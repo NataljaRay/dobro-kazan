@@ -225,6 +225,9 @@
       }
     }
     &__txt {
+
+      p + ul {margin-top: 0}
+
       @include mobile-s {
         font-size: 14px;
       }
