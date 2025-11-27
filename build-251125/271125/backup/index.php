@@ -22,7 +22,7 @@ $APPLICATION->SetAdditionalCSS("/culture-of-charity/shchedryy-shchak-shchak/css/
     </a>
     <span id="participation-btn" style="display: none">Прими участие</span>
     <div class="slide-popup-wrapper slide-popup-wrapper--hidden">
-      <div id="participation-popup" class="slide-popup map-popup map-popup--hidden">
+      <div id="participation-popup" class="map-popup map-popup--hidden">
         <div class="map-popup__content">
           <div class="map-popup__list" style="height: 80vh; width: 100%;">
             <iframe src="https://forms.yandex.ru/u/6921bfebd046880445c04b79?iframe=1" frameborder="0" name="ya-form-6921bfebd046880445c04b79" width="100%" height="100%"></iframe>
@@ -75,7 +75,7 @@ $APPLICATION->SetAdditionalCSS("/culture-of-charity/shchedryy-shchak-shchak/css/
     </section>
 
     <div class="slide-popup-wrapper slide-popup-wrapper--hidden">
-      <div id="slide-popup" class="slide-popup map-popup map-popup--hidden">
+      <div id="slide-popup" class="map-popup map-popup--hidden">
         <div class="map-popup__content">
           <div class="map-popup__list"></div>
           <button class="map-popup__close">Закрыть</button>

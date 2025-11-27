@@ -17,14 +17,14 @@ $APPLICATION->SetAdditionalCSS("/culture-of-charity/shchedryy-shchak-shchak/css/
 
 <div id="chak-chak">
   <div id="participation" class="container">
-    <a target="_blank" style='text-decoration: none' href='https://forms.yandex.ru/u/6921bfebd046880445c04b79/'>
-      Прими участие
-    </a>
-    <span id="participation-btn" style="display: none">Прими участие</span>
-    <div class="slide-popup-wrapper slide-popup-wrapper--hidden">
-      <div id="participation-popup" class="slide-popup map-popup map-popup--hidden">
+<!--    <a target="_blank" style='text-decoration: none' href='https://forms.yandex.ru/u/6921bfebd046880445c04b79/'>-->
+<!--      Прими участие-->
+<!--    </a>-->
+    <span id="participation-btn">Прими участие</span>
+    <div class="participation-popup-wrapper participation-popup-wrapper--hidden" id="participation-popup">
+      <div class="slide-popup participation-popup participation-popup--hidden">
         <div class="map-popup__content">
-          <div class="map-popup__list" style="height: 80vh; width: 100%;">
+          <div class="map-popup__list">
             <iframe src="https://forms.yandex.ru/u/6921bfebd046880445c04b79?iframe=1" frameborder="0" name="ya-form-6921bfebd046880445c04b79" width="100%" height="100%"></iframe>
           </div>
           <button class="map-popup__close">Закрыть</button>

@@ -17,40 +17,40 @@ window.onload = (event) => {
 document.addEventListener('DOMContentLoaded', function() {
 
     const html = document.querySelector('html');
-    // Находим элементы попапа для слайдов
-    const slidePopupWrapper = document.querySelector('.slide-popup-wrapper');
-    const slidePopup = document.getElementById('participation-popup');
-    const slidePopupContent = slidePopup.querySelector('.map-popup__content');
-    // const slidePopupList = slidePopup.querySelector('.map-popup__list');
-    const slidePopupClose = slidePopup.querySelector('.map-popup__close');
+
+    // Находим элементы попапа для формы
+
+    const participationPopupWrapper = document.querySelector('#participation-popup');
+    const participationPopup = participationPopupWrapper.querySelector('.participation-popup');
+    const participationPopupContent = participationPopupWrapper.querySelector('.map-popup__content');
+    const participationPopupClose = participationPopupWrapper.querySelector('.map-popup__close');
 
     const participationBtn = document.querySelector('#participation-btn');
-    // const participationIframe = document.querySelector('#participation-iframe');
-    // const participationIframeCode = participationIframe.innerHTML;
+
     participationBtn.addEventListener('click', function(){
-
-        // console.log(participationIframeCode)
-        // const iframe = `<iframe src="https://forms.yandex.ru/u/6921bfebd046880445c04b79?iframe=1" frameborder="0" name="ya-form-6921bfebd046880445c04b79" width="650"><\/iframe>`
-        // const iframe = `<iframe src="https://forms.yandex.ru/u/692738b4f47e73aa1fda3547?iframe=1" frameborder="0" name="ya-form-692738b4f47e73aa1fda3547" width="650"></iframe>`
-
-        // slidePopupList.innerHTML = participationIframeCode;
-
         setTimeout(function () {
             html.classList.add('is-lock');
-            slidePopupWrapper.classList.remove('slide-popup-wrapper--hidden');
+            participationPopupWrapper.classList.remove('participation-popup-wrapper--hidden');
         }, 200);
         setTimeout(function () {
-            slidePopup.classList.remove('map-popup--hidden');
+            participationPopup.classList.remove('participation-popup--hidden');
         }, 300);
-
-        // // Закрытие попапа
-        // slidePopupClose.addEventListener('click', () => {
-        //     slidePopupContent.innerHTML = ''; // очищаем содержимое
-        // });
-        // document.body.addEventListener('click', () => {
-        //     slidePopupContent.innerHTML = ''; // очищаем содержимое
-        // });
+        participationPopupContent.scrollTop = 0;
     })
+
+    // Закрытие попапа
+    function closeParticipationPopup() {
+        participationPopupWrapper.classList.add('participation-popup-wrapper--hidden');
+        participationPopup.classList.add('participation-popup--hidden');
+        html.classList.remove('is-lock');
+    }
+    participationPopupClose.addEventListener('click', () => {
+        closeParticipationPopup();
+    });
+    participationPopup.addEventListener('click', e => e.stopPropagation());
+    document.body.addEventListener('click', () => {
+        closeParticipationPopup();
+    });
 });
 
 

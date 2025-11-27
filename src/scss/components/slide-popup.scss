@@ -1,5 +1,6 @@
 /** slide-popup **/
 
+.participation-popup-wrapper,
 .slide-popup-wrapper {
   position: fixed;
   top: 0;
@@ -13,13 +14,14 @@
 
   @include flex-center;
 }
+.participation-popup-wrapper--hidden,
 .slide-popup-wrapper--hidden {
   visibility: hidden;
   z-index: -1;
   opacity: 0;
 }
 
-#slide-popup {
+.slide-popup {
   width: 100%;
   max-width: 800px;
   max-height: 90vh!important;
