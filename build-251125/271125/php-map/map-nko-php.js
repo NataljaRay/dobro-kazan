@@ -14,7 +14,8 @@ async function main() {
     // 1. Загружаем данные из JSON
     // ------------------------
 
-    const MARKERS = await fetch('map/events-nko.json').then(r => r.json());
+    // const MARKERS = await fetch('map/events-nko.json').then(r => r.json());
+    const MARKERS = window.MARKERS_FROM_BITRIX;
 
     // ------------------------
     // 2. Создаём карту

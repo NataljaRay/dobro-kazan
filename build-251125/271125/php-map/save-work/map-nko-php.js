@@ -14,7 +14,9 @@ async function main() {
     // 1. Загружаем данные из JSON
     // ------------------------
 
-    const MARKERS = await fetch('map/events-nko.json').then(r => r.json());
+    // const MARKERS = await fetch('map/events-nko.json').then(r => r.json());
+    const MARKERS = window.MARKERS_FROM_BITRIX;
+    // console.log('MARKERS', MARKERS)
 
     // ------------------------
     // 2. Создаём карту
@@ -80,7 +82,7 @@ async function main() {
     // ------------------------
 
     function updatePopup(eventsArray) {
-        popupList.innerHTML = eventsArray.map(event => `
+        const popupHtmlBase = eventsArray.map(event => `
             <div class="map-popup__event" id="event-${event.eventId}">
                 <div class="map-popup__title">${event.title}</div>
 
@@ -90,7 +92,11 @@ async function main() {
                              src="${event.image}"
                              alt="${event.imageAlt}">
                     </div>
-                    <div class="map-popup__info-text">${event.info}</div>
+                    <div class="map-popup__info-text">
+                      <div id="when"></div>
+                      <div id="time"></div>
+                      <div id="address"></div>
+                    </div>
                 </div>
 
                 <div class="map-popup__text">
@@ -98,6 +104,24 @@ async function main() {
                 </div>
             </div>
         `).join("");
+
+        popupList.innerHTML = popupHtmlBase;
+
+        const popupInfoWhen = document.querySelector('#when');
+        const popupInfoTime = document.querySelector('#time');
+        const popupInfoAddress = document.querySelector('#address');
+
+        if(eventsArray[0].when && (eventsArray[0].when != '')){
+            popupInfoWhen.innerHTML = 'Когда: <span>' + eventsArray[0].when + '</span>';
+        }
+
+        if(eventsArray[0].time && (eventsArray[0].time != '')){
+            popupInfoTime.innerHTML = 'Во сколько: <span>' + eventsArray[0].time + '</span>';
+        }
+
+        if(eventsArray[0].address && (eventsArray[0].address != '')){
+            popupInfoAddress.innerHTML = 'Где: <span>' + eventsArray[0].address + '</span>';
+        }
 
         popupElement.classList.remove('map-popup--hidden');
 

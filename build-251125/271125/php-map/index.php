@@ -13,6 +13,10 @@ $APPLICATION->AddHeadString('<link rel="preload" href="img/tuesday.svg" as="imag
 $APPLICATION->AddHeadString('<link rel="preload" href="img/bg-full/heart-white.svg" as="image">');
 $APPLICATION->AddHeadString('<style>#chak-chak {font-family: \'Inter\', sans-serif;font-weight: 400;}</style>');
 $APPLICATION->SetAdditionalCSS("/culture-of-charity/shchedryy-shchak-shchak/css/style.css");
+
+//ini_set('display_errors', 1);
+//error_reporting(E_ALL);
+
 ?>
 
 <div id="chak-chak">
@@ -289,6 +293,143 @@ $APPLICATION->IncludeComponent(
 <script src="/culture-of-charity/shchedryy-shchak-shchak/bundle.js"></script>
 <script src="/culture-of-charity/shchedryy-shchak-shchak/custom.js"></script>
 
+<?php
+use Bitrix\Main\Loader;
+
+Loader::includeModule('iblock');
+
+//$iblocks = [24, 25, 26]; // районы, НКО, арт
+$iblocks = [25]; // НКО
+$eventsData = [];
+
+foreach ($iblocks as $iblockId) {
+
+  $res = CIBlockElement::GetList(
+      ['SORT' => 'ASC'],
+      ['IBLOCK_ID' => $iblockId, 'ACTIVE' => 'Y'],
+      false,
+      false,
+      [
+          'ID',
+          'NAME',
+          'DETAIL_PAGE_URL',
+          'DETAIL_TEXT',
+          'PREVIEW_PICTURE',
+          'PROPERTY_WHEN',
+          'PROPERTY_TIME',
+          'PROPERTY_ADDRESS',
+          'PROPERTY_MAP_COORDS',
+      ]
+  );
+
+  while ($item = $res->GetNext()) {
+
+    // --- Координаты ---
+    $rawCoords = $item['PROPERTY_MAP_COORDS_VALUE'] ?? '';
+
+// если массив → берем первое значение
+    if (is_array($rawCoords)) {
+      $rawCoords = reset($rawCoords);
+    }
+
+    $coords = trim((string)$rawCoords);
+
+// парсим
+    $coordsArr = array_map('floatval', explode(',', $coords));
+
+    if (count($coordsArr) !== 2) {
+      continue; // пропускаем ошибочные данные
+    }
+
+    $lat = $coordsArr[0];
+    $lon = $coordsArr[1];
+
+    /*
+        -------------------------
+        АВТО-ОПРЕДЕЛЕНИЕ ФОРМАТА
+        -------------------------
+
+        LAT в РФ ≈ 54–56
+        LON в РФ ≈ 48–50
+
+        Возможные ситуации:
+        1) LAT ~55 и LON ~49 → всё ок
+        2) LAT ~49 и LON ~55 → перевёрнуто → меняем
+        3) LAT и LON ≈55 (например оба 55.x) → проверяем разницу
+           — у LON всегда должно быть МЕНЬШЕе число чем у LAT в Татарстане
+    */
+
+    $latValid = ($lat > 54 && $lat < 57);
+    $lonValid = ($lon > 48 && $lon < 51);
+
+// случай: LAT и LON на своих местах
+    if ($latValid && $lonValid) {
+      // всё хорошо
+    }
+// случай: вероятно LON,LAT → переворачиваем
+    elseif (($lon > 54 && $lon < 57) && ($lat > 48 && $lat < 51)) {
+      $tmp = $lat;
+      $lat = $lon;
+      $lon = $tmp;
+    }
+// случай: оба ~55 → проверяем по "кто больше"
+    elseif (abs($lat - $lon) < 2) {
+      // если первое число > второго — это LAT,LON
+      if ($lat < $lon) {
+        // значит перепутано → меняем
+        $tmp = $lat;
+        $lat = $lon;
+        $lon = $tmp;
+      }
+    }
+// иначе ничего не делаем — остаётся как есть
+
+// собираем нормализованную пару
+    $coordsArr = [$lat, $lon];
+
+    $coordKey = implode(',', $coordsArr);
+
+    if (!isset($eventsData[$coordKey])) {
+      $eventsData[$coordKey] = [
+          'id'     => md5($coordKey),
+          'coords' => $coordsArr,
+          'events' => []
+      ];
+    }
+
+
+// --- Картинка ---
+    $img = '';
+    if ($item['PREVIEW_PICTURE']) {
+      $img = CFile::GetPath($item['PREVIEW_PICTURE']);
+    }
+
+// --- Данные события ---
+    $eventsData[$coordKey]['events'][] = [
+        'eventId'  => (int)$item['ID'],
+        'title'    => (string)$item['NAME'],
+        'image'    => (string)$img,
+        'imageAlt' => (string)$item['NAME'],
+        'info'     => trim($item['PROPERTY_WHEN_VALUE'] . ' ' . $item['PROPERTY_TIME_VALUE']),
+        'text'     => (string)$item['DETAIL_TEXT'],
+        'address'  => (string)$item['PROPERTY_ADDRESS_VALUE'],
+        'iblock'   => (int)$iblockId,
+    ];
+
+  }
+}
+//echo "<pre>";
+//var_dump($eventsData);
+//exit;
+
+// отдаём как простой массив
+$markersJson = json_encode(array_values($eventsData), JSON_UNESCAPED_UNICODE);
+?>
+
+  <script>
+      window.MARKERS_FROM_BITRIX = <?= $markersJson ?>;
+  </script>
+
 
 <script
   data-plugins="transform-modules-umd"
@@ -299,5 +440,5 @@ $APPLICATION->IncludeComponent(
   data-plugins="transform-modules-umd"
   data-presets="react, typescript"
   type="text/babel"
-  src="map/map-nko.js"></script>
+  src="map/map-nko-php.js"></script>
 <? require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>

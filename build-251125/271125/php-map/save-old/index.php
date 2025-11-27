@@ -13,6 +13,10 @@ $APPLICATION->AddHeadString('<link rel="preload" href="img/tuesday.svg" as="imag
 $APPLICATION->AddHeadString('<link rel="preload" href="img/bg-full/heart-white.svg" as="image">');
 $APPLICATION->AddHeadString('<style>#chak-chak {font-family: \'Inter\', sans-serif;font-weight: 400;}</style>');
 $APPLICATION->SetAdditionalCSS("/culture-of-charity/shchedryy-shchak-shchak/css/style.css");
+
+//ini_set('display_errors', 1);
+//error_reporting(E_ALL);
+
 ?>
 
 <div id="chak-chak">
@@ -289,6 +293,126 @@ $APPLICATION->IncludeComponent(
 <script src="/culture-of-charity/shchedryy-shchak-shchak/bundle.js"></script>
 <script src="/culture-of-charity/shchedryy-shchak-shchak/custom.js"></script>
 
+<?php
+use Bitrix\Main\Loader;
+
+Loader::includeModule('iblock');
+
+//$iblocks = [24, 25, 26]; // районы, НКО, арт
+$iblocks = [25]; // НКО
+$eventsData = [];
+
+foreach ($iblocks as $iblockId) {
+
+  $res = CIBlockElement::GetList(
+      ['SORT' => 'ASC'],
+      ['IBLOCK_ID' => $iblockId, 'ACTIVE' => 'Y'],
+      false,
+      false,
+      [
+          'ID',
+          'NAME',
+          'DETAIL_PAGE_URL',
+          'DETAIL_TEXT',
+          'PREVIEW_PICTURE',
+          'PROPERTY_WHEN',
+          'PROPERTY_TIME',
+          'PROPERTY_ADDRESS',
+          'PROPERTY_MAP_COORDS',
+      ]
+  );
+
+  while ($item = $res->GetNext()) {
+
+    // ---- Координаты ----
+//    $coords = trim($item['PROPERTY_MAP_COORDS_VALUE']);
+//    if (!$coords) continue;
+
+//    $coords = trim($item['PROPERTY_MAP_COORDS_VALUE'] ?? '');
+//    if (!$coords || strpos($coords, ',') === false) continue;
+
+    // всегда приводим значение к строке
+    $rawCoords = $item['PROPERTY_MAP_COORDS_VALUE'] ?? '';
+
+// если массив → берем первый элемент
+    if (is_array($rawCoords)) {
+      $rawCoords = reset($rawCoords);
+    }
+
+// привели к строке и почистили
+    $coords = trim((string)$rawCoords);
+
+// проверяем, что строка действительно: "55.123, 49.123"
+    if (!preg_match('/^-?\d+(\.\d+)?\s*,\s*-?\d+(\.\d+)?$/', $coords)) {
+      continue; // координаты мусор — пропускаем, НО НЕ ПАДАЕМ
+    }
+//
+//    $coordsArr = array_map('floatval', explode(',', $coords));
+//    $coordKey = implode(',', $coordsArr);
+
+    // log
+//    if (!preg_match(...)) {
+//      \Bitrix\Main\Diag\Debug::writeToFile(
+//          ["bad_coords" => $rawCoords, "item" => $item["ID"]],
+//          "Bad MAP_COORDS",
+//          "/upload/log_map_errors.log"
+//      );
+//      continue;
+//    }
+  //
+
+    $coordsArr = array_map('floatval', explode(',', $coords));
+    $coordKey = implode(',', $coordsArr);
+
+    if (!isset($eventsData[$coordKey])) {
+      $eventsData[$coordKey] = [
+          'id'     => md5($coordKey),
+          'coords' => $coordsArr,
+          'events' => []
+      ];
+    }
+
+    // ---- Картинка ----
+    $img = '';
+    if ($item['PREVIEW_PICTURE']) {
+      $img = CFile::GetPath($item['PREVIEW_PICTURE']);
+    }
+
+    // ---- Сбор данных мероприятия ----
+//    $eventsData[$coordKey]['events'][] = [
+//        'eventId'  => $item['ID'],
+//        'title'    => $item['NAME'],
+//        'image'    => $img,
+//        'imageAlt' => $item['NAME'],
+//        'info'     => trim($item['PROPERTY_WHEN_VALUE'] . ' ' . $item['PROPERTY_TIME_VALUE']),
+//        'text'     => $item['DETAIL_TEXT'],
+//        'address'  => $item['PROPERTY_ADDRESS_VALUE'],
+//        'iblock'   => $iblockId,
+//    ];
+    $eventsData[$coordKey]['events'][] = [
+        'eventId'  => (int)$item['ID'],
+        'title'    => (string)$item['NAME'],
+        'image'    => (string)$img,
+        'imageAlt' => (string)$item['NAME'],
+        'info'     => (string)trim($item['PROPERTY_WHEN_VALUE'] . ' ' . $item['PROPERTY_TIME_VALUE']),
+        'text'     => (string)$item['DETAIL_TEXT'],  // <--- критично!
+        'address'  => (string)$item['PROPERTY_ADDRESS_VALUE'],
+        'iblock'   => (int)$iblockId,
+    ];
+  }
+}
+//echo "<pre>";
+//var_dump($eventsData);
+//exit;
+
+// отдаём как простой массив
+$markersJson = json_encode(array_values($eventsData), JSON_UNESCAPED_UNICODE);
+?>
+
+  <script>
+      window.MARKERS_FROM_BITRIX = <?= $markersJson ?>;
+  </script>
+
 
 <script
   data-plugins="transform-modules-umd"
@@ -299,5 +423,5 @@ $APPLICATION->IncludeComponent(
   data-plugins="transform-modules-umd"
   data-presets="react, typescript"
   type="text/babel"
-  src="map/map-nko.js"></script>
+  src="map/map-nko-php.js"></script>
 <? require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>
