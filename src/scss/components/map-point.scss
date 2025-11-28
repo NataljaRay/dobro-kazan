@@ -45,3 +45,42 @@
     font-weight: 700;
     color: var(--color-white);
 }
+
+
+/* Красный (без координат) */
+.map-point--no-coords {
+    .map-point__inner {
+        background-color: var(--color-accent);
+        &:before {
+            background-color: inherit;
+        }
+    }
+
+    &.map-point--current {
+        .map-point__inner {
+            background-color: #94020C;
+            &:before {
+                background-color: inherit;
+            }
+        }
+    }
+}
+
+/* Зелёный (онлайн) */
+.map-point--online {
+    .map-point__inner {
+        background-color: var(--color-cold);
+        &:before {
+            background-color: inherit;
+        }
+    }
+
+    &.map-point--current {
+        .map-point__inner {
+            background-color: #1A3988;
+            &:before {
+                background-color: inherit;
+            }
+        }
+    }
+}
