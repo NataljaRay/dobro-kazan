@@ -1,4 +1,6 @@
-// import { FIRST_MARKER_PROPS, SECOND_MARKER_PROPS, LOCATION } from 'map/variables';
+// map-nko-cluster.js
+// Упрощённая кластеризация + автоцентрирование для Yandex Maps v3
+
 import { InfoMessage } from 'map/common';
 
 window.map = null;
@@ -13,37 +15,43 @@ async function main() {
         YMapDefaultSchemeLayer,
         YMapDefaultFeaturesLayer,
         YMapControls,
-        YMapMarker
+        YMapMarker,
+        YMapListener,
     } = ymaps3;
 
-    // -------------------------------------------
-    // 1. Данные, которые пришли из PHP
-    // -------------------------------------------
-    const MARKERS = window.MARKERS_FROM_BITRIX || [];
+    // ------------------------
+    // 1. Загружаем данные
+    // ------------------------
 
-    // -------------------------------------------
+    // Для локального теста — из JSON
+    const MARKERS = await fetch('map/events-nko-test.json').then(r => r.json());
+
+    // Массив текущих маркеров на карте (кластеров)
+    const renderedMarkers = [];
+
+    // ------------------------
     // 2. Создаём карту
-    // -------------------------------------------
+    // ------------------------
 
     const map = new YMap(
         document.getElementById('map'),
         {
             location: {
                 center: [49.1, 55.8],
-                zoom: 8
-            }
+                zoom: 8,
+            },
         },
         [
             new YMapDefaultSchemeLayer(),
-            new YMapDefaultFeaturesLayer()
+            new YMapDefaultFeaturesLayer(),
         ]
     );
 
     window.map = map;
 
-    // -------------------------------------------
+    // ------------------------
     // 3. Попап — InfoMessage
-    // -------------------------------------------
+    // ------------------------
     const infoMessage = new InfoMessage({ text: '' });
 
     map.addChild(
@@ -67,9 +75,9 @@ async function main() {
     const closeButton = popupElement.querySelector('.map-popup__close');
     const mapContainer = document.getElementById('map');
 
-    // -------------------------------------------
+    // ------------------------
     // 4. Рендер мероприятий в попап
-    // -------------------------------------------
+    // ------------------------
 
     function updatePopup(eventsArray) {
         const popupHtmlBase = eventsArray.map(event => `
@@ -83,6 +91,7 @@ async function main() {
                              alt="${event.imageAlt}">
                     </div>
                     <div class="map-popup__info-text">
+                      <div class="map-popup__info-row info"></div>
                       <div class="map-popup__info-row when"></div>
                       <div class="map-popup__info-row time"></div>
                       <div class="map-popup__info-row address"></div>
@@ -106,6 +115,7 @@ async function main() {
             const whenEl = evBlock.querySelector('.when');
             const timeEl = evBlock.querySelector('.time');
             const addressEl = evBlock.querySelector('.address');
+            const infoEl = evBlock.querySelector('.info');
 
             if (event.when) {
                 whenEl.innerHTML = 'Когда: <span>' + event.when + '</span>';
@@ -118,7 +128,12 @@ async function main() {
             if (event.address) {
                 addressEl.innerHTML = 'Где: <span>' + event.address + '</span>';
             }
+
+            if (!event.when && !event.time && !event.address && event.info) {
+                infoEl.innerHTML = event.info;
+            }
         });
+
 
         popupElement.classList.remove('map-popup--hidden');
         popupContent.scrollTop = 0;
@@ -137,12 +152,11 @@ async function main() {
     popupElement.addEventListener('click', e => e.stopPropagation());
     mapContainer.addEventListener('click', closeInfo);
 
-    // -------------------------------------------
+    // ------------------------
     // 5. Создание маркера
-    // -------------------------------------------
+    // ------------------------
 
     function createCustomMarker(markerData) {
-
         const markerEl = document.createElement('div');
         markerEl.className = 'map-point';
         markerEl.dataset.markerId = markerData.id;
@@ -176,39 +190,110 @@ async function main() {
             .forEach(p => p.classList.remove('map-point--current'));
     }
 
-    // -------------------------------------------
-    // 6. Добавляем маркеры на карту
-    // -------------------------------------------
+    // ------------------------
+    // 6. Кластеризация
+    // ------------------------
 
-    MARKERS.forEach(markerData => {
-        map.addChild(createCustomMarker(markerData));
-    });
+    function getClusterRadius(zoom) {
+        console.log(zoom)
+        // Чем меньше зум, тем больше радиус — тем сильнее "схлопываем".
+        if (zoom <= 5) return 2.0;    // очень далеко
+        if (zoom <= 6) return 1.0;
+        if (zoom <= 7) return 0.5;
+        if (zoom <= 8) return 0.25;
+        if (zoom <= 9) return 0.12;
+        if (zoom <= 10) return 0.06;
+        if (zoom <= 11) return 0.03;
+        if (zoom <= 12) return 0.01;
+        // return 0.03;                  // почти не группируем
+        return 0;                  // почти не группируем
+    }
 
-    // -------------------------------------------
-    // 7. Авто-центрирование карты по всем маркерам
-    // -------------------------------------------
+    function buildClusters(markers, zoom) {
+        const radius = getClusterRadius(zoom);
+        const clusters = [];
+
+        markers.forEach(src => {
+            const [lon, lat] = src.coords;
+            let targetCluster = null;
+
+            for (const cluster of clusters) {
+                const [clon, clat] = cluster.coords;
+                if (Math.abs(lon - clon) <= radius && Math.abs(lat - clat) <= radius) {
+                    targetCluster = cluster;
+                    break;
+                }
+            }
+
+            if (!targetCluster) {
+                targetCluster = {
+                    id: src.id,
+                    coords: src.coords.slice(),
+                    events: [],
+                };
+                clusters.push(targetCluster);
+            }
+
+            // Добавляем все события в кластер
+            targetCluster.events = targetCluster.events.concat(src.events);
+        });
+
+        return clusters;
+    }
+
+    function renderMarkersForZoom(zoom) {
+        // Удаляем старые маркеры
+        renderedMarkers.forEach(m => map.removeChild(m));
+        renderedMarkers.length = 0;
+
+        const clusters = buildClusters(MARKERS, zoom);
+
+        clusters.forEach(clusterData => {
+            const marker = createCustomMarker(clusterData);
+            map.addChild(marker);
+            renderedMarkers.push(marker);
+        });
+    }
+
+    // ------------------------
+    // 7. Авто-центрирование по всем маркерам
+    // ------------------------
 
     fitMapToMarkers(map, MARKERS);
+
+    // ------------------------
+    // 8. Слушатель изменений карты (зум / перемещение)
+    // ------------------------
+
+    const listener = new YMapListener({
+        layer: 'any',
+        onUpdate: ({ location }) => {
+            const zoom = location.zoom;
+            renderMarkersForZoom(zoom);
+        }
+    });
+
+    map.addChild(listener);
+
+    // На всякий случай — первая отрисовка (если onUpdate по каким-то причинам не вызвался сразу)
+    renderMarkersForZoom(8);
 }
 
-
 /* =======================================================
-      АВТО-ЦЕНТРИРОВАНИЕ ЯНДЕКС КАРТЫ V3
+      АВТО-ЦЕНТРИРОВАНИЕ ЯНДЕКС КАРТЫ V3 ПО МАРКЕРАМ
 ========================================================= */
 
 function fitMapToMarkers(map, markers) {
-
     if (!markers.length) return;
 
     const coords = markers.map(m => m.coords);
 
-    // Если один маркер → просто центрируем
     if (coords.length === 1) {
         map.update({
             location: {
                 center: coords[0],
-                zoom: 13
-            }
+                zoom: 13,
+            },
         });
         return;
     }
@@ -227,15 +312,15 @@ function fitMapToMarkers(map, markers) {
 
     const bounds = [
         [minLon, minLat],   // southwest
-        [maxLon, maxLat]    // northeast
+        [maxLon, maxLat],   // northeast
     ];
 
     map.update({
         location: {
-            bounds: bounds
+            bounds: bounds,
         },
         behavior: {
-            smooth: true
-        }
+            smooth: true,
+        },
     });
 }

@@ -8,36 +8,31 @@ main();
 async function main() {
     await ymaps3.ready;
 
-    const { YMap, YMapDefaultSchemeLayer, YMapDefaultFeaturesLayer, YMapControls, YMapMarker } = ymaps3;
+    const {
+        YMap,
+        YMapDefaultSchemeLayer,
+        YMapDefaultFeaturesLayer,
+        YMapControls,
+        YMapMarker
+    } = ymaps3;
 
-    // ------------------------
-    // 1. Загружаем данные из JSON
-    // ------------------------
-
+    // -------------------------------------------
+    // 1. Данные, которые пришли из PHP
+    // -------------------------------------------
+    // const MARKERS = window.MARKERS_FROM_BITRIX || [];
+// Для локального теста — из JSON
     const MARKERS = await fetch('map/events-nko-test.json').then(r => r.json());
-    // const MARKERS = window.MARKERS_FROM_BITRIX;
-    // console.log('MARKERS', MARKERS)
-
-    // ------------------------
+    // -------------------------------------------
     // 2. Создаём карту
-    // ------------------------
-
-    const isMobile = window.matchMedia('(max-width: 480px)').matches;
-    const isIpad = window.matchMedia('(max-width: 1023px)').matches;
-
-    // const mapCenter = isMobile ? [49.175081, 55.796951] : [49.145081, 55.790951];
-    // const mapZoom   = isMobile ? 11 : 12;
-    // const mapCenter = isMobile ? [49.075081, 55.796951] : (isIpad ? [49.045081, 55.796951] : [49.005081, 55.799951]);
-    // const mapZoom   = isMobile ? 9 : (isIpad ? 10 : 11);
-
-    const mapCenter = isMobile ? [50.575081, 55.796951] : (isIpad ? [50.445081, 55.796951] : [50.805081, 55.799951]);
-    const mapZoom   = isMobile ? 6 : (isIpad ? 7 : 8);
-
+    // -------------------------------------------
 
     const map = new YMap(
         document.getElementById('map'),
         {
-            location: { center: mapCenter, zoom: mapZoom }
+            location: {
+                center: [49.1, 55.8],
+                zoom: 8
+            }
         },
         [
             new YMapDefaultSchemeLayer(),
@@ -45,21 +40,16 @@ async function main() {
         ]
     );
 
-    // ------------------------
-    // 3. InfoMessage — контейнер для попапа
-    // ------------------------
+    window.map = map;
 
+    // -------------------------------------------
+    // 3. Попап — InfoMessage
+    // -------------------------------------------
     const infoMessage = new InfoMessage({ text: '' });
 
     map.addChild(
         new YMapControls({ position: 'top right' }).addChild(infoMessage)
     );
-
-    const mapContainer = document.getElementById('map');
-
-    // ------------------------
-    // 4. Создаём единственный попап
-    // ------------------------
 
     const popupElement = document.createElement('div');
     popupElement.classList.add('map-popup', 'map-popup--hidden');
@@ -76,10 +66,11 @@ async function main() {
     const popupContent = popupElement.querySelector('.map-popup__content');
     const popupList = popupElement.querySelector('.map-popup__list');
     const closeButton = popupElement.querySelector('.map-popup__close');
+    const mapContainer = document.getElementById('map');
 
-    // ------------------------
-    // 5. Рендер мероприятий в попап
-    // ------------------------
+    // -------------------------------------------
+    // 4. Рендер мероприятий в попап
+    // -------------------------------------------
 
     function updatePopup(eventsArray) {
         const popupHtmlBase = eventsArray.map(event => `
@@ -93,9 +84,9 @@ async function main() {
                              alt="${event.imageAlt}">
                     </div>
                     <div class="map-popup__info-text">
-                      <div id="when"></div>
-                      <div id="time"></div>
-                      <div id="address"></div>
+                      <div class="map-popup__info-row when"></div>
+                      <div class="map-popup__info-row time"></div>
+                      <div class="map-popup__info-row address"></div>
                     </div>
                 </div>
 
@@ -107,24 +98,30 @@ async function main() {
 
         popupList.innerHTML = popupHtmlBase;
 
-        const popupInfoWhen = document.querySelector('#when');
-        const popupInfoTime = document.querySelector('#time');
-        const popupInfoAddress = document.querySelector('#address');
+        // заполняем каждое событие отдельно
+        const eventBlocks = popupList.querySelectorAll('.map-popup__event');
 
-        if(eventsArray[0].when && (eventsArray[0].when != '')){
-            popupInfoWhen.innerHTML = 'Когда: <span>' + eventsArray[0].when + '</span>';
-        }
+        eventBlocks.forEach((evBlock, index) => {
+            const event = eventsArray[index];
 
-        if(eventsArray[0].time && (eventsArray[0].time != '')){
-            popupInfoTime.innerHTML = 'Во сколько: <span>' + eventsArray[0].time + '</span>';
-        }
+            const whenEl = evBlock.querySelector('.when');
+            const timeEl = evBlock.querySelector('.time');
+            const addressEl = evBlock.querySelector('.address');
 
-        if(eventsArray[0].address && (eventsArray[0].address != '')){
-            popupInfoAddress.innerHTML = 'Где: <span>' + eventsArray[0].address + '</span>';
-        }
+            if (event.when) {
+                whenEl.innerHTML = 'Когда: <span>' + event.when + '</span>';
+            }
+
+            if (event.time) {
+                timeEl.innerHTML = 'Во сколько: <span>' + event.time + '</span>';
+            }
+
+            if (event.address) {
+                addressEl.innerHTML = 'Где: <span>' + event.address + '</span>';
+            }
+        });
 
         popupElement.classList.remove('map-popup--hidden');
-
         popupContent.scrollTop = 0;
     }
 
@@ -132,10 +129,6 @@ async function main() {
         popupElement.classList.add('map-popup--hidden');
         changePointColor();
     }
-
-    // ------------------------
-    // 6. Обработчики закрытия попапа
-    // ------------------------
 
     closeButton.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -145,9 +138,9 @@ async function main() {
     popupElement.addEventListener('click', e => e.stopPropagation());
     mapContainer.addEventListener('click', closeInfo);
 
-    // ------------------------
-    // 7. Создание маркера
-    // ------------------------
+    // -------------------------------------------
+    // 5. Создание маркера
+    // -------------------------------------------
 
     function createCustomMarker(markerData) {
 
@@ -156,22 +149,15 @@ async function main() {
         markerEl.dataset.markerId = markerData.id;
 
         markerEl.innerHTML = `
-        <div class="map-point__inner">
-            <span class="map-point__counter">${markerData.events.length}</span>
-        </div>
-    `;
+            <div class="map-point__inner">
+                <span class="map-point__counter">${markerData.events.length}</span>
+            </div>
+        `;
 
         const marker = new YMapMarker(
             { coordinates: markerData.coords },
             markerEl
         );
-
-        // попытка сделать онлайн
-        // Array.prototype.forEach.call(markerData.events, event => {
-        //     if(event.address == 'онлайн' || event.address == 'Онлайн'){
-        //         console.log(event)
-        //     }
-        // });
 
         markerEl.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -191,11 +177,66 @@ async function main() {
             .forEach(p => p.classList.remove('map-point--current'));
     }
 
-    // ------------------------
-    // 8. Добавляем маркеры
-    // ------------------------
+    // -------------------------------------------
+    // 6. Добавляем маркеры на карту
+    // -------------------------------------------
 
     MARKERS.forEach(markerData => {
         map.addChild(createCustomMarker(markerData));
+    });
+
+    // -------------------------------------------
+    // 7. Авто-центрирование карты по всем маркерам
+    // -------------------------------------------
+
+    fitMapToMarkers(map, MARKERS);
+}
+
+
+/* =======================================================
+      АВТО-ЦЕНТРИРОВАНИЕ ЯНДЕКС КАРТЫ V3
+========================================================= */
+
+function fitMapToMarkers(map, markers) {
+
+    if (!markers.length) return;
+
+    const coords = markers.map(m => m.coords);
+
+    // Если один маркер → просто центрируем
+    if (coords.length === 1) {
+        map.update({
+            location: {
+                center: coords[0],
+                zoom: 13
+            }
+        });
+        return;
+    }
+
+    let minLon = Infinity;
+    let minLat = Infinity;
+    let maxLon = -Infinity;
+    let maxLat = -Infinity;
+
+    coords.forEach(([lon, lat]) => {
+        if (lon < minLon) minLon = lon;
+        if (lat < minLat) minLat = lat;
+        if (lon > maxLon) maxLon = lon;
+        if (lat > maxLat) maxLat = lat;
+    });
+
+    const bounds = [
+        [minLon, minLat],   // southwest
+        [maxLon, maxLat]    // northeast
+    ];
+
+    map.update({
+        location: {
+            bounds: bounds
+        },
+        behavior: {
+            smooth: true
+        }
     });
 }
