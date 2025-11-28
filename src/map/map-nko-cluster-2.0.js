@@ -28,6 +28,8 @@ async function main() {
 
     // Массив текущих маркеров на карте (кластеров)
     const renderedMarkers = [];
+    // для вычисления кол-ва маркеров
+    let lastClusterCount = null;
 
     // ------------------------
     // 2. Создаём карту
@@ -205,8 +207,7 @@ async function main() {
         if (zoom <= 10) return 0.06;
         if (zoom <= 11) return 0.03;
         if (zoom <= 12) return 0.01;
-        // return 0.03;                  // почти не группируем
-        return 0;                  // почти не группируем
+        return 0;                  // не группируем
     }
 
     function buildClusters(markers, zoom) {
@@ -242,12 +243,26 @@ async function main() {
     }
 
     function renderMarkersForZoom(zoom) {
+        // Строим кластеры
+        const clusters = buildClusters(MARKERS, zoom);
+
+        // Проверяем — изменилось ли количество кластеров
+        const currentCount = clusters.length;
+        const countChanged = lastClusterCount !== currentCount;
+        lastClusterCount = currentCount;
+
+        // Если нужно — можешь использовать флаг countChanged
+        if (countChanged) {
+            // console.log("Количество маркеров изменилось:", currentCount);
+            // тут можно закрывать попап, выделение маркера и т.п.
+            closeInfo();
+        }
+
         // Удаляем старые маркеры
         renderedMarkers.forEach(m => map.removeChild(m));
         renderedMarkers.length = 0;
 
-        const clusters = buildClusters(MARKERS, zoom);
-
+        // Добавляем новые
         clusters.forEach(clusterData => {
             const marker = createCustomMarker(clusterData);
             map.addChild(marker);
@@ -255,11 +270,16 @@ async function main() {
         });
     }
 
+
     // ------------------------
     // 7. Авто-центрирование по всем маркерам
     // ------------------------
 
     fitMapToMarkers(map, MARKERS);
+
+    // Запоминаем предыдущий зум, чтобы не пересчитывать кластеры при простом движении карты
+    let lastZoom = null;
+
 
     // ------------------------
     // 8. Слушатель изменений карты (зум / перемещение)
@@ -269,9 +289,17 @@ async function main() {
         layer: 'any',
         onUpdate: ({ location }) => {
             const zoom = location.zoom;
+
+            // если зум не изменился — ничего не делаем
+            if (zoom === lastZoom) {
+                return;
+            }
+
+            lastZoom = zoom;
             renderMarkersForZoom(zoom);
         }
     });
+
 
     map.addChild(listener);
 
