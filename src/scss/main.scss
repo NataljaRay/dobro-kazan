@@ -73,6 +73,34 @@ body {}
   }
 
 
+  /* кастомизация скроллов */
+  .media--main div.media__txt,
+  .map-popup__content  {
+    scrollbar-gutter: stable;
+
+    &::-webkit-scrollbar {
+      width: 5px!important;
+      height: 5px!important;
+      border-radius: 5px!important;
+      background: #DFDFDF!important;
+    }
+    &::-webkit-scrollbar-track {
+      width: 5px!important;
+      background: #DFDFDF!important;
+      border-radius: 5px!important;
+    }
+    &::-webkit-scrollbar-thumb {
+      width: 5px!important;
+      background: #B7B7B7!important;
+      border-radius: 5px!important;
+    }
+
+    @-moz-document url-prefix() {
+      scrollbar-color: #B7B7B7 #DFDFDF!important;
+      scrollbar-width: thin!important;
+    }
+  }
+
   /* кнопка 'Прими участие' */
   #participation {
     //margin: 31px 298px;

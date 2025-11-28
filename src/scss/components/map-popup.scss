@@ -64,6 +64,8 @@
   transform: translateY(-10px);
 }
 
+
+.media__txt-wrapper,
 .map-popup__content {
   display: flex;
   flex-direction: column;
@@ -75,31 +77,6 @@
   overflow-x: hidden;
   overflow-y: auto;
   padding-right: 25px;
-
-  // custom-scroll
-  scrollbar-gutter: stable;
-
-  &::-webkit-scrollbar {
-    width: 5px!important;
-    height: 5px!important;
-    border-radius: 5px!important;
-    background: #DFDFDF!important;
-  }
-  &::-webkit-scrollbar-track {
-    width: 5px!important;
-    background: #DFDFDF!important;
-    border-radius: 5px!important;
-  }
-  &::-webkit-scrollbar-thumb {
-    width: 5px!important;
-    background: #B7B7B7!important;
-    border-radius: 5px!important;
-  }
-
-  @-moz-document url-prefix() {
-    scrollbar-color: #B7B7B7 #DFDFDF!important;
-    scrollbar-width: thin!important;
-  }
 
 
   @include mobile {

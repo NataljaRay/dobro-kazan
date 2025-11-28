@@ -32,14 +32,11 @@
       }
     }
     &-img-wrap {
-      //@include square(295px);
       width: 100%;
-      //height: auto;
       border-radius: 20px;
       overflow: hidden;
       height: 296px;
       @media (max-width: 412px) {
-        width: 64vw;
         height: 64vw;
       }
     }

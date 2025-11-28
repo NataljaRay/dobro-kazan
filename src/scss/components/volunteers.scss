@@ -19,18 +19,10 @@
 
   .guides-carousel__slide-img-wrap {
     border-radius: 100%;
-    //height: 296px;
-    //
-    //@media (max-width: 412px) {
-    //  width: 64vw;
-    //  height: 64vw;
-    //}
-    //
-    //a {width: 100%;height: 100%;}
+    @media (max-width: 412px) {
+      width: 64vw;
+    }
   }
-  //.guides-carousel__slide-img {
-  //  height: inherit;
-  //}
 
   .guides-carousel__slide-info {min-height:158px;}
 }
