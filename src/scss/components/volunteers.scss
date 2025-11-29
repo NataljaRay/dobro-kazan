@@ -25,4 +25,17 @@
   }
 
   .guides-carousel__slide-info {min-height:158px;}
+
+  .slide-txt-container {
+    .slide-txt:first-child {
+      font-weight: 600;
+    }
+    p {
+      margin-top: 5px;
+      margin-bottom: 0;
+      &:first-child {
+        font-weight: 600;
+      }
+    }
+  }
 }

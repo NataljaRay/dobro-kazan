@@ -1,0 +1,84 @@
+<?php
+if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
+$this->setFrameMode(true);
+?>
+<section class="section--volunteers container">
+  <h3 class="section__title section__title--cold animate__animated animate__fadeInUp">Щедрые <br>волонтеры</h3>
+  <div class="volunteers">
+    <div class="volunteers__inner">
+      <div class="guides-carousel" id="volunteers-carousel">
+        <?php foreach($arResult["ITEMS"] as $arItem): ?>
+          <div class="guides-carousel__slide slide">
+            <div class="guides-carousel__slide-inner open-modal-link" data-id="<?= $arItem['ID'] ?>">
+              <div class="guides-carousel__slide-img-wrap slide-img-wrap">
+                <img class="guides-carousel__slide-img slide-img" src="<?= htmlspecialchars($arItem["PREVIEW_PICTURE"]["SRC"]) ?>" alt="Изображение">
+              </div>
+              <div class="guides-carousel__slide-info slide-info">
+                <p class="slide-title"><?= htmlspecialchars($arItem["NAME"]) ?></p>
+                <p class="slide-txt"><?= strip_tags($arItem["PREVIEW_TEXT"]) ?></p>
+              </div>
+            </div>
+          </div>
+        <?php endforeach; ?>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+        const html = document.querySelector('html');
+
+        // Находим элементы попапа для слайдов
+        const slidePopupWrapper = document.querySelector('.slide-popup-wrapper');
+        const slidePopup = document.getElementById('slide-popup');
+        const slidePopupContent = slidePopup.querySelector('.map-popup__content');
+        const slidePopupList = slidePopup.querySelector('.map-popup__list');
+        const slidePopupClose = slidePopup.querySelector('.map-popup__close');
+
+
+        document.querySelectorAll('.open-modal-link').forEach(function(link){
+            link.addEventListener('click', function(e){
+                e.preventDefault();
+                var id = this.getAttribute('data-id');
+
+                BX.ajax({
+                    url: '/ajax/volunteers/detail_text.php',
+                    method: 'POST',
+                    data: {ID: id},
+                    dataType: 'html',
+                    onsuccess: function(data) {
+
+                        slidePopupList.innerHTML = data;
+
+                        setTimeout(function () {
+                            html.classList.add('is-lock');
+                            slidePopupWrapper.classList.remove('slide-popup-wrapper--hidden');
+                        }, 200);
+                        setTimeout(function () {
+                            slidePopup.classList.remove('map-popup--hidden');
+                        }, 300);
+                        slidePopupContent.scrollTop = 0;
+
+                    },
+                    onfailure: function() {
+                        alert('Ошибка загрузки данных');
+                    }
+                });
+            });
+        });
+
+
+        // Закрытие попапа
+        slidePopupClose.addEventListener('click', () => {
+            slidePopupList.innerHTML = ''; // очищаем содержимое
+        });
+        document.body.addEventListener('click', () => {
+            slidePopupList.innerHTML = ''; // очищаем содержимое
+        });
+
+    });
+
+</script>
