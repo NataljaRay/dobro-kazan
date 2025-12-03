@@ -71,6 +71,11 @@ body {}
     overflow-x: hidden;
     background: linear-gradient(0.2deg, rgba(255, 255, 255, 0) 0.15%, #FFF9F2 4.58%, #88F7FF 14.39%, #5AD1EB 40.39%, #FFF9F2 92.24%, #FFFFFF 99.8%);
   }
+  ///* FIX: Telegram WebView + Slick */
+  //#nko-carousel .slick-slide {
+  //  display: block !important;
+  //  float: none !important;
+  //}
 
 
   /* кастомизация скроллов */

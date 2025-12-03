@@ -1,4 +1,8 @@
 .nko {
+  .guides-carousel {
+    min-height: 1px !important;
+    display: block !important;
+  }
 
   .guides-carousel__slide-inner {
     &:hover {
