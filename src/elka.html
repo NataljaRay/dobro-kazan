@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ёлка желаний</title>
+  <meta name="description" content="Добрая Казань. Ёлка желаний"/>
+  <link rel="icon" href="img/favicon/favicon.ico" type="image/x-icon">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css-elka/style.css">
+<!--  <link rel="preload" href="fonts/NauryzRedKeds.woff2" as="font" type="font/woff2" crossorigin>-->
+
+<!--  <link rel="preload" href="img/pyramid.svg" as="image">-->
+<!--  <link rel="preload" href="img/tuesday.svg" as="image">-->
+<!--  <link rel="preload" href="img/bg-full/heart-white.svg" as="image">-->
+
+<!--  <script type="text/javascript" src="assets/js/jquery-1.11.0.min.js"></script>-->
+<!--  <script type="text/javascript" src="assets/js/jquery-migrate-1.2.1.min.js"></script>-->
+<!--  <script type="text/javascript" src="assets/slick/slick.min.js"></script>-->
+
+  <style>
+    #elka {font-family: 'Inter', sans-serif;font-weight: 400;}
+    /*#chak-chak h1, #chak-chak .h1, #chak-chak h2, #chak-chak .h2, #chak-chak h3, #chak-chak .h3, #chak-chak h4, #chak-chak .h4, #chak-chak h5, #chak-chak .h5, #chak-chak h6, #chak-chak .h6 {*/
+    /*  font-family: "NauryzRedKeds", sans-serif;*/
+    /*  font-weight: 700;*/
+    /*  !*margin: 0;*!*/
+    /*  !*letter-spacing: 2px;*!*/
+    /*}*/
+  </style>
+
+</head>
+<body>
+<header class="header" style="display: none">
+  <div class="header__inner container">
+    <a aria-current="page" href="/"
+       class="router-link-active router-link-exact-active header__logo logo"
+       aria-label="Home">
+      <img class="logo" src="img/dobraya-logotype-white.svg">
+    </a>
+    <nav class="nav">
+      <a aria-current="page" href="/"
+         class="router-link-active router-link-exact-active"
+         aria-label="Elka">
+        Щедрый Щак-Щак
+      </a>
+      <a aria-current="page" href="elka.html"
+         class="router-link-active router-link-exact-active"
+         aria-label="Elka">
+        Ёлка желаний
+      </a>
+    </nav>
+  </div>
+</header>
+
+<!--<div class="body" style="max-width: 100%;">-->
+<div id="elka" class="body" style="max-width: 1440px;  margin: 0 auto;">
+  <div class="container1" >
+    <div class="conditions">
+      <h2 class="conditions__title">Ёлка желаний 2025-2026</h2>
+      <p class="conditions__date">
+        Акция начинается с 25 ноября 2025 года <br>и завершается 31 января 2026 года.
+      </p>
+      <div class="conditions__info">
+        <div class="conditions__text">
+          Для продолжения ознакомьтесь с положением и подтвердите согласие.
+        </div>
+        <a class="conditions__btn e-btn e-btn--conditions" href="/culture-of-charity/fairs-of-goodness/assets/elka-zhelaniy-2025.pdf" target="_blank">
+          Положение об акции
+        </a>
+      </div>
+
+      <div class="checkbox">
+        <input type="checkbox" id="consent" onchange="toggleLinks()">
+        <label for="consent">Я согласен с условиями акции</label>
+      </div>
+      <div id="error-message" class="error-message">
+      </div>
+      <div id="timer" class="timer"></div>
+
+    </div>
+
+    <div class="role">
+      <h2 class="role__title">Выберите роль</h2>
+      <div class="role__inner">
+        <div class="role__block">
+          <h3 class="role__block-title">Загадать желание</h3>
+          <p class="role__block-text">
+            Поделитесь новогодним желанием своего ребенка на сайте акции и дайте возможность увидеть её исполнителям.
+          </p>
+          <a class="role__btn e-btn role-link disabled" onclick="handleLinkClick(event)"
+             href="https://xn--j1ab.xn--80aanbeohciex.xn--p1ai/trustee/referral?code=0fed4518-e18b-43a4-98dd-e9c4724e99db" target="_blank">
+            Стать мечтателем
+          </a>
+        </div>
+        <div class="role__block">
+          <h3 class="role__block-title">Исполнить желание</h3>
+          <p class="role__block-text">
+            Станьте частью большого и доброго дела, подарив нуждающимся детям радость и новогоднее чудо.
+          </p>
+          <a class="role__btn e-btn role-link disabled" onclick="handleLinkClick(event)"
+             href="https://xn--j1ab.xn--80aanbeohciex.xn--p1ai/executor/referral?code=0fed4518-e18b-43a4-98dd-e9c4724e99db" target="_blank">
+            Стать исполнителем
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <h2 style="text-align: center; color:#f2f3f4">Выберите роль</h2>
+    <div class="blocks-container">
+      <div class="block block-dreamer">
+<!--        <img alt="Иллюстрация мечтателя" src="https://ctd-new.delion.ru/_next/static/media/home-dream.bd7b2895.svg">-->
+        <h3>Загадать желание</h3>
+        <p>
+          Поделитесь новогодним желанием своего ребенка на сайте акции и дайте возможность увидеть её исполнителям.
+        </p>
+        <a href="https://xn--j1ab.xn--80aanbeohciex.xn--p1ai/trustee/referral?code=0fed4518-e18b-43a4-98dd-e9c4724e99db" class="role-link disabled" onclick="handleLinkClick(event)">Стать мечтателем</a>
+      </div>
+      <div class="block block-helper">
+<!--        <img alt="Иллюстрация исполнителя" src="https://ctd-new.delion.ru/_next/static/media/home-application.d6330fe0.svg">-->
+        <h3>Исполнить желание</h3>
+        <!--<p class="helper-message" style="color: red;">
+          Будет доступно с 7 декабря 2024
+        </p>-->
+        <p>
+          Станьте частью большого и доброго дела, подарив нуждающимся детям радость и новогоднее чудо.
+        </p>
+        <a href="https://xn--j1ab.xn--80aanbeohciex.xn--p1ai/executor/referral?code=0fed4518-e18b-43a4-98dd-e9c4724e99db" class="role-link disabled" onclick="handleLinkClick(event)">Стать исполнителем</a>
+      </div>
+    </div>
+    <footer>
+      © 2024 Ёлка желаний Добрая Казань. </footer>
+  </div>
+</div>
+<!--</div>-->
+
+<footer class="footer" style="display: none">
+  <div class="footer__inner container">
+
+  </div>
+</footer>
+<style>body{margin: 0}</style>
+
+<script>
+    function toggleLinks() {
+        const checkbox = document.getElementById('consent');
+        const links = document.querySelectorAll('.role-link');
+        const errorMessage = document.getElementById('error-message');
+        errorMessage.textContent = ""; // Скрываем ошибку при переключении
+        links.forEach(link => {
+            link.classList.toggle('disabled', !checkbox.checked);
+        });
+    }
+
+    function handleLinkClick(event) {
+        const checkbox = document.getElementById('consent');
+        const errorMessage = document.getElementById('error-message');
+        if (!checkbox.checked) {
+            event.preventDefault(); // Предотвращаем переход по ссылке
+            errorMessage.textContent = "Нужно согласиться с условиями акции.";
+        }
+    }
+
+    function startCountdown() {
+        const endDate = new Date("2025-02-28T23:59:59").getTime();
+        const timerElement = document.getElementById('timer');
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const timeRemaining = endDate - now;
+
+            if (timeRemaining <= 0) {
+                timerElement.textContent = "Акция завершена.";
+                clearInterval(timerInterval);
+                return;
+            }
+
+            const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+            // timerElement.textContent = `До окончания акции осталось: ${days}д ${hours}ч ${minutes}м ${seconds}с`;
+        }
+
+        const timerInterval = setInterval(updateCountdown, 1000);
+        updateCountdown();
+    }
+
+    // window.onload = startCountdown;
+
+    // Генерация снежинок
+    function generateSnowflakes() {
+        const snowflakeContainer = document.body;
+        const snowflakeCount = 50; // Количество снежинок
+
+        for (let i = 0; i < snowflakeCount; i++) {
+            const snowflake = document.createElement("div");
+            snowflake.classList.add("snowflake");
+            snowflake.textContent = "❄";
+            snowflake.style.left = Math.random() * 100 + "vw"; // Случайное начальное положение по оси X
+            snowflake.style.animationDuration = Math.random() * 5 + 5 + "s"; // Случайная продолжительность падения
+            snowflake.style.fontSize = Math.random() * 20 + 15 + "px"; // Случайный размер снежинки
+            snowflakeContainer.appendChild(snowflake);
+        }
+    }
+
+    window.onload = function () {
+        // startCountdown();
+        // generateSnowflakes();
+    };
+</script>
+</body>
+</html>

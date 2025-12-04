@@ -5,7 +5,8 @@ $APPLICATION->SetAdditionalCss("/local/templates/main/custom_css/datatables.css"
 $APPLICATION->SetAdditionalCss("/local/templates/main/custom_css/datatables.min.css");
 
 $APPLICATION->SetTitle("Елка желаний");
-?><style>
+?>
+  <style>
         .body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -183,7 +184,9 @@ $APPLICATION->SetTitle("Елка желаний");
         .checkbox input {
             margin-right: 10px;
         }
-    </style> <script>
+    </style>
+
+  <script>
         function toggleLinks() {
             const checkbox = document.getElementById('consent');
             const links = document.querySelectorAll('.role-link');
@@ -312,4 +315,6 @@ $APPLICATION->SetTitle("Елка желаний");
 		</div>
  <footer>
 	© 2024 Ёлка желаний Добрая Казань. </footer>
-</div><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+</div>
+
+<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

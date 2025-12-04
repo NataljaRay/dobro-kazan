@@ -81,6 +81,12 @@ module.exports = {
             inject: true,
             async: ['app'],
         }),
+        new HtmlWebpackPlugin({
+            template: `${PAGES_DIR}/elka.html`,
+            filename: './elka.html',
+            inject: true,
+            async: ['app'],
+        }),
         new MiniCssExtractPlugin({
             filename: "css/style.css",
         }),
@@ -90,6 +96,7 @@ module.exports = {
                 {from: 'src/img', to: 'img'},
                 {from: 'src/assets', to: 'assets'},
                 {from: 'src/map', to: 'map'},
+                {from: 'src/css-elka', to: 'css-elka'},
             ],
         }),
         ...(!isProd

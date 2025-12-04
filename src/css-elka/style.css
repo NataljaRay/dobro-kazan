@@ -1,0 +1,336 @@
+#elka {
+    --green-main: #00818E;
+    --green-secondary: #11A4B3;
+    --text-color: #262626;
+    --text-color-secondary: #424242;
+}
+.body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    /*background: linear-gradient(to bottom, #f8fafc, #eef2f7);*/
+    position: relative;
+    /*background-image: url('https://cdn.er.ru/media/news/January2021/YAow6QMuFlHPJnl9nmLY.jpg');*/
+    background-size: cover;
+    background-position: center;
+    /*border-radius: 0 10px;*/
+}
+.body:before,
+.body:after {
+    content: '';
+    position: fixed;
+    background-color: pink;
+    display: block;
+    height: 100vh;
+    width: 100vw;
+
+
+}
+.body:before {
+    top: 0;
+    left: 0;
+    background: url(/img/elka/elka-bg-1.png) left top / contain no-repeat;
+    background-position-x: -100px;
+    z-index: -1;
+}
+.body:after {
+    bottom: 0;
+    right: 0;
+    background: url(/img/elka/elka-bg-2.png) right bottom / contain no-repeat;
+    background-position-x: 126%;
+    background-size: contain;
+    z-index: -2;
+}
+
+
+
+    /* Анимация снежинок */
+.snowflake {
+    position: absolute;
+    top: -50px;
+    color: white;
+    font-size: 1.5em;
+    pointer-events: none;
+    animation: fall 10s linear infinite;
+}
+
+/* Анимация падения снежинок */
+@keyframes fall {
+    to {
+        transform: translateY(100vh);
+    }
+}
+
+.header1 {
+    text-align: center;
+    background-color: rgba(76, 175, 80, 0.8);
+    color: white;
+}
+
+.container1 {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.conditions {
+    position: relative;
+    text-align: center;
+    /*margin: 10px 0;*/
+    padding: 20px;
+    /*background-color: rgba(255, 255, 255, 0.75);*/
+    /*border-radius: 8px;*/
+    border-radius: 30px;
+    overflow: hidden;
+    color: var(--text-color);
+    font-size: 1.2em; /* Увеличиваем шрифт */
+    max-width: 871px;
+    margin: 172px auto 140px;
+}
+
+.conditions::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /*background-image: url('https://cdn.er.ru/media/news/January2021/YAow6QMuFlHPJnl9nmLY.jpg');*/
+    /*background-size: cover;*/
+    /*background-position: center;*/
+    /*filter: blur(8px);*/
+    background-color: rgba(255, 255, 255, 0.75);
+    filter: blur(44px);
+    opacity: 0.5;
+    z-index: -1;
+}
+
+.conditions__title {
+    color: var(--green-main);
+    font-weight: 700;
+    font-size: 54px;
+    line-height: 1;
+    text-align: center;
+    /*margin-top: 0;*/
+    margin-bottom: 40px;
+}
+.conditions__date {
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 140%;
+}
+.conditions__info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+.conditions__text {
+    max-width: 380px;
+    margin-right: 16px;
+    text-align: right;
+}
+.conditions__btn {
+    flex-shrink: 0;
+}
+
+.e-btn {
+    display: inline-block;
+    padding: 8px 24px;
+    background-color: var(--green-main);
+    color: white;
+    text-decoration: none;
+    /*font-size: 1.0em;*/
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 40px;
+    text-align: center;
+}
+.e-btn.disabled {
+    cursor: not-allowed;
+    background-color: lightgrey;
+}
+.e-btn--conditions {
+    background-color: var(--green-secondary);
+}
+.e-btn--conditions:hover {
+    background-color: var(--green-main);
+}
+
+.checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    position: relative;
+    color: var(--green-main);
+}
+.checkbox input {
+    margin-right: 10px;
+}
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.timer {
+    font-size: 18px;
+    color: #333;
+    margin-top: 15px;
+}
+
+
+
+.role {
+    position: relative;
+    max-width: 1110px;
+    min-height: 440px;
+    border-radius: 30px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    padding: 60px 40px;
+    text-align: center;
+
+    color: var(--text-color-secondary);
+}
+.role::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /*background: rgba(207, 221, 222, 0.4);*/
+    background: rgba(255, 255, 255, 0.6);
+    /*background: rgba(207, 221, 222, 1);*/
+    filter: blur(44px);
+    /*opacity: 0.5;*/
+    z-index: -1;
+}
+
+.role__inner {
+    display: flex;
+    align-items: center;
+}
+.role__title {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 100%;
+    margin-bottom: 60px;
+}
+.role__block {
+    flex: 1;
+    padding-inline: 50px;
+    /*text-align: center;*/
+}
+.role__block-title {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 100%;
+    margin-bottom: 30px;
+}
+.role__block-text {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 150%;
+    margin-bottom: 30px;
+    max-width: 410px;
+}
+
+
+
+.blocks-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.block {
+    width: 300px;
+    height: 450px;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.block img {
+    width: 160px;
+    height: 160px;
+    margin-bottom: 15px;
+}
+
+.block-dreamer {
+    background-color: #fff7e7;
+}
+
+.block-helper {
+    background-color: #e6f6ff;
+}
+
+.block::before {
+    content: "❆ ❆ ❆ ❆ ❆";
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 2rem;
+    color: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+a.role-link {
+    /*display: inline-block;*/
+    /*padding: 10px 20px;*/
+    /*background-color: #4CAF50;*/
+    /*color: white;*/
+    /*border-radius: 5px;*/
+    /*text-decoration: none;*/
+    /*font-weight: bold;*/
+}
+
+a.role-link.disabled {
+    /*background-color: #ccc;*/
+    /*pointer-events: none;*/
+}
+
+@media (max-width: 1191px) {
+    .body:before {
+        /*background-size: cover;*/
+        background-position-x: left;
+    }
+    .body:after {
+        background-size: cover;
+        background-position-x: right;
+    }
+}
+@media (max-width: 768px) {
+    .conditions__info {
+        flex-direction: column;
+    }
+    .conditions__text {
+        margin-right: 0;
+        margin-bottom: 16px;
+        text-align: center;
+    }
+    .blocks-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+footer {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 0.9em;
+    color: #777;
+}
+
+

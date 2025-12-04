@@ -1,3 +1,7 @@
+.header,
+.header * {
+  box-sizing: border-box;
+}
 .header {
   position: sticky;
   z-index: 100;
@@ -144,4 +148,24 @@
   //&__burger-button {
   //  position: relative;
   //}
+}
+
+.nav {
+  line-height: 1.5;
+
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-text-size-adjust: 100%;
+
+  @include fluid-text(20, 18);
+  display: flex;
+  align-items: center;
+  //flex-direction: column;
+  font-family: var(--font-family-base);
+  font-weight: 400;
+
+  a {
+    color: var(--color-white);
+    text-decoration: none;
+    margin: 8px;
+  }
 }
