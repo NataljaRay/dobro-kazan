@@ -7,7 +7,9 @@ $APPLICATION->AddHeadString('<link rel="preload" href="img/elka-bg-2.png" as="im
 $APPLICATION->AddHeadString('<style>#elka, #elka * {font-family: \'Inter\', sans-serif;}</style>');
 $APPLICATION->SetAdditionalCSS("/culture-of-charity/fairs-of-goodness/css/style.css");
 ?>
-  <!--<div class="body" style="max-width: 100%;">-->
+
+  <div id="snow" data-count="200" style="padding-top: 20px;display: none"><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div><div class="snowflake"></div></div>
+
   <div id="elka" class="body" style="max-width: 1440px;  margin: 0 auto;">
     <div class="container1" >
       <div class="conditions">
@@ -66,9 +68,9 @@ $APPLICATION->SetAdditionalCSS("/culture-of-charity/fairs-of-goodness/css/style.
       </div>
     </div>
   </div>
-  <!--</div>-->
 
-  <style>body{margin: 0}</style>
+
+  <style>body{margin: 0;overflow-x: hidden;}</style>
 
   <script>
       function toggleLinks() {
@@ -118,45 +120,138 @@ $APPLICATION->SetAdditionalCSS("/culture-of-charity/fairs-of-goodness/css/style.
 
       // window.onload = startCountdown;
 
-      // Генерация снежинок
-      function generateSnowflakes() {
-          const snowflakeContainer = document.body;
-          const snowflakeCount = 50; // Количество снежинок
+      window.onload = function () {
+          // startCountdown();
+      };
 
-          for (let i = 0; i < snowflakeCount; i++) {
-              const snowflake = document.createElement("div");
-              snowflake.classList.add("snowflake");
-              snowflake.textContent = "❄";
-              snowflake.style.left = Math.random() * 100 + "vw"; // Случайное начальное положение по оси X
-              snowflake.style.animationDuration = Math.random() * 5 + 5 + "s"; // Случайная продолжительность падения
-              snowflake.style.fontSize = Math.random() * 20 + 15 + "px"; // Случайный размер снежинки
-              snowflakeContainer.appendChild(snowflake);
+      // снег 2025
+      let snowflakesCount = 200; // Snowflake count, can be overwritten by attrs
+      let baseCSS = ``;
+
+
+      // set global attributes
+      if (typeof SNOWFLAKES_COUNT !== 'undefined') {
+          snowflakesCount = SNOWFLAKES_COUNT;
+      }
+      if (typeof BASE_CSS !== 'undefined') {
+          baseCSS = BASE_CSS;
+      }
+
+      let bodyHeightPx = null;
+      let pageHeightVh = null;
+
+      function setHeightVariables() {
+          bodyHeightPx = document.body.offsetHeight;
+          pageHeightVh = (100 * bodyHeightPx / window.innerHeight);
+      }
+
+      // get params set in snow div
+      function getSnowAttributes() {
+          const snowWrapper = document.getElementById('snow');
+          snowflakesCount = Number(
+              snowWrapper?.dataset?.count || snowflakesCount
+          );
+      }
+
+      // Creating snowflakes
+      function generateSnow(snowDensity = 200) {
+          snowDensity -= 1;
+          const snowWrapper = document.getElementById('snow');
+          snowWrapper.innerHTML = '';
+          for (let i = 0; i < snowDensity; i++) {
+              let board = document.createElement('div');
+              board.className = "snowflake";
+              snowWrapper.appendChild(board);
           }
       }
 
-      window.onload = function () {
-          // startCountdown();
-          // generateSnowflakes();
+      function getOrCreateCSSElement() {
+          let cssElement = document.getElementById("psjs-css");
+          if (cssElement) return cssElement;
+
+          cssElement = document.createElement('style');
+          cssElement.id = 'psjs-css';
+          document.head.appendChild(cssElement);
+          return cssElement;
+      }
+
+      // Append style for each snowflake to the head
+      function addCSS(rule) {
+          const cssElement = getOrCreateCSSElement();
+          cssElement.innerHTML = rule; // safe to use innerHTML
+          document.head.appendChild(cssElement);
+      }
+
+      // Math
+      function randomInt(value = 100) {
+          return Math.floor(Math.random() * value) + 1;
+      }
+
+      function randomIntRange(min, max) {
+          min = Math.ceil(min);
+          max = Math.floor(max);
+          return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+
+      function getRandomArbitrary(min, max) {
+          return Math.random() * (max - min) + min;
+      }
+
+      // Create style for snowflake
+      function generateSnowCSS(snowDensity = 200) {
+          let snowflakeName = "snowflake";
+          let rule = baseCSS;
+
+          for (let i = 1; i < snowDensity; i++) {
+              let randomX = Math.random() * 100; // vw
+              let randomOffset = Math.random() * 10 // vw;
+              let randomXEnd = randomX + randomOffset;
+              let randomXEndYoyo = randomX + (randomOffset / 2);
+              let randomYoyoTime = getRandomArbitrary(0.3, 0.8);
+              let randomYoyoY = randomYoyoTime * pageHeightVh; // vh
+              let randomScale = Math.random();
+              let fallDuration = randomIntRange(10, pageHeightVh / 10 * 3); // s
+              let fallDelay = randomInt(pageHeightVh / 10 * 3) * -1; // s
+              let opacity = Math.random();
+
+              rule += `
+      .${snowflakeName}:nth-child(${i}) {
+        opacity: ${opacity};
+        transform: translate(${randomX}vw, -10px) scale(${randomScale});
+        animation: fall-${i} ${fallDuration}s ${fallDelay}s linear infinite;
+      }
+      @keyframes fall-${i} {
+        ${randomYoyoTime * 100}% {
+          transform: translate(${randomXEnd}vw, ${randomYoyoY}vh) scale(${randomScale});
+        }
+        to {
+          transform: translate(${randomXEndYoyo}vw, ${pageHeightVh}vh) scale(${randomScale});
+        }
+      }
+    `
+          }
+          addCSS(rule);
+      }
+
+      // Load the rules and execute after the DOM loads
+      function createSnow() {
+          setHeightVariables();
+          getSnowAttributes();
+          generateSnowCSS(snowflakesCount);
+          generateSnow(snowflakesCount);
       };
+
+      if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+          // код для мобильных устройств
+      } else {
+          // код для обычных устройств
+          document.getElementById('snow').style.display = "block";
+          window.addEventListener('resize', createSnow);
+          window.addEventListener("DOMContentLoaded", () => {
+              createSnow();
+          });
+      }
+
   </script>
 
-<!--    <div class="projectPageHeader header-blue2">-->
-<!--        <div class="headerContent">-->
-<!--            <div class="centerContent">-->
-<!--                <img src="/public/img/blue_2.svg" class="centerImage"/>-->
-<!--                <div class="centerHeader">-->
-<!--                    Ёлка желаний-->
-<!--                </div>-->
-<!---->
-<!--                <div class="headerCenterText">-->
-<!--                    Страница находится в разработке-->
-<!--                </div>-->
-<!--                <div class="oneButtonContainer">-->
-<!--                    <a href="/" target="_blank" class="centerButton">На главную</a>-->
-<!--                </div>-->
-<!---->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    <br>-->
 <? require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>

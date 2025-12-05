@@ -42,21 +42,21 @@
 
 
 /* Анимация снежинок */
-.snowflake {
-    position: absolute;
-    top: -50px;
-    color: white;
-    font-size: 1.5em;
-    pointer-events: none;
-    animation: fall 10s linear infinite;
-}
+/*.snowflake {*/
+/*    position: absolute;*/
+/*    top: -50px;*/
+/*    color: white;*/
+/*    font-size: 1.5em;*/
+/*    pointer-events: none;*/
+/*    animation: fall 10s linear infinite;*/
+/*}*/
 
-/* Анимация падения снежинок */
-@keyframes fall {
-    to {
-        transform: translateY(100vh);
-    }
-}
+/*!* Анимация падения снежинок *!*/
+/*@keyframes fall {*/
+/*    to {*/
+/*        transform: translateY(100vh);*/
+/*    }*/
+/*}*/
 
 .container1 {
     max-width: 1440px;
@@ -360,4 +360,16 @@
 .e-checkbox--top .e-checkbox__toggle::after {
     top: 1px;
     transform: none;
+}
+
+
+/* снежинки 2025 */
+.snowflake {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: linear-gradient(white, white);
+    /* Workaround for Chromium's selective color inversion */
+    border-radius: 50%;
+    filter: drop-shadow(0 0 10px white);
 }
