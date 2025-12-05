@@ -26,14 +26,14 @@
 .body:before {
     top: 0;
     left: 0;
-    background: url(https://dobro.kzn.ru/culture-of-charity/fairs-of-goodness/img/elka-bg-1.png) left top / contain no-repeat;
+    background: url(/culture-of-charity/fairs-of-goodness/img/elka-bg-1.png) left top / contain no-repeat;
     background-position-x: -100px;
     z-index: -1;
 }
 .body:after {
     bottom: 0;
     right: 0;
-    background: url(https://dobro.kzn.ru/culture-of-charity/fairs-of-goodness/img/elka-bg-2.png) right bottom / contain no-repeat;
+    background: url(/culture-of-charity/fairs-of-goodness/img/elka-bg-2.png) right bottom / contain no-repeat;
     background-position-x: 126%;
     background-size: contain;
     z-index: -2;
@@ -41,7 +41,7 @@
 
 
 
-/* Анимация снежинок */
+    /* Анимация снежинок */
 .snowflake {
     position: absolute;
     top: -50px;
@@ -306,43 +306,43 @@
     position: relative;
 }
 .e-checkbox__content {
-    margin-left: 12px;
-    color: var(--green-main);
+     margin-left: 12px;
+     color: var(--green-main);
     text-align: left;
-}
+ }
 .e-checkbox__toggle {
     position: relative;
     padding: 0 0 0 20px;
     cursor: pointer;
 }
 .e-checkbox__toggle::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    width: 20px;
-    height: 20px;
-    border-radius: 4px;
-    background: rgba(235, 235, 235, 1);
-    border: 1px solid rgba(0, 0, 0, 0.3);
-    transition: .2s;
-    top: 50%;
-    transform: translateY(-50%);
-}
+     content: '';
+     position: absolute;
+     left: 0;
+     width: 20px;
+     height: 20px;
+     border-radius: 4px;
+     background: rgba(235, 235, 235, 1);
+     border: 1px solid rgba(0, 0, 0, 0.3);
+     transition: .2s;
+     top: 50%;
+     transform: translateY(-50%);
+ }
 .e-checkbox__toggle::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    width: 20px;
-    height: 20px;
-    transition: .2s;
-    top: 50%;
-    transform: translateY(-50%);
-    opacity: 0;
+     content: '';
+     position: absolute;
+     left: 0;
+     width: 20px;
+     height: 20px;
+     transition: .2s;
+     top: 50%;
+     transform: translateY(-50%);
+     opacity: 0;
 
-    background-image: url(https://dobro.kzn.ru/culture-of-charity/fairs-of-goodness/img/check-white.svg);
-    background-repeat: no-repeat;
-    background-position: center center;
-}
+     background-image: url(/culture-of-charity/fairs-of-goodness/img/check-white.svg);
+     background-repeat: no-repeat;
+     background-position: center center;
+ }
 
 .e-checkbox input {display: none;}
 .e-checkbox input:checked + .e-checkbox__toggle::before {

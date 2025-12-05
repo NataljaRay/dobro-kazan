@@ -77,10 +77,15 @@
           Положение об акции
         </a>
       </div>
-
       <div class="checkbox">
-        <input type="checkbox" id="consent" onchange="toggleLinks()">
-        <label for="consent">Я согласен с условиями акции</label>
+        <label class="e-checkbox e-checkbox--top">
+          <input type="checkbox" name="checkbox" id="consent" onchange="toggleLinks()">
+          <div class="e-checkbox__toggle">
+            <div class="e-checkbox__content">
+              Я согласен с условиями акции
+            </div>
+          </div>
+        </label>
       </div>
       <div id="error-message" class="error-message">
       </div>
@@ -113,31 +118,6 @@
         </div>
       </div>
     </div>
-
-    <h2 style="text-align: center; color:#f2f3f4">Выберите роль</h2>
-    <div class="blocks-container">
-      <div class="block block-dreamer">
-<!--        <img alt="Иллюстрация мечтателя" src="https://ctd-new.delion.ru/_next/static/media/home-dream.bd7b2895.svg">-->
-        <h3>Загадать желание</h3>
-        <p>
-          Поделитесь новогодним желанием своего ребенка на сайте акции и дайте возможность увидеть её исполнителям.
-        </p>
-        <a href="https://xn--j1ab.xn--80aanbeohciex.xn--p1ai/trustee/referral?code=0fed4518-e18b-43a4-98dd-e9c4724e99db" class="role-link disabled" onclick="handleLinkClick(event)">Стать мечтателем</a>
-      </div>
-      <div class="block block-helper">
-<!--        <img alt="Иллюстрация исполнителя" src="https://ctd-new.delion.ru/_next/static/media/home-application.d6330fe0.svg">-->
-        <h3>Исполнить желание</h3>
-        <!--<p class="helper-message" style="color: red;">
-          Будет доступно с 7 декабря 2024
-        </p>-->
-        <p>
-          Станьте частью большого и доброго дела, подарив нуждающимся детям радость и новогоднее чудо.
-        </p>
-        <a href="https://xn--j1ab.xn--80aanbeohciex.xn--p1ai/executor/referral?code=0fed4518-e18b-43a4-98dd-e9c4724e99db" class="role-link disabled" onclick="handleLinkClick(event)">Стать исполнителем</a>
-      </div>
-    </div>
-    <footer>
-      © 2024 Ёлка желаний Добрая Казань. </footer>
   </div>
 </div>
 <!--</div>-->
