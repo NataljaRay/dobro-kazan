@@ -103,7 +103,7 @@
           <p class="role__block-text">
             Поделитесь новогодним желанием своего ребенка на сайте акции и дайте возможность увидеть её исполнителям.
           </p>
-          <a class="role__btn e-btn role-link disabled" onclick="handleLinkClick(event)"
+          <a class="role__btn e-btn role-link disabled" id="dream-btn" onclick="handleLinkClick(event)"
              href="https://xn--j1ab.xn--80aanbeohciex.xn--p1ai/trustee/referral?code=0fed4518-e18b-43a4-98dd-e9c4724e99db" target="_blank">
             Стать мечтателем
           </a>
@@ -113,7 +113,7 @@
           <p class="role__block-text">
             Станьте частью большого и доброго дела, подарив нуждающимся детям радость и новогоднее чудо.
           </p>
-          <a class="role__btn e-btn role-link disabled" onclick="handleLinkClick(event)"
+          <a class="role__btn e-btn role-link disabled" id="doer-btn" onclick="handleLinkClick(event)"
              href="https://xn--j1ab.xn--80aanbeohciex.xn--p1ai/executor/referral?code=0fed4518-e18b-43a4-98dd-e9c4724e99db" target="_blank">
             Стать исполнителем
           </a>
@@ -132,14 +132,25 @@
 <style>body{margin: 0;overflow-x: hidden;}body * {box-sizing: border-box}</style>
 
 <script>
+
+  const btnDream = document.getElementById('dream-btn');
+  const btnDoer = document.getElementById('doer-btn');
+
     function toggleLinks() {
         const checkbox = document.getElementById('consent');
         const links = document.querySelectorAll('.role-link');
         const errorMessage = document.getElementById('error-message');
         errorMessage.textContent = ""; // Скрываем ошибку при переключении
-        links.forEach(link => {
-            link.classList.toggle('disabled', !checkbox.checked);
-        });
+        // links.forEach(link => {
+        //     link.classList.toggle('disabled', !checkbox.checked);
+        // });
+
+        if(btnDreamState) {
+            btnDream.classList.toggle('disabled', !checkbox.checked);
+        }
+        if(btnDoerState) {
+            btnDoer.classList.toggle('disabled', !checkbox.checked);
+        }
     }
 
     function handleLinkClick(event) {
@@ -148,8 +159,31 @@
         if (!checkbox.checked) {
             event.preventDefault(); // Предотвращаем переход по ссылке
             errorMessage.textContent = "Нужно согласиться с условиями акции.";
+        } else if (checkbox.checked && event.target.classList.contains('disabled')) {
+            event.preventDefault(); // Предотвращаем переход по ссылке
+            errorMessage.textContent = "";
         }
     }
+
+    const today = new Date().getTime();
+
+    const dreamStartDate = new Date("2025-12-05T23:59:59").getTime();
+    const dreamEndDate = new Date("2025-12-20T23:59:59").getTime();
+
+    const doerStartDate = new Date("2025-12-05T23:59:59").getTime();
+    const doerEndDate = new Date("2026-02-28T23:59:59").getTime();
+
+    function checkDate(startDate, endDate) {
+        if ((today > startDate) && (today < endDate) ) {
+            return true;
+        } else {
+            return false
+        }
+    }
+
+    const btnDreamState = checkDate(dreamStartDate, dreamEndDate);
+    const btnDoerState = checkDate(doerStartDate, doerEndDate);
+
 
     function startCountdown() {
         const endDate = new Date("2025-02-28T23:59:59").getTime();
